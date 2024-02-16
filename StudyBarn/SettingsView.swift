@@ -9,7 +9,16 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("User Name")
+                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+            Text("Logout")
+                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+            Text("Reset")
+                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+            Text("Location services")
+                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+        }
     }
 }
 
