@@ -10,6 +10,9 @@ import SwiftUI
 struct ExploreView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        // for each renders the locations
+            // create view for each box
     }
 }
 

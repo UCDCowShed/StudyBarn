@@ -17,6 +17,7 @@
 		07F7B4F52B7EE82E00D077A1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4F42B7EE82E00D077A1 /* SettingsView.swift */; };
 		07F7B4F72B7EE86D00D077A1 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4F62B7EE86D00D077A1 /* GoogleLoginButton.swift */; };
 		07F7B4F92B7EE89B00D077A1 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4F82B7EE89B00D077A1 /* SelectView.swift */; };
+		07F7B4FD2B7FBCC200D077A1 /* LocationBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4FC2B7FBCC200D077A1 /* LocationBoxView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		07F7B4F42B7EE82E00D077A1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		07F7B4F62B7EE86D00D077A1 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
 		07F7B4F82B7EE89B00D077A1 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
+		07F7B4FC2B7FBCC200D077A1 /* LocationBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBoxView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				07F7B4F82B7EE89B00D077A1 /* SelectView.swift */,
 				07F7B4F42B7EE82E00D077A1 /* SettingsView.swift */,
 				07F7B4F62B7EE86D00D077A1 /* GoogleLoginButton.swift */,
+				07F7B4FC2B7FBCC200D077A1 /* LocationBoxView.swift */,
 			);
 			path = StudyBarn;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07F7B4F12B7EE6CD00D077A1 /* FavoriteView.swift in Sources */,
+				07F7B4FD2B7FBCC200D077A1 /* LocationBoxView.swift in Sources */,
 				07F7B4E32B7EE69800D077A1 /* ContentView.swift in Sources */,
 				07F7B4F32B7EE7E400D077A1 /* MapView.swift in Sources */,
 				07F7B4F52B7EE82E00D077A1 /* SettingsView.swift in Sources */,
