@@ -11,6 +11,12 @@
 		07F7B4E32B7EE69800D077A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4E22B7EE69800D077A1 /* ContentView.swift */; };
 		07F7B4E52B7EE69A00D077A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F7B4E42B7EE69A00D077A1 /* Assets.xcassets */; };
 		07F7B4E82B7EE69A00D077A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F7B4E72B7EE69A00D077A1 /* Preview Assets.xcassets */; };
+		07F7B4EF2B7EE6B400D077A1 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4EE2B7EE6B300D077A1 /* ExploreView.swift */; };
+		07F7B4F12B7EE6CD00D077A1 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4F02B7EE6CD00D077A1 /* FavoriteView.swift */; };
+		07F7B4F32B7EE7E400D077A1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4F22B7EE7E400D077A1 /* MapView.swift */; };
+		07F7B4F52B7EE82E00D077A1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4F42B7EE82E00D077A1 /* SettingsView.swift */; };
+		07F7B4F72B7EE86D00D077A1 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4F62B7EE86D00D077A1 /* GoogleLoginButton.swift */; };
+		07F7B4F92B7EE89B00D077A1 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4F82B7EE89B00D077A1 /* SelectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		07F7B4E22B7EE69800D077A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		07F7B4E42B7EE69A00D077A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07F7B4E72B7EE69A00D077A1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		07F7B4EE2B7EE6B300D077A1 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		07F7B4F02B7EE6CD00D077A1 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		07F7B4F22B7EE7E400D077A1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		07F7B4F42B7EE82E00D077A1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		07F7B4F62B7EE86D00D077A1 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
+		07F7B4F82B7EE89B00D077A1 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,12 @@
 				07F7B4E22B7EE69800D077A1 /* ContentView.swift */,
 				07F7B4E42B7EE69A00D077A1 /* Assets.xcassets */,
 				07F7B4E62B7EE69A00D077A1 /* Preview Content */,
+				07F7B4EE2B7EE6B300D077A1 /* ExploreView.swift */,
+				07F7B4F02B7EE6CD00D077A1 /* FavoriteView.swift */,
+				07F7B4F22B7EE7E400D077A1 /* MapView.swift */,
+				07F7B4F82B7EE89B00D077A1 /* SelectView.swift */,
+				07F7B4F42B7EE82E00D077A1 /* SettingsView.swift */,
+				07F7B4F62B7EE86D00D077A1 /* GoogleLoginButton.swift */,
 			);
 			path = StudyBarn;
 			sourceTree = "<group>";
@@ -137,7 +155,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07F7B4F12B7EE6CD00D077A1 /* FavoriteView.swift in Sources */,
 				07F7B4E32B7EE69800D077A1 /* ContentView.swift in Sources */,
+				07F7B4F32B7EE7E400D077A1 /* MapView.swift in Sources */,
+				07F7B4F52B7EE82E00D077A1 /* SettingsView.swift in Sources */,
+				07F7B4EF2B7EE6B400D077A1 /* ExploreView.swift in Sources */,
+				07F7B4F72B7EE86D00D077A1 /* GoogleLoginButton.swift in Sources */,
+				07F7B4F92B7EE89B00D077A1 /* SelectView.swift in Sources */,
 				07F7B4E12B7EE69800D077A1 /* StudyBarnApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
