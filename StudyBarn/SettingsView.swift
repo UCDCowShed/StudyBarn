@@ -10,14 +10,28 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         VStack {
+            Spacer().frame(height: 150)
+            Image("profile")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+                .clipShape(Circle())
+            Spacer().frame(height: 50)
+            
             Text("User Name")
-                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+//                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+            Spacer().frame(height: 20)
             Text("Logout")
-                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+                .foregroundColor(.red)
+                
             Text("Reset")
-                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+                .foregroundColor(.red)
+               
             Text("Location services")
-                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+                .foregroundColor(.red)
+            
+            Spacer()
+                
         }
     }
 }
