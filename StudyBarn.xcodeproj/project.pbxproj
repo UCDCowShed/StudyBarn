@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07A093B92B883F0D00FC5511 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A093B82B883F0D00FC5511 /* DetailsView.swift */; };
 		07F7B4E12B7EE69800D077A1 /* StudyBarnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4E02B7EE69800D077A1 /* StudyBarnApp.swift */; };
 		07F7B4E32B7EE69800D077A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4E22B7EE69800D077A1 /* ContentView.swift */; };
 		07F7B4E52B7EE69A00D077A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F7B4E42B7EE69A00D077A1 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07A093B82B883F0D00FC5511 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		07F7B4DD2B7EE69800D077A1 /* StudyBarn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyBarn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F7B4E02B7EE69800D077A1 /* StudyBarnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBarnApp.swift; sourceTree = "<group>"; };
 		07F7B4E22B7EE69800D077A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				07F7B4F62B7EE86D00D077A1 /* GoogleLoginButton.swift */,
 				07F7B4FC2B7FBCC200D077A1 /* LocationBoxView.swift */,
 				F1CA84DD2B7F1A2400520AC1 /* DataModel.swift */,
+				07A093B82B883F0D00FC5511 /* DetailsView.swift */,
 			);
 			path = StudyBarn;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				07F7B4F32B7EE7E400D077A1 /* MapView.swift in Sources */,
 				07F7B4F52B7EE82E00D077A1 /* SettingsView.swift in Sources */,
 				F1CA84DE2B7F1A2400520AC1 /* DataModel.swift in Sources */,
+				07A093B92B883F0D00FC5511 /* DetailsView.swift in Sources */,
 				07F7B4EF2B7EE6B400D077A1 /* ExploreView.swift in Sources */,
 				07F7B4F72B7EE86D00D077A1 /* GoogleLoginButton.swift in Sources */,
 				07F7B4F92B7EE89B00D077A1 /* SelectView.swift in Sources */,
