@@ -26,10 +26,18 @@ https://developer.apple.com/documentation/mapkit/
 
 ## Server support
 **Firebase collections**
-- user
+- User
 - location
 
 ## List of models to include
+#### Models
+- UserModel
+- LocationModel
+  
+#### ViewModels
+- LoginViewModel
+- LocationViewModel
+- UserViewModel
 
 ## List of views to implement
 
