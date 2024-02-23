@@ -44,6 +44,7 @@ https://developer.apple.com/documentation/mapkit/
 ## List of tasks and timeline when it will be done
 
 ## Testing plan
+- Get Survey from the users
 
 **Ann Yip**: 
 
