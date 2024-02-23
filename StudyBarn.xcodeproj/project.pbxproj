@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07A093B92B883F0D00FC5511 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A093B82B883F0D00FC5511 /* DetailsView.swift */; };
 		07F7B4E12B7EE69800D077A1 /* StudyBarnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4E02B7EE69800D077A1 /* StudyBarnApp.swift */; };
 		07F7B4E32B7EE69800D077A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4E22B7EE69800D077A1 /* ContentView.swift */; };
 		07F7B4E52B7EE69A00D077A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F7B4E42B7EE69A00D077A1 /* Assets.xcassets */; };
@@ -31,10 +32,12 @@
 		F13687BF2B883B8300A9A974 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13687BE2B883B8300A9A974 /* Utilities.swift */; };
 		F13687C12B883CB600A9A974 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13687C02B883CB600A9A974 /* RootView.swift */; };
 		F18758662B88428A004CC7FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F18758652B88428A004CC7FE /* GoogleService-Info.plist */; };
+		07F7B4FD2B7FBCC200D077A1 /* LocationBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4FC2B7FBCC200D077A1 /* LocationBoxView.swift */; };
 		F1CA84DE2B7F1A2400520AC1 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA84DD2B7F1A2400520AC1 /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07A093B82B883F0D00FC5511 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		07F7B4DD2B7EE69800D077A1 /* StudyBarn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyBarn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F7B4E02B7EE69800D077A1 /* StudyBarnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBarnApp.swift; sourceTree = "<group>"; };
 		07F7B4E22B7EE69800D077A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		F13687C02B883CB600A9A974 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		F18758652B88428A004CC7FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F18758672B8842D5004CC7FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		07F7B4FC2B7FBCC200D077A1 /* LocationBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBoxView.swift; sourceTree = "<group>"; };
 		F1CA84DD2B7F1A2400520AC1 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,7 +113,10 @@
 				F13687902B8839BC00A9A974 /* Login */,
 				F13687732B8808B100A9A974 /* Authentication */,
 				F13687BD2B883B6B00A9A974 /* Utilities */,
+				07F7B4F62B7EE86D00D077A1 /* GoogleLoginButton.swift */,
+				07F7B4FC2B7FBCC200D077A1 /* LocationBoxView.swift */,
 				F1CA84DD2B7F1A2400520AC1 /* DataModel.swift */,
+				07A093B82B883F0D00FC5511 /* DetailsView.swift */,
 			);
 			path = StudyBarn;
 			sourceTree = "<group>";
@@ -234,12 +241,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				07F7B4F12B7EE6CD00D077A1 /* FavoriteView.swift in Sources */,
+				07F7B4FD2B7FBCC200D077A1 /* LocationBoxView.swift in Sources */,
 				07F7B4E32B7EE69800D077A1 /* ContentView.swift in Sources */,
 				F13687BF2B883B8300A9A974 /* Utilities.swift in Sources */,
 				F136878F2B88398200A9A974 /* LoginViewModel.swift in Sources */,
 				07F7B4F32B7EE7E400D077A1 /* MapView.swift in Sources */,
 				07F7B4F52B7EE82E00D077A1 /* SettingsView.swift in Sources */,
 				F1CA84DE2B7F1A2400520AC1 /* DataModel.swift in Sources */,
+				07A093B92B883F0D00FC5511 /* DetailsView.swift in Sources */,
 				07F7B4EF2B7EE6B400D077A1 /* ExploreView.swift in Sources */,
 				F13687B72B883B3D00A9A974 /* SignInGoogleHelper.swift in Sources */,
 				07F7B4F72B7EE86D00D077A1 /* GoogleLoginButton.swift in Sources */,
