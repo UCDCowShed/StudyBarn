@@ -13,6 +13,7 @@ struct StudyBarnApp: App {
         WindowGroup {
 //            ContentView()
             SettingsView()
+//            MapView()
         }
     }
 }
