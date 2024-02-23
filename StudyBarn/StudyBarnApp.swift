@@ -15,8 +15,7 @@ struct StudyBarnApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            SettingsView()
+            ContentView()
         }
     }
 }
