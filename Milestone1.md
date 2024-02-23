@@ -50,15 +50,21 @@ https://developer.apple.com/documentation/mapkit/
 - Add LaunchView
 
 ## List of tasks and timeline when it will be done
-- MapView implement:
-- DetailView implement:
-- 
+- Ann
+  - MapView with annotation and search bar: next week by Thursday Feb 29
+  - Google form of list of study areas
+- Jinho
+  - DetailView implementation, connecting published variables to model: next week by Thursday Feb 29
+- Jin
+  - Finishing connection with database, add functionalities on settingViews, UI for login view: next week by
+    Thursday Feb 29
+- Next week:
+  - Using the database, connect locations and user models
+  - Testing flow of app
+  - Add locations to favorite tab
+  - Pinning locations on map
+  - Ratings of locations
+  - Comments
 ## Testing plan
 - Get Survey from the users
-
-**Ann Yip**: 
-
-**Yeongjin Lee**: 
-
-**Jinho Yon**: 
 
