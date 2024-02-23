@@ -10,14 +10,45 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         VStack {
-            Text("User Name")
-                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+            Spacer().frame(height: 150)
+            Image("profile")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+                .overlay(
+                    Circle()
+                        .stroke(Color.black, lineWidth: 2)
+                )
+            
+            Spacer().frame(height: 15)
+            
+            Text("User's name")
+//                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+            Spacer().frame(height: 30)
+            
             Text("Logout")
-                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+                .foregroundColor(.red)
+                .onTapGesture {
+                    print("Logging out...")
+                }
+            Spacer().frame(height: 15)
+            
             Text("Reset")
-                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+                .foregroundColor(.red)
+                .onTapGesture {
+                    print("RESET")
+                }
+            Spacer().frame(height: 15)
+            
             Text("Location services")
-                .font(Font.custom("RetroGaming", size: 15, relativeTo: .body))
+                .foregroundColor(.red)
+                .onTapGesture {
+                    print("Location Services")
+                }
+            
+            Spacer()
+                
         }
     }
 }
