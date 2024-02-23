@@ -15,8 +15,19 @@ Our app “StudyBarn” helps students easily locate and explore study environme
 ## Design for all the views
 
 ## Third party libraries
+**Google Sign In - IOS**
+https://github.com/google/GoogleSignIn-iOS
+
+**Firebase IOS SDK**
+https://github.com/firebase/firebase-ios-sdk
+
+**MapKit**
+https://developer.apple.com/documentation/mapkit/
 
 ## Server support
+**Firebase collections**
+- user
+- location
 
 ## List of models to include
 
