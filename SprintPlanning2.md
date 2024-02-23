@@ -21,9 +21,8 @@ We designed the structure view-flow, login features with google authentication, 
 location.
 
 **Yeongjin Lee**: Worked on the google authentication feature.
-![Screenshot 2024-02-22 at 9 42 32 PM](https://github.com/UCDCowShed/StudyBarn/assets/114377213/5500038c-f871-43ed-9f09-704c5589fc02)
-
 
 **Jinho Yon**: Updated `settingsView` where the users can edit their profiles.
 
-
+![Screenshot 2024-02-22 at 9 45 44 PM](https://github.com/UCDCowShed/StudyBarn/assets/114377213/1fc6042c-c46d-4fb1-afe9-d114fbe29621)
+![Screenshot 2024-02-22 at 9 46 07 PM](https://github.com/UCDCowShed/StudyBarn/assets/114377213/649c148f-e77c-4e9c-a90a-a2eccdc29d70)
