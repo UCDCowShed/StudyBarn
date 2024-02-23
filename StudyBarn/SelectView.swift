@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SelectView: View {
+    
+    @Binding var showSignInView: Bool
+    
     var body: some View {
         TabView {
             ExploreView()
@@ -22,7 +25,7 @@ struct SelectView: View {
                 .tabItem {
                     Label("Saved", systemImage: "heart")
                 }
-            SettingsView()
+            SettingsView(showSignInView: $showSignInView)
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
@@ -31,5 +34,5 @@ struct SelectView: View {
 }
 
 #Preview {
-    SelectView()
+    SelectView(showSignInView: .constant(false))
 }

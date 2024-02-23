@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @Binding var showSignInView: Bool
+    
     var body: some View {
         NavigationView {
             // to center at top 2/3 of screen
@@ -31,7 +34,15 @@ struct SettingsView: View {
                     Text("Logout")
                         .foregroundColor(.red)
                         .onTapGesture {
-                            print("LOGGING OUT")
+                            Task {
+                                do {
+                                    try AuthenticationManager.shared.signOut()
+                                    showSignInView = true
+                                }
+                                catch {
+                                    print("Failed Logout")
+                                }
+                                                            }
                         }
                     
                     Text("Reset")
@@ -39,11 +50,6 @@ struct SettingsView: View {
                         .onTapGesture {
                             print("RESET")
                         }
-
-                    NavigationLink(destination: MapView()){
-                        Text("Location services")
-                            .foregroundColor(.red)
-                    }
                 }
             }
         }
@@ -52,5 +58,5 @@ struct SettingsView: View {
             
 
 #Preview {
-    SettingsView()
+    SettingsView(showSignInView: .constant(false))
 }
