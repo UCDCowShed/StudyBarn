@@ -10,6 +10,7 @@ import SwiftUI
 struct SelectView: View {
     
     @Binding var showSignInView: Bool
+    @StateObject var userViewModel = UserViewModel()
     
     var body: some View {
         TabView {
@@ -21,14 +22,15 @@ struct SelectView: View {
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }
-            FavoriteView()
+            ProfileView(showSignInView: $showSignInView)
                 .tabItem {
-                    Label("Saved", systemImage: "heart")
+                    Label("Profile", systemImage: "person.fill")
                 }
-            SettingsView(showSignInView: $showSignInView)
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
+                .environmentObject(userViewModel)
+        }
+        // Load user from the database once app starts
+        .task {
+            try? await userViewModel.loadUser()
         }
     }
 }
