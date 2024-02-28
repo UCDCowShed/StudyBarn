@@ -6,10 +6,43 @@
 //
 
 import SwiftUI
+import MapKit
+
+extension CLLocationCoordinate2D {
+    static let shields = CLLocationCoordinate2D(latitude: 38.5397, longitude: -121.7495)
+    static let tlc = CLLocationCoordinate2D(latitude: 38.5387, longitude: -121.7542)
+}
 
 struct MapView: View {
+    @State private var position : MapCameraPosition = .automatic
+    
+    @State private var searchResults: [MKMapItem] = []
+    
+    @State private var showSearchView = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            if showSearchView {
+                SearchView(show: $showSearchView)
+            } else {
+                Map(position: $position) {
+                    Marker("Shields", coordinate: .shields)
+                    Marker("TLC", coordinate: .tlc)
+                }
+                .safeAreaInset(edge: .top) {
+                    HStack {
+                        SearchBar()
+                            .onTapGesture {
+                                showSearchView.toggle()
+                                position = .automatic
+                            }
+                    }
+                }
+                .onChange(of: showSearchView) {
+                    position = .automatic
+                }
+            }
+        }
     }
 }
 
