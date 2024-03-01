@@ -23,8 +23,8 @@ We all individually worked on our respective tasks and views to add more functio
 **Yeongjin Lee**: 
 - Worked on views: `AdminView`, `AddAreaView`, `AddAreaViewModel`, `AddSubAreaView`, & `AddSubAreaViewModel`
 - Delt with area and subarea models by connecting to firebase
-- Researched on filter, sort, and pagination, 
-- admin page for admin users
+- Researched on filter, sort, and pagination
+- Created admin page for admin users
 
 **Jinho Yon**: 
 - Worked on view:  `DetailsView` 
