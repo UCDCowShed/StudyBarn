@@ -22,25 +22,6 @@ struct LocationBoxView: View {
         "Shields-tutor"
     ]
     
-    private func formatHours (hours: HourMin?) -> String {
-        guard let hours = hours else { return "00:00"}
-        
-        // PM
-        if hours.hour > 12 {
-            let formatHour = hours.hour - 12
-            return "\(formatHour):\(hours.minute) PM"
-        }
-        // 12 PM
-        else if hours.hour == 12 {
-            return "\(hours.hour):\(hours.minute) PM"
-        }
-        // AM
-        else {
-            return "\(hours.hour):\(hours.minute) AM"
-        }
-        
-    }
-    
     var body: some View {
         VStack(spacing: 8) {
             TabView {
@@ -57,7 +38,7 @@ struct LocationBoxView: View {
                 VStack(alignment: .leading) {
                     Text(area?.name ?? "Area")
                         .font(.title)
-                    Text("\(formatHours(hours: area?.openHour)) - \(formatHours(hours: area?.closeHour))")
+                    Text("\(AreaManager.shared.formatHours(hours: area?.openHour)) - \(AreaManager.shared.formatHours(hours: area?.closeHour))")
                         .font(.subheadline)
                 }
                 Spacer()
