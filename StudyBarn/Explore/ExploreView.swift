@@ -12,7 +12,8 @@ struct ExploreView: View {
     @StateObject private var viewModel: ExploreViewModel = ExploreViewModel()
     
     @State private var showSearchView = false
-    @State private var allAreas: [AreaModel]? = []
+    @State private var loadingAreas = true
+    @State private var allAreas: [AreaModel] = []
     
     var body: some View {
         NavigationStack {
@@ -20,13 +21,13 @@ struct ExploreView: View {
                 SearchView(show: $showSearchView)
             } else {
                 ZStack {
-                    ScrollView {
-                        LazyVStack(spacing: 50) {
-                            if let allAreas = allAreas {
+                    if !loadingAreas {
+                        ScrollView {
+                            LazyVStack(spacing: 50) {
                                 ForEach(allAreas, id: \.self) { area in
                                     NavigationLink {
                                         DetailsView()
-                                            .navigationBarBackButtonHidden(true)
+                                            .navigationBarBackButtonHidden(false)
                                     } label: {
                                         LocationBoxView(area: area)
                                             .frame(height:400)
@@ -34,12 +35,15 @@ struct ExploreView: View {
                                     }
                                     .buttonStyle(PlainButtonStyle())
                                 }
+                                
                             }
-                            
+                            .padding()
                         }
-                        .padding()
+                        .padding(.top, 70.0)
                     }
-                    .padding(.top, 70.0)
+                    else {
+                        ProgressView()
+                    }
                     VStack {
                         SearchBar()
                             .onTapGesture {
@@ -49,14 +53,15 @@ struct ExploreView: View {
                             }
                         Spacer()
                     }
-
+                    
                 }
             }
         }
         .onAppear() {
             Task {
                 do {
-                    allAreas = try await viewModel.loadAllArea()
+                    allAreas = try await viewModel.loadAllArea() ?? []
+                    loadingAreas = false
                 }
                 catch {
                     print(error)
