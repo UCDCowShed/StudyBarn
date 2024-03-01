@@ -42,6 +42,7 @@
 		F18758692B886083004CC7FE /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18758682B886083004CC7FE /* GoogleLoginButton.swift */; };
 		F1C49A4A2B919CB3008CC172 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A482B919CB3008CC172 /* SearchBar.swift */; };
 		F1C49A4B2B919CB3008CC172 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A492B919CB3008CC172 /* SearchView.swift */; };
+		F1C49A4E2B91AB38008CC172 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A4D2B91AB38008CC172 /* ExploreViewModel.swift */; };
 		F1E7B4562B8ED1C900F00F07 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F1E7B4552B8ED1C900F00F07 /* GoogleSignIn */; };
 		F1E7B4582B8ED1C900F00F07 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F1E7B4572B8ED1C900F00F07 /* GoogleSignInSwift */; };
 		F1E7B45A2B8ED1D600F00F07 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F1E7B4592B8ED1D600F00F07 /* FirebaseAnalytics */; };
@@ -89,6 +90,7 @@
 		F18758682B886083004CC7FE /* GoogleLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleLoginButton.swift; path = StudyBarn/Login/GoogleLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		F1C49A482B919CB3008CC172 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		F1C49A492B919CB3008CC172 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F1C49A4D2B91AB38008CC172 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,10 +147,8 @@
 				07F7B4E22B7EE69800D077A1 /* ContentView.swift */,
 				07F7B4E42B7EE69A00D077A1 /* Assets.xcassets */,
 				07F7B4E62B7EE69A00D077A1 /* Preview Content */,
-				07F7B4EE2B7EE6B300D077A1 /* ExploreView.swift */,
+				F1C49A4C2B91AB22008CC172 /* Explore */,
 				F13687C02B883CB600A9A974 /* RootView.swift */,
-				07D3C3E42B8CEBF200EEEE57 /* SearchBar.swift */,
-				07D3C3E22B8C4D3E00EEEE57 /* SearchView.swift */,
 				07F7B4F22B7EE7E400D077A1 /* MapView.swift */,
 				F1351EDC2B8EC9A8005864D1 /* ProfileView.swift */,
 				07F7B4F82B7EE89B00D077A1 /* SelectView.swift */,
@@ -248,6 +248,15 @@
 				07A093B82B883F0D00FC5511 /* DetailsView.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		F1C49A4C2B91AB22008CC172 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				07F7B4EE2B7EE6B300D077A1 /* ExploreView.swift */,
+				F1C49A4D2B91AB38008CC172 /* ExploreViewModel.swift */,
+			);
+			path = Explore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,10 +372,10 @@
 				07F7B4E12B7EE69800D077A1 /* StudyBarnApp.swift in Sources */,
 				F169F45B2B8FFA0800DCA7D5 /* AddAreaView.swift in Sources */,
 				F1351ECE2B8EA2DC005864D1 /* UserModel.swift in Sources */,
+				F1C49A4E2B91AB38008CC172 /* ExploreViewModel.swift in Sources */,
 				F1351ED32B8EA303005864D1 /* UserManager.swift in Sources */,
 				F13687C12B883CB600A9A974 /* RootView.swift in Sources */,
 				846231A92B919135003F25C2 /* ListingCarouselView.swift in Sources */,
-				07D3C3E32B8C4D3E00EEEE57 /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

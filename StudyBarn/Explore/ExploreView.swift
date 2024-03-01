@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ExploreView: View {
     
+    @StateObject private var viewModel: ExploreViewModel = ExploreViewModel()
+    
     @State private var showSearchView = false
+    @State private var allAreas: [AreaModel]? = []
     
     var body: some View {
         NavigationStack {
@@ -19,17 +22,20 @@ struct ExploreView: View {
                 ZStack {
                     ScrollView {
                         LazyVStack(spacing: 50) {
-                            ForEach(0...10, id: \.self) { location in
-                                NavigationLink {
-                                    DetailsView()
-                                        .navigationBarBackButtonHidden(true)
-                                } label: {
-                                    LocationBoxView()
-                                        .frame(height:400)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                            if let allAreas = allAreas {
+                                ForEach(allAreas, id: \.self) { area in
+                                    NavigationLink {
+                                        DetailsView()
+                                            .navigationBarBackButtonHidden(true)
+                                    } label: {
+                                        LocationBoxView(area: area)
+                                            .frame(height:400)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
                                 }
-                                .buttonStyle(PlainButtonStyle())
                             }
+                            
                         }
                         .padding()
                     }
@@ -46,6 +52,17 @@ struct ExploreView: View {
 
                 }
             }
+        }
+        .onAppear() {
+            Task {
+                do {
+                    allAreas = try await viewModel.loadAllArea()
+                }
+                catch {
+                    print(error)
+                }
+            }
+            
         }
         
         // for each renders the locations
