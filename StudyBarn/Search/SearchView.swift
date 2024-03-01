@@ -14,6 +14,7 @@ enum SearchOptions {
 
 struct SearchView: View {
     @Binding var show : Bool
+    @StateObject var filterViewModel = FilterViewModel()
     
     @State var multiSelection = Set<UUID>()
     @State var extend_filter : Bool = false
@@ -46,6 +47,7 @@ struct SearchView: View {
             // Collapsed filter
             if extend_filter {
                 ExtendedFilterView()
+                    .environmentObject(filterViewModel)
                     .onTapGesture {
                         extend_filter.toggle()
                     }
@@ -90,7 +92,7 @@ struct SearchView: View {
 }
 
 struct ExtendedFilterView: View {
-    @StateObject var filterViewModel = FilterViewModel()
+    @EnvironmentObject var filterViewModel: FilterViewModel
     
     var body: some View {
         VStack{
@@ -202,4 +204,5 @@ struct CollapsedFilterView: View {
 
 #Preview {
     SearchView(show : .constant(false))
+        .environmentObject(FilterViewModel())
 }
