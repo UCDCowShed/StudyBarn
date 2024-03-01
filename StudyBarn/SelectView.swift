@@ -27,6 +27,12 @@ struct SelectView: View {
                     Label("Profile", systemImage: "person.fill")
                 }
                 .environmentObject(userViewModel)
+            if userViewModel.user?.admin ?? false {
+                AdminView()
+                    .tabItem {
+                        Label("Admin", systemImage: "folder")
+                    }
+            }
         }
         // Load user from the database once app starts
         .task {
