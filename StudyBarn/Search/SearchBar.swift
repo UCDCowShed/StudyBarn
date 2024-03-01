@@ -18,6 +18,7 @@ struct SearchBar: View {
             }
             .padding()
             .background(.white.opacity(0.8))
+            .clipShape(RoundedRectangle(cornerRadius: 40))
             .overlay {
                 RoundedRectangle(cornerRadius: 40)
                     .stroke(lineWidth: 0.5)

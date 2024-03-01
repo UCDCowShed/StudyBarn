@@ -33,7 +33,9 @@ struct MapView: View {
                     HStack {
                         SearchBar()
                             .onTapGesture {
-                                showSearchView.toggle()
+                                withAnimation(.snappy) {
+                                    showSearchView.toggle()
+                                }
                                 position = .automatic
                             }
                     }
