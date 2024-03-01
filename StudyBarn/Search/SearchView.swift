@@ -15,34 +15,6 @@ enum SearchOptions {
 struct SearchView: View {
     @Binding var show : Bool
     
-    struct Item: Identifiable, Hashable {
-        let item: String
-        let id = UUID()
-    }
-    
-    struct Selection: Identifiable, Hashable {
-        let category: String
-        let items: [Item]
-        let id = UUID()
-    }
-    
-    let selections: [Selection] = [
-        Selection(category: "Atmosphere",
-                  items: [Item(item: "Outdoors"),
-                          Item(item: "Busy "),
-                          Item(item: "Indoors"),
-                          Item(item: "Moody")]),
-        Selection(category: "Volume",
-                  items: [Item(item: "Group Study"),
-                          Item(item: "Quiet Study"),
-                          Item(item: "Silent Study")]),
-        Selection(category: "Amenities",
-                  items: [Item(item: "Microwave"),
-                          Item(item: "Food vendor"),
-                          Item(item: "Printing"),
-                          Item(item: "Charger")])
-    ]
-    
     @State var multiSelection = Set<UUID>()
     @State var extend_filter : Bool = false
     @State var search: String = ""
@@ -118,8 +90,10 @@ struct SearchView: View {
 }
 
 struct ExtendedFilterView: View {
+    @StateObject var filterViewModel = FilterViewModel()
+    
     var body: some View {
-        VStack {
+        VStack{
             HStack {
                 Text("Choose filters")
                     .padding()
@@ -130,9 +104,69 @@ struct ExtendedFilterView: View {
                     .padding()
                     .foregroundStyle(.black)
             }
-            .padding(.horizontal)
-//            HStack {
-//            }
+            VStack {
+                HStack {
+                    Text("Atmosphere")
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                }
+                ForEach(filterViewModel.atmosphereFilter) { filter in
+                    HStack {
+                        Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
+                            .font(.footnote)
+                        Text(filter.name)
+                        Spacer()
+                    }
+                    .font(.subheadline)
+                    .padding(.horizontal)
+                    .foregroundStyle(Color("FilterList"))
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        filterViewModel.atmoFilterRowTapped(filterRow: filter)
+                    }
+                }
+                HStack {
+                    Text("Volume Levels")
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                }
+                ForEach(filterViewModel.volumeFilter) { filter in
+                    HStack {
+                        Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
+                            .font(.footnote)
+                        Text(filter.name)
+                        Spacer()
+                    }
+                    .font(.subheadline)
+                    .padding(.horizontal)
+                    .foregroundStyle(Color("FilterList"))
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        filterViewModel.volumeFilterRowTapped(filterRow: filter)
+                    }
+                }
+                HStack {
+                    Text("Features")
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                }
+                ForEach(filterViewModel.featureFilter) { filter in
+                    HStack {
+                        Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
+                            .font(.footnote)
+                        Text(filter.name)
+                        Spacer()
+                    }
+                    .font(.subheadline)
+                    .padding(.horizontal)
+                    .foregroundStyle(Color("FilterList"))
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        filterViewModel.featureFilterRowTapped(filterRow: filter)
+                    }
+                }
+            }
+            .padding()
         }
         .overlay {
             RoundedRectangle(cornerRadius: 10)
@@ -140,6 +174,7 @@ struct ExtendedFilterView: View {
                 .foregroundStyle(Color(.systemGray4))
                 .shadow(color: .black.opacity(0.4), radius:2)
         }
+        .padding(.horizontal)
     }
 }
 

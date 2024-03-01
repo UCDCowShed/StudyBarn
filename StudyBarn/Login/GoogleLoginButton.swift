@@ -28,16 +28,17 @@ struct GoogleLoginButton: View {
             HStack {
                 Image("GoogleLogo")
                     .resizable()
-                    .frame(width: 24, height: 24)
+                    .frame(width: 26, height: 26)
                     .padding(.trailing, 4)
-                Text("Continue with Google")
+                Text("Sign in with Google")
+                    .font(.custom("Futura", size: 16))
                     .foregroundStyle(.black.opacity(0.5))
             }
             .font(.subheadline)
             .fontWeight(.semibold)
-            .frame(width: 360, height: 48)
+            .frame(width: 250, height: 48)
             .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
             .shadow(color: .black.opacity(0.4), radius: 2)
             
         })
