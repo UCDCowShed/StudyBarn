@@ -14,6 +14,7 @@ struct UserModel: Codable {
     let photoUrl: String?
     let dateCreated: Date?
     let favorites: [String]
+    let admin: Bool?
     
     // Initialize User from the Result of Google Sign In
     init(auth: AuthDataResultModel) {
@@ -23,6 +24,7 @@ struct UserModel: Codable {
         self.photoUrl = auth.photoUrl
         self.dateCreated = Date()
         self.favorites = []
+        self.admin = false
     }
     
     // ENCODER & DECODER
@@ -33,6 +35,7 @@ struct UserModel: Codable {
         case photoUrl
         case dateCreated
         case favorites
+        case admin
     }
     
     init(from decoder: Decoder) throws {
@@ -43,6 +46,7 @@ struct UserModel: Codable {
         self.photoUrl = try container.decodeIfPresent(String.self, forKey: .photoUrl)
         self.dateCreated = try container.decodeIfPresent(Date.self, forKey: .dateCreated)
         self.favorites = try container.decode([String].self, forKey: .favorites)
+        self.admin = try container.decodeIfPresent(Bool.self, forKey: .admin)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -53,6 +57,7 @@ struct UserModel: Codable {
         try container.encodeIfPresent(self.photoUrl, forKey: .photoUrl)
         try container.encodeIfPresent(self.dateCreated, forKey: .dateCreated)
         try container.encode(self.favorites, forKey: .favorites)
+        try container.encodeIfPresent(self.admin, forKey: .admin)
     }
 }
 
