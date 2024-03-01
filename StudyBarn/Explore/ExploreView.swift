@@ -26,7 +26,7 @@ struct ExploreView: View {
                             LazyVStack(spacing: 50) {
                                 ForEach(allAreas, id: \.self) { area in
                                     NavigationLink {
-                                        DetailsView()
+                                        DetailsView(area: area)
                                             .navigationBarBackButtonHidden(false)
                                     } label: {
                                         LocationBoxView(area: area)

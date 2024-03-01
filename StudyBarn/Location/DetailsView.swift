@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct DetailsView: View {
+    let area: AreaModel?
+    
+    public init(area: AreaModel?) {
+            self.area = area
+    }
+    
     var body: some View {
         ScrollView {
             // Add Custom Back Button
@@ -17,17 +23,17 @@ struct DetailsView: View {
                 .frame(height: 320)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Peter S. Shields Library")
+                Text("\(area?.name ?? "Test")")
                     . font(.title)
                     .fontWeight(.semibold)
                 
                 VStack(alignment: .leading){
                     HStack(spacing: 5){
                         Image(systemName: "heart.fill")
-                        Text("5.00")
+                        Text("\(area?.rating ?? 5, specifier: "%.1f")")
                     }
                     .font(.subheadline)
-                    Text("7:30am - 12:00am")
+                    Text("\(AreaManager.shared.formatHours(hours: area?.openHour)) - \(AreaManager.shared.formatHours(hours: area?.closeHour))")
                         .font(.subheadline)
                         .foregroundStyle(.gray)
                 }
@@ -133,5 +139,5 @@ struct DetailsView: View {
 }
 
 #Preview {
-    DetailsView()
+    DetailsView(area: nil)
 }
