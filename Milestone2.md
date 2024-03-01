@@ -2,11 +2,17 @@
 ## StudyBarn App
 ![image](https://github.com/UCDCowShed/StudyBarn/assets/114377213/8f6b5c9b-2c4e-4b0e-aa34-ef699b02e376)
 Name: Yeongjin Lee
+
 Student ID: 916567611
+
 Name: Ann Yip
+
 Student ID: 919530072
+
 Name: Jinho Yon
+
 Student ID: 917507227
+
 
 ## Summary of Project
 
