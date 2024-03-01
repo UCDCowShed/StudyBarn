@@ -10,6 +10,9 @@ import SwiftUI
 struct DetailsView: View {
     var body: some View {
         ScrollView {
+            // Add Custom Back Button
+            // Delete Graph
+            // Make SubArea to have larger box
             ListingCarouselView()
                 .frame(height: 320)
             
@@ -125,6 +128,7 @@ struct DetailsView: View {
                 }
             }
         }
+        .ignoresSafeArea()
     }
 }
 

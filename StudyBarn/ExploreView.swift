@@ -15,6 +15,7 @@ struct ExploreView: View {
                     ForEach(0...10, id: \.self) { location in
                         NavigationLink {
                             DetailsView()
+                                .navigationBarBackButtonHidden(true)
                         } label: {
                             LocationBoxView()
                                 .frame(height:400)
