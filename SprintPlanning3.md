@@ -15,11 +15,22 @@ cafes, libraries, and collaborative spaces based on user preferences and ratings
 noise level and crowdedness of the study environment, ensuring an optimal study experience.
 
 ## Summary of Work
-We designed the structure view-flow, login features with google authentication, added more views.
+We all individually worked on our respective tasks and views to add more functionality to the app. Details are listed below:
 
-**Ann Yip**: Worked on the  `locationBoxView` with the `detailsView` where the users can navigate to details of 
-location.
+**Ann Yip**: 
+- Worked on views: `Mapview`, `SearchBar`, `SearchView`, `FilterViewModel`, & `LoginView`
 
-**Yeongjin Lee**: Worked on the google authentication feature.
+**Yeongjin Lee**: 
+- Worked on views: `AdminView`, `AddAreaView`, `AddAreaViewModel`, `AddSubAreaView`, & `AddSubAreaViewModel`
+- Delt with area and subarea models by connecting to firebase
+- Researched on filter, sort, and pagination, 
+- admin page for admin users
 
-**Jinho Yon**: Updated `settingsView` where the users can edit their profiles.
+**Jinho Yon**: 
+- Worked on view:  `DetailsView` 
+- Created component `ListingCarouselView`
+
+<img width="538" alt="Screenshot 2024-02-29 at 10 33 20 PM" src="https://github.com/UCDCowShed/StudyBarn/assets/53095072/0fa64f4e-5505-4ff3-abd2-38501c4ce39f">
+<img width="539" alt="Screenshot 2024-02-29 at 10 33 33 PM" src="https://github.com/UCDCowShed/StudyBarn/assets/53095072/1b1867f8-91c5-4c44-8169-29db42902090">
+
+
