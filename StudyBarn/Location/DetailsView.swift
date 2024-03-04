@@ -12,132 +12,44 @@ struct DetailsView: View {
     
     let area: AreaModel?
     
-    @State private var loadingSubAreas = true
+    @State private var loadingSubAreas = false
     @State private var allSubAreasFromArea: [SubAreaModel] = []
-    
-    public init(area: AreaModel?) {
-            self.area = area
-    }
-    
     var body: some View {
         ScrollView {
-            // Add Custom Back Button
-            // Delete Graph
-            // Make SubArea to have larger box
+            // Area Images
             ListingCarouselView()
                 .frame(height: 320)
             
-            VStack(alignment: .leading, spacing: 8) {
-                Text("\(area?.name ?? "Test")")
-                    . font(.title)
-                    .fontWeight(.semibold)
-                
-                VStack(alignment: .leading){
-                    HStack(spacing: 5){
-                        Image(systemName: "heart.fill")
+            // Details of Area
+            HStack() {
+                // Area name and Time Range
+                VStack (alignment: .leading, spacing: 4) {
+                    Text("\(area?.name ?? "Test")")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                    
+                    HStack(spacing: 2) {
+                        Image(systemName: "star.fill")
                         Text("\(area?.rating ?? 5, specifier: "%.1f")")
                     }
-                    .font(.subheadline)
+                    
                     Text("\(AreaManager.shared.formatHours(hours: area?.openHour)) - \(AreaManager.shared.formatHours(hours: area?.closeHour))")
                         .font(.subheadline)
                         .foregroundStyle(.gray)
+                    
+                }
+                Spacer()
+                
+                // Favorites & Ratings
+                VStack (spacing: 10) {
+                   HeartButtonView()
                 }
             }
-            .padding(.leading)
+            .padding(.vertical, 4)
+            .padding(.horizontal, 20)
             .frame(maxWidth: .infinity, alignment: .leading)
             
             Divider()
-            
-            VStack{
-                HStack(spacing: 3){
-                    HStack{
-                        Image(systemName: "wifi")
-                        VStack(alignment: .leading) {
-                            Text("Wifi")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            Text("Available")
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.green)
-                        }
-                        HStack{
-                            Image(systemName: "dog")
-                            VStack(alignment: .leading) {
-                                Text("Pet")
-                                    .font(.footnote)
-                                    .fontWeight(.semibold)
-                                Text("Not Allowed")
-                                    .font(.caption)
-                                    .fontWeight(.semibold)
-                                    .foregroundStyle(.red)
-                            }
-                        }
-                        
-                        HStack{
-                            Image(systemName: "fork.knife")
-                            VStack(alignment: .leading) {
-                                Text("Food")
-                                    .font(.footnote)
-                                    .fontWeight(.semibold)
-                                Text("Available")
-                                    .font(.caption)
-                                    .fontWeight(.semibold)
-                                    .foregroundStyle(.green)
-                            }
-                        }
-                        
-                        HStack{
-                            Image(systemName: "person.2.fill")
-                            VStack(alignment: .leading) {
-                                Text("Group Study")
-                                    .font(.footnote)
-                                    .fontWeight(.semibold)
-                                Text("Available")
-                                    .font(.caption)
-                                    .fontWeight(.semibold)
-                                    .foregroundStyle(.green)
-                            }
-                        }
-                        
-                    }
-                }.padding()
-                
-                Divider()
-                
-                VStack {
-                    Text("Busy Hours")
-                        .font(.headline)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Image("busy-hours")
-                        .resizable()
-                        .scaledToFit()
-                }
-                
-                Divider()
-                
-                VStack(spacing: 13){
-                    Text("Study Spots")
-                        .font(.headline)
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing: 16) {
-                            ForEach(1 ..< 5) { studyrooms in
-                                VStack{
-                                    Image(systemName: "house")
-                                    Text("Main Reading Room")
-                                }
-                                .frame(width: 132, height: 100)
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(lineWidth: 1)
-                                        .foregroundStyle(.gray)
-                                }
-                            }
-                        }
-                    }
-                    .scrollTargetBehavior(.paging)
-                }
-            }
             
             // Display SubAreas
             VStack{
@@ -149,7 +61,6 @@ struct DetailsView: View {
                         ForEach(allSubAreasFromArea, id: \.self) { subArea in
                             Text("\(subArea.name)")
                         }
-                        
                     }
                 }
             }
