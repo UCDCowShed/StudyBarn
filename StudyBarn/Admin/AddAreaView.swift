@@ -40,13 +40,11 @@ struct AddAreaView: View {
                     "Latitude",
                     text: $latitude
                 )
-                .keyboardType(.decimalPad)
                 // Get longitude
                 TextField(
                     "Longitude",
                     text: $longitude
                 )
-                .keyboardType(.decimalPad)
                 
                 // Submit form button
                 Button {
@@ -60,8 +58,6 @@ struct AddAreaView: View {
                     }
                 }
             }
-            
-            
         }
         .navigationTitle("Add New Area")
     }
