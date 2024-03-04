@@ -24,6 +24,11 @@ final class SubAreaManager {
         try subAreaDocument(subAreaId: subArea.subAreaId).setData(from: subArea, merge: false)
     }
     
+    // Returns Document Id for creating AreaModel
+    func getDocumentId() -> String {
+        return subAreaCollection.document().documentID
+    }
+    
     func getArea(subAreaId: String) async throws -> SubAreaModel? {
         let document = try? await subAreaDocument(subAreaId: subAreaId).getDocument()
         

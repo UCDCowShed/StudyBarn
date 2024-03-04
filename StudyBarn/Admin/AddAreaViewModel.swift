@@ -35,9 +35,3 @@ final class AddAreaViewModel: ObservableObject {
     }
     
 }
-
-extension String {
-    var doubleValue: Double {
-        return Double(self) ?? 0
-    }
-}

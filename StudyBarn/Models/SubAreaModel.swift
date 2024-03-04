@@ -18,8 +18,8 @@ struct SubAreaModel: Codable {
     let microwave: Bool?
     let printer: Bool?
     let food: Bool?
-    let charger: Bool?
-    let rating: Int?
+    let outlets: Bool?
+    let rating: Double?
     
     init(
         subAreaId: String,
@@ -33,7 +33,7 @@ struct SubAreaModel: Codable {
         printer: Bool?,
         food: Bool?,
         charger: Bool?,
-        rating: Int?
+        rating: Double?
     ) {
         self.subAreaId = subAreaId
         self.name = name
@@ -45,7 +45,7 @@ struct SubAreaModel: Codable {
         self.microwave = microwave
         self.printer = printer
         self.food = food
-        self.charger = charger
+        self.outlets = charger
         self.rating = rating
     }
     
@@ -76,8 +76,8 @@ struct SubAreaModel: Codable {
         self.microwave = try container.decodeIfPresent(Bool.self, forKey: .microwave)
         self.printer = try container.decodeIfPresent(Bool.self, forKey: .printer)
         self.food = try container.decodeIfPresent(Bool.self, forKey: .food)
-        self.charger = try container.decodeIfPresent(Bool.self, forKey: .charger)
-        self.rating = try container.decodeIfPresent(Int.self, forKey: .rating)
+        self.outlets = try container.decodeIfPresent(Bool.self, forKey: .charger)
+        self.rating = try container.decodeIfPresent(Double.self, forKey: .rating)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -92,7 +92,7 @@ struct SubAreaModel: Codable {
         try container.encodeIfPresent(self.microwave, forKey: .microwave)
         try container.encodeIfPresent(self.printer, forKey: .printer)
         try container.encodeIfPresent(self.food, forKey: .food)
-        try container.encodeIfPresent(self.charger, forKey: .charger)
+        try container.encodeIfPresent(self.outlets, forKey: .charger)
         try container.encodeIfPresent(self.rating, forKey: .rating)
     }
 }

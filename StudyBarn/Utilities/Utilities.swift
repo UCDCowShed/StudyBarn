@@ -30,5 +30,10 @@ final class Utilities {
         }
         return controller
     }
-    
+}
+
+extension String {
+    var doubleValue: Double {
+        return Double(self) ?? 0
+    }
 }
