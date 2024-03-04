@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SubAreaModel: Codable {
+struct SubAreaModel: Codable, Hashable {
     let subAreaId: String
     let name: String
     let areaId: String
@@ -49,7 +49,7 @@ struct SubAreaModel: Codable {
         self.rating = rating
     }
     
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         case subAreaId
         case name
         case areaId

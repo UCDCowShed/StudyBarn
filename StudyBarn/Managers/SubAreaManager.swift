@@ -39,5 +39,19 @@ final class SubAreaManager {
         
         return nil
     }
+    
+    func getAllSubAreaFromAreaId(areaId: String) async throws -> [SubAreaModel] {
+        let snapshot = try await subAreaCollection.whereField(SubAreaModel.CodingKeys.areaId.rawValue, isEqualTo: areaId).getDocuments()
+        
+        var subAreas: [SubAreaModel] = []
+        
+        // Convert data into AreaModel type
+        for document in snapshot.documents {
+            let subArea = try document.data(as: SubAreaModel.self)
+            subAreas.append(subArea)
+        }
+        
+        return subAreas
+    }
 
 }
