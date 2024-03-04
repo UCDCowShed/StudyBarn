@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct DetailsView: View {
+    @StateObject private var viewModel: DetailsViewModel = DetailsViewModel()
+    
     let area: AreaModel?
+    
+    @State private var loadingSubAreas = true
+    @State private var allSubAreasFromArea: [SubAreaModel] = []
     
     public init(area: AreaModel?) {
             self.area = area
@@ -133,8 +138,38 @@ struct DetailsView: View {
                     .scrollTargetBehavior(.paging)
                 }
             }
+            
+            // Display SubAreas
+            VStack{
+                if loadingSubAreas {
+                    ProgressView()
+                }
+                else {
+                    LazyVStack(spacing: 50) {
+                        ForEach(allSubAreasFromArea, id: \.self) { subArea in
+                            Text("\(subArea.name)")
+                        }
+                        
+                    }
+                }
+            }
         }
         .ignoresSafeArea()
+        .onAppear() {
+            // Get All the SubAreas Corresponds to the Area
+            Task {
+                do {
+                    if let area = self.area {
+                        allSubAreasFromArea = try await viewModel.loadAllSubAreaFromArea(areaId: area.areaId) ?? []
+                        loadingSubAreas = false
+                    }
+                }
+                catch {
+                    print(error)
+                }
+            }
+            
+        }
     }
 }
 
