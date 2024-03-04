@@ -36,4 +36,12 @@ final class UserViewModel: ObservableObject {
             self.user = try await UserManager.shared.getUser(userId: user.userId)
         }
     }
+    
+    // Check if area/subarea in user's favorites
+    func checkFavorite(locationId: String) -> Bool? {
+        if let user = user {
+            return user.favorites.contains(locationId)
+        }
+        return nil
+    }
 }

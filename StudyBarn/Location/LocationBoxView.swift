@@ -8,20 +8,16 @@
 import SwiftUI
 
 struct LocationBoxView: View {
-    @State var heart = "heart"
-    let area: AreaModel?
     
-    public init(area: AreaModel?) {
-            self.area = area
-    }
-    
-    private var images = [
+    var images = [
         "Shields-outside",
         "Shields-inside",
         "Shields-reading",
         "Shields-tutor"
     ]
     
+    let area: AreaModel?
+
     var body: some View {
         VStack(spacing: 8) {
             TabView {
@@ -48,13 +44,7 @@ struct LocationBoxView: View {
                         Text("\(area?.rating ?? 5, specifier: "%.1f")")
                     }
                     .font(.subheadline)
-                    Button {
-                        heart = "heart.fill"
-                    } label : {
-                        Image(systemName: heart)
-                            .font(.title2)
-                            .foregroundColor(Color.red.opacity(0.8))
-                    }
+                    HeartButtonView()
                 }
                 
             }

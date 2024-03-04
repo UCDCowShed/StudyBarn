@@ -10,6 +10,7 @@ import SwiftUI
 struct ExploreView: View {
     
     @StateObject private var viewModel: ExploreViewModel = ExploreViewModel()
+    @EnvironmentObject private var userViewModel: UserViewModel
     
     @State private var showSearchView = false
     @State private var loadingAreas = true
@@ -67,14 +68,11 @@ struct ExploreView: View {
                     print(error)
                 }
             }
-            
         }
-        
-        // for each renders the locations
-        // create view for each box
     }
 }
 
 #Preview {
     ExploreView()
+        .environmentObject(UserViewModel())
 }
