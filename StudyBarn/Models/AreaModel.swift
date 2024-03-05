@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct HourMin: Codable, Hashable {
     let hour: Int
@@ -17,13 +19,13 @@ struct AreaModel: Codable, Hashable {
     let areaId: String
     let name: String
     let rating: Double?
-    let images: [String]?
+    let images: [DocumentReference]?
     let openHour: HourMin?
     let closeHour: HourMin?
     let latitude: Double?
     let longitude: Double?
     
-    init(areaId: String, name: String, rating: Double?, images: [String]?, openHour: HourMin?, closeHour: HourMin?, latitude: Double?, longitude: Double?) {
+    init(areaId: String, name: String, rating: Double?, images: [DocumentReference]?, openHour: HourMin?, closeHour: HourMin?, latitude: Double?, longitude: Double?) {
         self.areaId = areaId
         self.name = name
         self.rating = rating
@@ -50,7 +52,7 @@ struct AreaModel: Codable, Hashable {
         self.areaId = try container.decode(String.self, forKey: .areaId)
         self.name = try container.decode(String.self, forKey: .name)
         self.rating = try container.decodeIfPresent(Double.self, forKey: .rating)
-        self.images = try container.decodeIfPresent([String].self, forKey: .images)
+        self.images = try container.decodeIfPresent([DocumentReference].self, forKey: .images)
         self.openHour = try container.decodeIfPresent(HourMin.self, forKey: .openHour)
         self.closeHour = try container.decodeIfPresent(HourMin.self, forKey: .closeHour)
         self.latitude = try container.decodeIfPresent(Double.self, forKey: .latitude)
