@@ -20,6 +20,7 @@ struct SubAreaView: View {
             
             // Details of SubArea
             VStack {
+                // Name, Rating, Floor, and Favorite
                 HStack(alignment: .center) {
                     // Area name and Time Range
                     VStack (alignment: .leading, spacing: 4) {
@@ -44,51 +45,55 @@ struct SubAreaView: View {
                 Spacer()
                 
                 // Detailed Features
-                VStack (alignment: .leading) {
-                    HStack {
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack(spacing: 16) {
                         // Outdoors
-                        ZStack {
-                            VStack{
-                                Image(systemName: subArea?.outdoors ?? false ? "house.fill" : "tree.fill")
-                                Text(subArea?.outdoors ?? false ? "Indoors" : "Outdoors")
-                            }
+                        VStack{
+                            Image(systemName: subArea?.outdoors ?? false ? "house.fill" : "tree.fill")
+                            Text(subArea?.outdoors ?? false ? "Indoors" : "Outdoors")
                         }
                         // Group Study
                         VStack{
                             Image(systemName: subArea?.groupStudy ?? false ? "speaker.wave.3.fill" : "speaker.slash.fill")
                             Text(subArea?.groupStudy ?? false ? "GroupStudy" : "QuietStudy")
-                            
                         }
-                        // MicroWave
-                        VStack{
-                            Image(systemName: "microwave.fill")
-                            Text("Microwave")
-                            
-                        }
-                    }
-                    .padding(.vertical, 8)
-                    HStack (spacing: 43) {
                         // Printer
-                        VStack{
-                            Image(systemName: "printer.fill")
-                            Text("Printer")
+                        if subArea?.printer ?? false {
+                            VStack{
+                                Image(systemName: "printer.fill")
+                                Text("Printer")
+                            }
                         }
                         // Dining
-                        VStack{
-                            Image(systemName: "fork.knife")
-                            Text("Dining")
+                        if subArea?.food ?? false {
+                            VStack{
+                                Image(systemName: "fork.knife")
+                                Text("Dining")
+                            }
                         }
                         // Outlets
-                        VStack{
-                            Image(systemName: "poweroutlet.type.b.square.fill")
-                            
-                            Text("Outlets")
-                            
+                        if subArea?.outlets ?? false {
+                            VStack{
+                                Image(systemName: "poweroutlet.type.b.square.fill")
+                                Text("Outlets")
+                            }
+                        }
+                        // Microwave
+                        if subArea?.microwave ?? false {
+                            VStack{
+                                Image(systemName: "microwave.fill")
+                                Text("Microwave")
+                            }
                         }
                     }
+                    .font(.footnote)
+                    .foregroundStyle(Color("TitleFont"))
+                    .fontWeight(.semibold)
                 }
-                .foregroundStyle(Color("TitleFont"))
-                .fontWeight(.semibold)
+                .padding(.leading)
+                .padding(.top)
+                .scrollTargetBehavior(.paging)
+                Spacer()
             }
             .padding(.horizontal, 8)
             
