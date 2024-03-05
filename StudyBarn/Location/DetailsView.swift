@@ -14,6 +14,7 @@ struct DetailsView: View {
     
     @State private var loadingSubAreas = false
     @State private var allSubAreasFromArea: [SubAreaModel] = []
+    
     var body: some View {
         ScrollView {
             // Area Images
@@ -21,16 +22,17 @@ struct DetailsView: View {
                 .frame(height: 320)
             
             // Details of Area
-            HStack() {
+            HStack {
                 // Area name and Time Range
                 VStack (alignment: .leading, spacing: 4) {
                     Text("\(area?.name ?? "Test")")
                         .font(.title)
                         .fontWeight(.semibold)
                     
+                    // Rating
                     HStack(spacing: 2) {
                         Image(systemName: "star.fill")
-                        Text("\(area?.rating ?? 5, specifier: "%.1f")")
+                        Text("\(area?.rating ?? 0.0, specifier: "%.1f")")
                     }
                     
                     Text("\(AreaManager.shared.formatHours(hours: area?.openHour)) - \(AreaManager.shared.formatHours(hours: area?.closeHour))")
@@ -40,7 +42,7 @@ struct DetailsView: View {
                 }
                 Spacer()
                 
-                // Favorites & Ratings
+                // Is My Favorite Button
                 VStack (spacing: 10) {
                    HeartButtonView()
                 }
@@ -59,7 +61,8 @@ struct DetailsView: View {
                 else {
                     LazyVStack(spacing: 50) {
                         ForEach(allSubAreasFromArea, id: \.self) { subArea in
-                            Text("\(subArea.name)")
+                            SubAreaView(subArea: subArea)
+                                .padding()
                         }
                     }
                 }
