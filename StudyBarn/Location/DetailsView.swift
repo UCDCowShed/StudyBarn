@@ -18,7 +18,7 @@ struct DetailsView: View {
     var body: some View {
         ScrollView {
             // Area Images
-            ListingCarouselView()
+            ListingCarouselView(area: area, subArea: nil, isArea: true)
                 .frame(height: 320)
             
             // Details of Area
