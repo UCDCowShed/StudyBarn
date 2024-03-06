@@ -14,6 +14,7 @@ enum SearchOptions {
 
 struct SearchView: View {
     @Binding var show : Bool
+    @Binding var areas: [AreaModel]
     @StateObject var filterViewModel = FilterViewModel()
     
     @State var multiSelection = Set<UUID>()
@@ -22,6 +23,7 @@ struct SearchView: View {
     
     var body: some View {
         VStack {
+            // Search Bar
             VStack(alignment: .leading){
                 Text("")
                     .font(.title2)
@@ -44,7 +46,8 @@ struct SearchView: View {
             .padding()
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .shadow(radius: 10)
-            // Collapsed filter
+            
+            // Determine Collapsing Filter View
             if extend_filter {
                 ExtendedFilterView()
                     .environmentObject(filterViewModel)
@@ -57,7 +60,10 @@ struct SearchView: View {
                         extend_filter.toggle()
                     }
             }
+            
             Spacer()
+            
+            // Buttons
             HStack {
                 // Back button
                 Button {
@@ -72,10 +78,12 @@ struct SearchView: View {
                     .foregroundStyle(.black.opacity(0.8))
                 }
                 Spacer()
+                
                 // Search button
                 Button {
                     withAnimation(.snappy) {
                         // search
+                        // areas = await filterViewModel.getFilteredAreas()
                         show.toggle()
                     }
                 } label: {
@@ -116,7 +124,7 @@ struct ExtendedFilterView: View {
                     HStack {
                         Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
                             .font(.footnote)
-                        Text(filter.name)
+                        Text(filter.name.capitalizedWord)
                         Spacer()
                     }
                     .font(.subheadline)
@@ -136,7 +144,7 @@ struct ExtendedFilterView: View {
                     HStack {
                         Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
                             .font(.footnote)
-                        Text(filter.name)
+                        Text(filter.name.capitalizedWord)
                         Spacer()
                     }
                     .font(.subheadline)
@@ -156,7 +164,7 @@ struct ExtendedFilterView: View {
                     HStack {
                         Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
                             .font(.footnote)
-                        Text(filter.name)
+                        Text(filter.name.capitalizedWord)
                         Spacer()
                     }
                     .font(.subheadline)
@@ -203,6 +211,6 @@ struct CollapsedFilterView: View {
 }
 
 #Preview {
-    SearchView(show : .constant(false))
+    SearchView(show : .constant(false), areas: .constant([AreaModel(areaId: "temp", name: "temp", rating: 0.0, images: ["temp/url"], openHour: HourMin(hour: 2, minute: 2), closeHour: HourMin(hour: 2, minute: 2), latitude: 100.0, longitude: -100.0)]))
         .environmentObject(FilterViewModel())
 }

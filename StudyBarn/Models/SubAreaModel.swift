@@ -32,7 +32,7 @@ struct SubAreaModel: Codable, Hashable {
         microwave: Bool?,
         printer: Bool?,
         food: Bool?,
-        charger: Bool?,
+        outlets: Bool?,
         rating: Double?
     ) {
         self.subAreaId = subAreaId
@@ -45,7 +45,7 @@ struct SubAreaModel: Codable, Hashable {
         self.microwave = microwave
         self.printer = printer
         self.food = food
-        self.outlets = charger
+        self.outlets = outlets
         self.rating = rating
     }
     
@@ -60,7 +60,7 @@ struct SubAreaModel: Codable, Hashable {
         case microwave
         case printer
         case food
-        case charger
+        case outlets
         case rating
     }
     
@@ -76,7 +76,7 @@ struct SubAreaModel: Codable, Hashable {
         self.microwave = try container.decodeIfPresent(Bool.self, forKey: .microwave)
         self.printer = try container.decodeIfPresent(Bool.self, forKey: .printer)
         self.food = try container.decodeIfPresent(Bool.self, forKey: .food)
-        self.outlets = try container.decodeIfPresent(Bool.self, forKey: .charger)
+        self.outlets = try container.decodeIfPresent(Bool.self, forKey: .outlets)
         self.rating = try container.decodeIfPresent(Double.self, forKey: .rating)
     }
     
@@ -92,7 +92,7 @@ struct SubAreaModel: Codable, Hashable {
         try container.encodeIfPresent(self.microwave, forKey: .microwave)
         try container.encodeIfPresent(self.printer, forKey: .printer)
         try container.encodeIfPresent(self.food, forKey: .food)
-        try container.encodeIfPresent(self.outlets, forKey: .charger)
+        try container.encodeIfPresent(self.outlets, forKey: .outlets)
         try container.encodeIfPresent(self.rating, forKey: .rating)
     }
 }
