@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DetailsView: View {
-    @Env
     @StateObject private var viewModel: DetailsViewModel = DetailsViewModel()
     
     let area: AreaModel?

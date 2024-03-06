@@ -29,6 +29,6 @@ final class ImageManager {
         
     }
     
-    func getData()
+    //func getData()
     
 }
