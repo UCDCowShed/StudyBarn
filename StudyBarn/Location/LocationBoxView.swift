@@ -8,24 +8,13 @@
 import SwiftUI
 
 struct LocationBoxView: View {
-    
-    var images = [
-        "Shields-outside",
-        "Shields-inside",
-        "Shields-reading",
-        "Shields-tutor"
-    ]
-    
+
     let area: AreaModel?
 
     var body: some View {
         VStack(spacing: 8) {
             TabView {
-                ForEach(images, id: \.self) { image in
-                    Image(image)
-                        .resizable()
-                        .scaledToFill()
-                }
+                ListingCarouselView(area: area, subArea: nil, isArea: true)
             }
             .frame(height: 320)
             .clipShape(RoundedRectangle(cornerRadius: 10))
