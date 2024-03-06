@@ -37,11 +37,6 @@ struct AdminView: View {
             } label: {
                 Label("Add SubArea", systemImage: "folder")
             }
-            NavigationLink {
-                AddImageView()
-            } label : {
-                Label("Add Photos", systemImage: "photo")
-            }
         }
         .foregroundColor(.black)
 
