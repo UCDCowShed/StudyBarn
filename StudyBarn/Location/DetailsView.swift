@@ -41,6 +41,12 @@ struct DetailsView: View {
                     
                 }
                 Spacer()
+                // Images button
+                NavigationLink {
+                    AddImageView(areaID: area?.areaId, isArea: true)
+                } label: {
+                    Image(systemName: "photo")
+                }
                 
                 // Is My Favorite Button
                 VStack (spacing: 10) {
