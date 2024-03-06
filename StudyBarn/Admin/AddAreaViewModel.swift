@@ -26,7 +26,7 @@ final class AddAreaViewModel: ObservableObject {
         let openHourFormatted = formattedHours(hours: openHour)
         let closeHourFormatted = formattedHours(hours: closeHour)
         let rating = 0.0
-        let images: [DocumentReference]? = []
+        let images: [String]? = []
         
         // Convert to Double Values
         let numLatitude = latitude.doubleValue

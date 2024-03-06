@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		079C3E6E2B96E56600DBEEAF /* HeartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C3E6D2B96E56600DBEEAF /* HeartButtonView.swift */; };
+		079C3E702B979EA800DBEEAF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C3E6F2B979EA800DBEEAF /* ImageManager.swift */; };
+		079C3E732B979FEA00DBEEAF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 079C3E722B979FEA00DBEEAF /* FirebaseStorage */; };
+		079C3E752B97A30200DBEEAF /* AddImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C3E742B97A30200DBEEAF /* AddImageViewModel.swift */; };
 		07A093B92B883F0D00FC5511 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A093B82B883F0D00FC5511 /* DetailsView.swift */; };
+		07BA50C22B97DAC1006F7CDA /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BA50C12B97DAC1006F7CDA /* AddImageView.swift */; };
 		07D3C3EA2B9116FC00EEEE57 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D3C3E92B9116FC00EEEE57 /* Launch Screen.storyboard */; };
 		07D3C3EC2B914EF300EEEE57 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D3C3EB2B914EF300EEEE57 /* FilterViewModel.swift */; };
 		07F7B4E12B7EE69800D077A1 /* StudyBarnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4E02B7EE69800D077A1 /* StudyBarnApp.swift */; };
@@ -56,7 +61,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		079C3E6D2B96E56600DBEEAF /* HeartButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartButtonView.swift; sourceTree = "<group>"; };
+		079C3E6F2B979EA800DBEEAF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		079C3E742B97A30200DBEEAF /* AddImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewModel.swift; sourceTree = "<group>"; };
 		07A093B82B883F0D00FC5511 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		07BA50C12B97DAC1006F7CDA /* AddImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageView.swift; sourceTree = "<group>"; };
 		07D3C3E92B9116FC00EEEE57 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		07D3C3EB2B914EF300EEEE57 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		07F7B4DD2B7EE69800D077A1 /* StudyBarn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyBarn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +118,7 @@
 				F1E7B4582B8ED1C900F00F07 /* GoogleSignInSwift in Frameworks */,
 				F1E7B45A2B8ED1D600F00F07 /* FirebaseAnalytics in Frameworks */,
 				F1E7B4662B8ED1D600F00F07 /* FirebaseAuth in Frameworks */,
+				079C3E732B979FEA00DBEEAF /* FirebaseStorage in Frameworks */,
 				F1E7B4722B8ED1D600F00F07 /* FirebaseFirestore in Frameworks */,
 				F1E7B45E2B8ED1D600F00F07 /* FirebaseAnalyticsSwift in Frameworks */,
 			);
@@ -117,6 +127,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		079C3E712B979FEA00DBEEAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		07D3C3E82B8ED24700EEEE57 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +149,7 @@
 			children = (
 				07F7B4DF2B7EE69800D077A1 /* StudyBarn */,
 				07F7B4DE2B7EE69800D077A1 /* Products */,
+				079C3E712B979FEA00DBEEAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				846231A82B919135003F25C2 /* ListingCarouselView.swift */,
+				079C3E6D2B96E56600DBEEAF /* HeartButtonView.swift */,
 				F113CE722B967C4D00638901 /* HeartButtonView.swift */,
 			);
 			path = Components;
@@ -205,6 +224,7 @@
 				F1351ED22B8EA303005864D1 /* UserManager.swift */,
 				F169F4512B8FB36000DCA7D5 /* AreaManager.swift */,
 				F169F4532B8FB36900DCA7D5 /* SubAreaManager.swift */,
+				079C3E6F2B979EA800DBEEAF /* ImageManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -240,6 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				F169F4572B8FF92200DCA7D5 /* AdminView.swift */,
+				079C3E742B97A30200DBEEAF /* AddImageViewModel.swift */,
+				07BA50C12B97DAC1006F7CDA /* AddImageView.swift */,
 				F169F45A2B8FFA0800DCA7D5 /* AddAreaView.swift */,
 				F169F45E2B8FFCE200DCA7D5 /* AddAreaViewModel.swift */,
 				F169F45C2B8FFCA800DCA7D5 /* AddSubAreaView.swift */,
@@ -292,6 +314,7 @@
 				F1E7B4652B8ED1D600F00F07 /* FirebaseAuth */,
 				F1E7B4712B8ED1D600F00F07 /* FirebaseFirestore */,
 				F1E7B4752B8ED1D600F00F07 /* FirebaseFirestoreSwift */,
+				079C3E722B979FEA00DBEEAF /* FirebaseStorage */,
 			);
 			productName = StudyBarn;
 			productReference = 07F7B4DD2B7EE69800D077A1 /* StudyBarn.app */;
@@ -354,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1351ED72B8EAA6E005864D1 /* UserViewModel.swift in Sources */,
+				07BA50C22B97DAC1006F7CDA /* AddImageView.swift in Sources */,
 				F169F4542B8FB36900DCA7D5 /* SubAreaManager.swift in Sources */,
 				07F7B4FD2B7FBCC200D077A1 /* LocationBoxView.swift in Sources */,
 				07F7B4E32B7EE69800D077A1 /* ContentView.swift in Sources */,
@@ -365,17 +389,20 @@
 				07A093B92B883F0D00FC5511 /* DetailsView.swift in Sources */,
 				F1C49A4B2B919CB3008CC172 /* SearchView.swift in Sources */,
 				F169F4522B8FB36000DCA7D5 /* AreaManager.swift in Sources */,
+				079C3E752B97A30200DBEEAF /* AddImageViewModel.swift in Sources */,
 				07F7B4EF2B7EE6B400D077A1 /* ExploreView.swift in Sources */,
 				F13687B72B883B3D00A9A974 /* SignInGoogleHelper.swift in Sources */,
 				F169F45D2B8FFCA800DCA7D5 /* AddSubAreaView.swift in Sources */,
 				F13687922B8839FF00A9A974 /* AuthenticationManager.swift in Sources */,
 				F1351EDD2B8EC9A8005864D1 /* ProfileView.swift in Sources */,
+				079C3E702B979EA800DBEEAF /* ImageManager.swift in Sources */,
 				07F7B4F92B7EE89B00D077A1 /* SelectView.swift in Sources */,
 				F13687752B8808D200A9A974 /* LoginView.swift in Sources */,
 				F1C49A4A2B919CB3008CC172 /* SearchBar.swift in Sources */,
 				07D3C3EC2B914EF300EEEE57 /* FilterViewModel.swift in Sources */,
 				F169F45F2B8FFCE200DCA7D5 /* AddAreaViewModel.swift in Sources */,
 				F169F44E2B8FAB2200DCA7D5 /* SubAreaModel.swift in Sources */,
+				079C3E6E2B96E56600DBEEAF /* HeartButtonView.swift in Sources */,
 				F113CE732B967C4D00638901 /* HeartButtonView.swift in Sources */,
 				F169F4612B8FFCED00DCA7D5 /* AddSubAreaViewModel.swift in Sources */,
 				F169F4582B8FF92200DCA7D5 /* AdminView.swift in Sources */,
@@ -616,6 +643,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		079C3E722B979FEA00DBEEAF /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F13687932B883A6E00A9A974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		F1E7B4552B8ED1C900F00F07 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F13687B82B883B5200A9A974 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;

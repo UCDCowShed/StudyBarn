@@ -6,15 +6,13 @@
 //
 
 import Foundation
-import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 struct SubAreaModel: Codable, Hashable {
     let subAreaId: String
     let name: String
     let areaId: String
     let floor: Int?
-    let images: [DocumentReference]?
+    let images: [String]?
     let outdoors: Bool?
     let groupStudy: Bool?
     let microwave: Bool?
@@ -28,7 +26,7 @@ struct SubAreaModel: Codable, Hashable {
         name: String,
         areaId: String,
         floor: Int?,
-        images: [DocumentReference]?,
+        images: [String]?,
         outdoors: Bool?,
         groupStudy: Bool?,
         microwave: Bool?,
@@ -72,7 +70,7 @@ struct SubAreaModel: Codable, Hashable {
         self.name = try container.decode(String.self, forKey: .name)
         self.areaId = try container.decode(String.self, forKey: .areaId)
         self.floor = try container.decodeIfPresent(Int.self, forKey: .floor)
-        self.images = try container.decodeIfPresent([DocumentReference].self, forKey: .images)
+        self.images = try container.decodeIfPresent([String].self, forKey: .images)
         self.outdoors = try container.decodeIfPresent(Bool.self, forKey: .outdoors)
         self.groupStudy = try container.decodeIfPresent(Bool.self, forKey: .groupStudy)
         self.microwave = try container.decodeIfPresent(Bool.self, forKey: .microwave)
