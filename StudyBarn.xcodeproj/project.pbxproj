@@ -200,6 +200,7 @@
 			children = (
 				F1058D2B2B97F80B0067319B /* HeartButtonView.swift */,
 				846231A82B919135003F25C2 /* ListingCarouselView.swift */,
+				079C3E6D2B96E56600DBEEAF /* HeartButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -399,6 +400,7 @@
 				07D3C3EC2B914EF300EEEE57 /* FilterViewModel.swift in Sources */,
 				F169F45F2B8FFCE200DCA7D5 /* AddAreaViewModel.swift in Sources */,
 				F169F44E2B8FAB2200DCA7D5 /* SubAreaModel.swift in Sources */,
+				079C3E6E2B96E56600DBEEAF /* HeartButtonView.swift in Sources */,
 				F169F4612B8FFCED00DCA7D5 /* AddSubAreaViewModel.swift in Sources */,
 				F1058D2C2B97F80B0067319B /* HeartButtonView.swift in Sources */,
 				F169F4582B8FF92200DCA7D5 /* AdminView.swift in Sources */,
