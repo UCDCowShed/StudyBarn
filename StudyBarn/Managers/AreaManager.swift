@@ -75,5 +75,21 @@ final class AreaManager {
         
         return areas
     }
+    
+    func addImage(areaId: String, name: String) async throws {
+        let data: [String: Any] = [
+            "images": FieldValue.arrayUnion([name])
+        ]
+        
+        try await areaDocument(areaId: areaId).updateData(data)
+    }
+    
+    func removeImage(areaId: String, name: String) async throws {
+        let data: [String: Any] = [
+            "images": FieldValue.arrayRemove([name])
+        ]
+        
+        try await areaDocument(areaId: areaId).updateData(data)
+    }
 
 }

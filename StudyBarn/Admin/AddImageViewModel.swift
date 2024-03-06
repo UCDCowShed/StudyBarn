@@ -17,6 +17,7 @@ final class AddImageViewModel: ObservableObject {
                 return
             }
             let name = try await ImageManager.shared.saveImage(data: data, areaID: areaID, isArea: isArea)
+            try await AreaManager.shared.addImage(areaId: areaID, name: name)
             print("SUCCESS")
             print(name)
         }

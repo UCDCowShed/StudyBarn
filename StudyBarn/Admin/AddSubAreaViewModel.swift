@@ -19,7 +19,7 @@ final class AddSubAreaViewModel: ObservableObject {
         let rating = 0.0
         let images: [String]? = []
         
-        let subArea = SubAreaModel(subAreaId: subAreaId, name: subAreaName, areaId: areaId, floor: floor, images: images, outdoors: outdoors, groupStudy: groupStudy, microwave: microwave, printer: printer, food: food, charger: outlets, rating: rating)
+        let subArea = SubAreaModel(subAreaId: subAreaId, name: subAreaName, areaId: areaId, floor: floor, images: images, outdoors: outdoors, groupStudy: groupStudy, microwave: microwave, printer: printer, food: food, outlets: outlets, rating: rating)
         
         // Create SubArea
         try await SubAreaManager.shared.createNewSubArea(subArea: subArea)
