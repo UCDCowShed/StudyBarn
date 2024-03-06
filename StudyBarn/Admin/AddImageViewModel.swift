@@ -11,16 +11,14 @@ import PhotosUI
 
 @MainActor
 final class AddImageViewModel: ObservableObject {
-    func addImage(item: PhotosPickerItem) {
+    func addImage(item: PhotosPickerItem, areaID: String, isArea: Bool) {
         Task {
             guard let data = try await item.loadTransferable(type: Data.self) else {
                 return
             }
-            let (path, name) = try await ImageManager.shared.saveImage(data: data)
+            let name = try await ImageManager.shared.saveImage(data: data, areaID: areaID, isArea: isArea)
             print("SUCCESS")
-            print(path)
             print(name)
         }
     }
-    
 }

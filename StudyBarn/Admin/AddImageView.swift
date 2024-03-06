@@ -11,6 +11,8 @@ import PhotosUI
 struct AddImageView: View {
     @StateObject private var addImageViewModel = AddImageViewModel()
     @State private var selectedItem: PhotosPickerItem? = nil
+    let areaID: String?
+    let isArea: Bool?
     
     var body: some View {
         VStack {
@@ -20,13 +22,13 @@ struct AddImageView: View {
         }
         .onChange(of: selectedItem) { oldValue, newValue in
             print("Selected image")
-            if let newValue {
-                addImageViewModel.addImage(item: newValue)
+            if let newValue, let areaID, let isArea {
+                addImageViewModel.addImage(item: newValue, areaID: areaID, isArea: isArea)
             }
         }
     }
 }
 
 #Preview {
-    AddImageView()
+    AddImageView(areaID: "xQkbeSLfZVUNxCm9DCa5", isArea: true)
 }

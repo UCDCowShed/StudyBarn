@@ -8,26 +8,45 @@
 import SwiftUI
 
 struct ListingCarouselView: View {
-    var images = [
-        "Shields-outside",
-        "Shields-inside",
-        "Shields-reading",
-        "Shields-tutor"
-    ]
+    let area: AreaModel?
+    let subArea: SubAreaModel?
+    let isArea: Bool?
+    
+    @State private var urls: [URL]? = nil
     
     var body: some View {
         TabView {
-            ForEach(images, id: \.self) { image in
-                Image(image)
-                    .resizable()
-                    .scaledToFill()
+            if let urls {
+                ForEach(urls, id: \.self) { url in
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                }
             }
         }
         .tabViewStyle(.page)
+        .task {
+            if let area = area, let isArea = isArea {
+                if let images = area.images {
+                    let urls = try? await ImageManager.shared.getAllImages(areaID: area.areaId, images: images, isArea: isArea)
+                    self.urls = urls
+                }
+            }
+            if let subArea = area, let isArea = isArea {
+                if let images = subArea.images {
+                    let urls = try? await ImageManager.shared.getAllImages(areaID: subArea.areaId, images: images, isArea: isArea)
+                    self.urls = urls
+                }
+            }
+        }
         
     }
 }
 
 #Preview {
-    ListingCarouselView()
+    ListingCarouselView(area: nil, subArea: nil, isArea: nil)
 }
