@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 @MainActor
 final class AddAreaViewModel: ObservableObject {
@@ -24,7 +26,7 @@ final class AddAreaViewModel: ObservableObject {
         let openHourFormatted = formattedHours(hours: openHour)
         let closeHourFormatted = formattedHours(hours: closeHour)
         let rating = 0.0
-        let images: [String]? = []
+        let images: [DocumentReference]? = []
         
         // Convert to Double Values
         let numLatitude = latitude.doubleValue

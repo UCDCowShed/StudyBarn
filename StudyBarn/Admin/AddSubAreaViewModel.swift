@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 @MainActor
 final class AddSubAreaViewModel: ObservableObject {
@@ -15,7 +17,7 @@ final class AddSubAreaViewModel: ObservableObject {
         // Initialize area values
         let subAreaId = SubAreaManager.shared.getDocumentId()
         let rating = 0.0
-        let images: [String]? = []
+        let images: [DocumentReference]? = []
         
         let subArea = SubAreaModel(subAreaId: subAreaId, name: subAreaName, areaId: areaId, floor: floor, images: images, outdoors: outdoors, groupStudy: groupStudy, microwave: microwave, printer: printer, food: food, charger: outlets, rating: rating)
         
