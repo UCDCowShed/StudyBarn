@@ -18,10 +18,14 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack {
+            // Display Search/Filter View
             if showSearchView {
-                SearchView(show: $showSearchView)
-            } else {
+                SearchView(show: $showSearchView, areas: $allAreas)
+            }
+            // Display Areas
+            else {
                 ZStack {
+                    // Render areas
                     if !loadingAreas {
                         ScrollView {
                             LazyVStack(spacing: 50) {
@@ -42,9 +46,11 @@ struct ExploreView: View {
                         }
                         .padding(.top, 70.0)
                     }
+                    // Loading View when loading Areas
                     else {
                         ProgressView()
                     }
+                    // Search Bar
                     VStack {
                         SearchBar()
                             .onTapGesture {
@@ -54,18 +60,18 @@ struct ExploreView: View {
                             }
                         Spacer()
                     }
-                    
                 }
-            }
-        }
-        .onAppear() {
-            Task {
-                do {
-                    allAreas = try await viewModel.loadAllArea() ?? []
-                    loadingAreas = false
-                }
-                catch {
-                    print(error)
+                // Load Areas
+                .onAppear() {
+                    Task {
+                        do {
+                            allAreas = try await viewModel.loadAllArea() ?? []
+                            loadingAreas = false
+                        }
+                        catch {
+                            print(error)
+                        }
+                    }
                 }
             }
         }

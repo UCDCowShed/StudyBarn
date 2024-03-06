@@ -16,14 +16,14 @@ extension CLLocationCoordinate2D {
 struct MapView: View {
     @State private var position : MapCameraPosition = .automatic
     
-    @State private var searchResults: [MKMapItem] = []
+    @State private var searchResults: [AreaModel] = []
     
     @State private var showSearchView = false
     
     var body: some View {
         NavigationStack{
             if showSearchView {
-                SearchView(show: $showSearchView)
+                SearchView(show: $showSearchView, areas: $searchResults)
             } else {
                 Map(position: $position) {
                     Marker("Shields", coordinate: .shields)

@@ -36,4 +36,12 @@ extension String {
     var doubleValue: Double {
         return Double(self) ?? 0
     }
+    
+    var capitalizedWord: String {
+        let firstLetter = self.prefix(1).capitalized
+        let remainingLetters = self.dropFirst().lowercased()
+        
+        return firstLetter + remainingLetters
+    }
+    
 }

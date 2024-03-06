@@ -33,6 +33,7 @@
 		F1058D2C2B97F80B0067319B /* HeartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1058D2B2B97F80B0067319B /* HeartButtonView.swift */; };
 		F113CE6F2B965B3000638901 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113CE6E2B965B3000638901 /* DetailsViewModel.swift */; };
 		F113CE752B9686BB00638901 /* SubAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113CE742B9686BB00638901 /* SubAreaView.swift */; };
+		F132D5482B98E73300E6A358 /* TempManagerFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F132D5472B98E73300E6A358 /* TempManagerFunc.swift */; };
 		F1351ECE2B8EA2DC005864D1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1351ECD2B8EA2DC005864D1 /* UserModel.swift */; };
 		F1351ED32B8EA303005864D1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1351ED22B8EA303005864D1 /* UserManager.swift */; };
 		F1351ED72B8EAA6E005864D1 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1351ED62B8EAA6E005864D1 /* UserViewModel.swift */; };
@@ -79,6 +80,7 @@
 		F1058D2B2B97F80B0067319B /* HeartButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartButtonView.swift; sourceTree = "<group>"; };
 		F113CE6E2B965B3000638901 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F113CE742B9686BB00638901 /* SubAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubAreaView.swift; sourceTree = "<group>"; };
+		F132D5472B98E73300E6A358 /* TempManagerFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempManagerFunc.swift; sourceTree = "<group>"; };
 		F1351ECD2B8EA2DC005864D1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F1351ED22B8EA303005864D1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		F1351ED62B8EAA6E005864D1 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -200,7 +202,6 @@
 			children = (
 				F1058D2B2B97F80B0067319B /* HeartButtonView.swift */,
 				846231A82B919135003F25C2 /* ListingCarouselView.swift */,
-				079C3E6D2B96E56600DBEEAF /* HeartButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -223,6 +224,7 @@
 				F169F4512B8FB36000DCA7D5 /* AreaManager.swift */,
 				F169F4532B8FB36900DCA7D5 /* SubAreaManager.swift */,
 				079C3E6F2B979EA800DBEEAF /* ImageManager.swift */,
+				F132D5472B98E73300E6A358 /* TempManagerFunc.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -400,8 +402,8 @@
 				07D3C3EC2B914EF300EEEE57 /* FilterViewModel.swift in Sources */,
 				F169F45F2B8FFCE200DCA7D5 /* AddAreaViewModel.swift in Sources */,
 				F169F44E2B8FAB2200DCA7D5 /* SubAreaModel.swift in Sources */,
-				079C3E6E2B96E56600DBEEAF /* HeartButtonView.swift in Sources */,
 				F169F4612B8FFCED00DCA7D5 /* AddSubAreaViewModel.swift in Sources */,
+				F132D5482B98E73300E6A358 /* TempManagerFunc.swift in Sources */,
 				F1058D2C2B97F80B0067319B /* HeartButtonView.swift in Sources */,
 				F169F4582B8FF92200DCA7D5 /* AdminView.swift in Sources */,
 				07F7B4E12B7EE69800D077A1 /* StudyBarnApp.swift in Sources */,
