@@ -16,43 +16,35 @@ struct FilterModel: Identifiable, Codable {
 
 class FilterViewModel: ObservableObject {
     @Published var atmosphereFilter = [
-        FilterModel(id: 0, name: "Outdoors", selected: false),
-        FilterModel(id: 1, name: "Indoors", selected: false),
-        FilterModel(id: 2, name: "Bustling Atmosphere", selected: false),
-        FilterModel(id: 3, name: "Quiet Atmosphere", selected: false)
+        FilterModel(id: 0, name: "outdoors", selected: false),
     ]
     
     @Published var volumeFilter = [
-        FilterModel(id: 0, name: "Group Study", selected: false),
-        FilterModel(id: 1, name: "Quiet Study", selected: false),
-        FilterModel(id: 2, name: "Silent Study", selected: false)
+        FilterModel(id: 0, name: "groupStudy", selected: false),
     ]
     
     @Published var featureFilter = [
-        FilterModel(id: 0, name: "Microwave", selected: false),
-        FilterModel(id: 1, name: "Printing", selected: false),
-        FilterModel(id: 2, name: "Outlets", selected: false),
-        FilterModel(id: 3, name: "Food vendor", selected: false),
-        FilterModel(id: 4, name: "Computers", selected: false),
-        FilterModel(id: 5, name: "Relaxing", selected: false)
+        FilterModel(id: 0, name: "microwave", selected: false),
+        FilterModel(id: 1, name: "printing", selected: false),
+        FilterModel(id: 2, name: "outlets", selected: false),
+        FilterModel(id: 3, name: "computers", selected: false),
+        FilterModel(id: 4, name: "food", selected: false),
     ]
     
     func atmoFilterRowTapped(filterRow: FilterModel) {
-        
         self.atmosphereFilter[filterRow.id].selected.toggle()
-        
     }
     
     func volumeFilterRowTapped(filterRow: FilterModel) {
-        
         self.volumeFilter[filterRow.id].selected.toggle()
-        
     }
     
     func featureFilterRowTapped(filterRow: FilterModel) {
-        
         self.featureFilter[filterRow.id].selected.toggle()
-        
     }
     
+    // Get Filtered Areas
+    func getFilteredAreas() {
+        // send atmosphereFilter, volumeFilter, and featureFilter to the AreaManager
+    }
 }
