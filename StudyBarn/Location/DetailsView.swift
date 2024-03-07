@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailsView: View {
     @StateObject private var viewModel: DetailsViewModel = DetailsViewModel()
+    @EnvironmentObject private var userViewModel: UserViewModel
     
     let area: AreaModel?
     
@@ -41,13 +42,14 @@ struct DetailsView: View {
                     
                 }
                 Spacer()
-                // Images button
-                NavigationLink {
-                    AddImageView(areaID: area?.areaId, isArea: true)
-                } label: {
-                    Image(systemName: "photo")
+                if userViewModel.user?.admin ?? false {
+                    // Images button
+                    NavigationLink {
+                        AddImageView(areaID: area?.areaId, isArea: true)
+                    } label: {
+                        Image(systemName: "photo")
+                    }
                 }
-                
                 // Is My Favorite Button
                 VStack (spacing: 10) {
                    HeartButtonView()
@@ -95,4 +97,5 @@ struct DetailsView: View {
 
 #Preview {
     DetailsView(area: nil)
+        .environmentObject(UserViewModel())
 }

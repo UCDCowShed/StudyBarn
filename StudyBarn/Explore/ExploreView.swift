@@ -33,6 +33,7 @@ struct ExploreView: View {
                                 ForEach(allAreas, id: \.self) { area in
                                     NavigationLink {
                                         DetailsView(area: area)
+                                            .environmentObject(userViewModel)
                                             .navigationBarBackButtonHidden(false)
                                     } label: {
                                         LocationBoxView(area: area)
