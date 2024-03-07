@@ -76,7 +76,19 @@ struct ExploreView: View {
                         }
                         catch {
                             print(error)
+                            allAreas = []
                         }
+                    }
+                }
+                .refreshable {
+                    do {
+                        loadingAreas = true
+                        // Reload by push down
+                        allAreas = try await viewModel.loadAllArea() ?? []
+                        loadingAreas = false
+                    } catch {
+                        print(error)
+                        allAreas = []
                     }
                 }
             }
