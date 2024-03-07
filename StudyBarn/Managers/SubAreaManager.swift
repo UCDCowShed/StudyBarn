@@ -54,4 +54,52 @@ final class SubAreaManager {
         return subAreas
     }
 
+    // Get Filtered subAreas
+    func getFilteredSubArea(atmosphereFilter: [FilterModel], volumeFilter: [FilterModel], featureFilter: [FilterModel]) async throws -> [SubAreaModel]? {
+        
+        // Query by the filtered items
+        var query = subAreaCollection as Query
+        var noQuery = true
+        
+        // Update Query Values from atmosphere Filter
+        for atmos in atmosphereFilter {
+            if atmos.selected {
+                query = query.whereField(atmos.name, isEqualTo: true)
+                noQuery = false
+            }
+        }
+        
+        // Update Query Values from volume Filter
+        for volume in volumeFilter {
+            if volume.selected {
+                query = query.whereField(volume.name, isEqualTo: true)
+                noQuery = false
+            }
+        }
+        
+        // Update Query Values from Feature filter
+        for feature in featureFilter {
+            if feature.selected {
+                query = query.whereField(feature.name, isEqualTo: true)
+                noQuery = false
+            }
+        }
+        
+        // No Filter Given
+        if noQuery {
+            return nil
+        }
+        
+        let snapshot = try await query.getDocuments()
+        
+        var subAreas: [SubAreaModel] = []
+        
+        // Convert data into AreaModel type
+        for document in snapshot.documents {
+            let subArea = try document.data(as: SubAreaModel.self)
+            subAreas.append(subArea)
+        }
+
+        return subAreas
+    }
 }

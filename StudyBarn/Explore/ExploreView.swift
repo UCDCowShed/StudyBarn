@@ -15,6 +15,7 @@ struct ExploreView: View {
     @State private var showSearchView = false
     @State private var loadingAreas = true
     @State private var allAreas: [AreaModel] = []
+    @State private var firstLoaded: Bool = true
     
     var body: some View {
         NavigationStack {
@@ -65,7 +66,11 @@ struct ExploreView: View {
                 .onAppear() {
                     Task {
                         do {
-                            allAreas = try await viewModel.loadAllArea() ?? []
+                            // Load only when no areas to display
+                            if firstLoaded {
+                                allAreas = try await viewModel.loadAllArea() ?? []
+                                firstLoaded = false
+                            }
                             loadingAreas = false
                         }
                         catch {

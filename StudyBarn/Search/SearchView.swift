@@ -81,9 +81,20 @@ struct SearchView: View {
                 
                 // Search button
                 Button {
+                    Task {
+                        // Get Filtered results
+                        do {
+                            let filteredAreas = try await filterViewModel.getFilteredAreas(atmosphereFilter: filterViewModel.atmosphereFilter, volumeFilter:filterViewModel.volumeFilter, featureFilter: filterViewModel.featureFilter)
+                            // Update Areas when there are filters applied
+                            if let filteredAreas = filteredAreas {
+                                areas = filteredAreas
+                            }
+                        }
+                        catch {
+                            print(error)
+                        }
+                    }
                     withAnimation(.snappy) {
-                        // search
-                        // areas = await filterViewModel.getFilteredAreas()
                         show.toggle()
                     }
                 } label: {
