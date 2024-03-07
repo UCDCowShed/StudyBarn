@@ -49,8 +49,8 @@ struct SubAreaView: View {
                     HStack(spacing: 16) {
                         // Outdoors
                         VStack{
-                            Image(systemName: subArea?.outdoors ?? false ? "house.fill" : "tree.fill")
-                            Text(subArea?.outdoors ?? false ? "Indoors" : "Outdoors")
+                            Image(systemName: subArea?.outdoors ?? false ? "tree.fill" : "house.fill")
+                            Text(subArea?.outdoors ?? false ? "Outdoors" : "Indoors")
                         }
                         // Group Study
                         VStack{
@@ -65,7 +65,7 @@ struct SubAreaView: View {
                             }
                         }
                         // Dining
-                        if subArea?.food ?? false {
+                        if subArea?.dining ?? false {
                             VStack{
                                 Image(systemName: "fork.knife")
                                 Text("Dining")

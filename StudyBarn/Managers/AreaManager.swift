@@ -63,7 +63,7 @@ final class AreaManager {
     }
     
     func getAllArea() async throws -> [AreaModel] {
-        let snapshot = try await areaCollection.getDocuments()
+        let snapshot = try await areaCollection.order(by: "rating", descending: true).getDocuments()
         
         var areas: [AreaModel] = []
         
@@ -92,4 +92,28 @@ final class AreaManager {
         try await areaDocument(areaId: areaId).updateData(data)
     }
 
+    // Filter By Items
+    func getFilteredArea(atmosphereFilter: [FilterModel], volumeFilter: [FilterModel], featureFilter: [FilterModel]) async throws -> [AreaModel]? {
+     
+        var areaIds: [String] = []
+        var filteredAreas: [AreaModel] = []
+        
+        // Get sub areas using those filters
+        let subAreas = try await SubAreaManager.shared.getFilteredSubArea(atmosphereFilter: atmosphereFilter, volumeFilter: volumeFilter, featureFilter: featureFilter)
+        
+        // Get Areas with the areaId associated with the subareas (avoid duplicates)
+        guard let subAreas = subAreas else {return nil}
+        
+        for subArea in subAreas {
+            if !areaIds.contains(subArea.areaId) {
+                areaIds.append(subArea.areaId)
+                let filteredArea = try await self.getArea(areaId: subArea.areaId)
+                if let filteredArea = filteredArea {
+                    filteredAreas.append(filteredArea)
+                }
+            }
+        }
+        
+        return filteredAreas
+    }
 }

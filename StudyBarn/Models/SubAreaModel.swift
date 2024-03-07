@@ -17,8 +17,9 @@ struct SubAreaModel: Codable, Hashable {
     let groupStudy: Bool?
     let microwave: Bool?
     let printer: Bool?
-    let food: Bool?
+    let dining: Bool?
     let outlets: Bool?
+    let computers: Bool?
     let rating: Double?
     
     init(
@@ -31,8 +32,9 @@ struct SubAreaModel: Codable, Hashable {
         groupStudy: Bool?,
         microwave: Bool?,
         printer: Bool?,
-        food: Bool?,
+        dining: Bool?,
         outlets: Bool?,
+        computers: Bool?,
         rating: Double?
     ) {
         self.subAreaId = subAreaId
@@ -44,8 +46,9 @@ struct SubAreaModel: Codable, Hashable {
         self.groupStudy = groupStudy
         self.microwave = microwave
         self.printer = printer
-        self.food = food
+        self.dining = dining
         self.outlets = outlets
+        self.computers = computers
         self.rating = rating
     }
     
@@ -59,8 +62,9 @@ struct SubAreaModel: Codable, Hashable {
         case groupStudy
         case microwave
         case printer
-        case food
+        case dining
         case outlets
+        case computers
         case rating
     }
     
@@ -75,8 +79,9 @@ struct SubAreaModel: Codable, Hashable {
         self.groupStudy = try container.decodeIfPresent(Bool.self, forKey: .groupStudy)
         self.microwave = try container.decodeIfPresent(Bool.self, forKey: .microwave)
         self.printer = try container.decodeIfPresent(Bool.self, forKey: .printer)
-        self.food = try container.decodeIfPresent(Bool.self, forKey: .food)
+        self.dining = try container.decodeIfPresent(Bool.self, forKey: .dining)
         self.outlets = try container.decodeIfPresent(Bool.self, forKey: .outlets)
+        self.computers = try container.decodeIfPresent(Bool.self, forKey: .computers)
         self.rating = try container.decodeIfPresent(Double.self, forKey: .rating)
     }
     
@@ -91,8 +96,9 @@ struct SubAreaModel: Codable, Hashable {
         try container.encodeIfPresent(self.groupStudy, forKey: .groupStudy)
         try container.encodeIfPresent(self.microwave, forKey: .microwave)
         try container.encodeIfPresent(self.printer, forKey: .printer)
-        try container.encodeIfPresent(self.food, forKey: .food)
+        try container.encodeIfPresent(self.dining, forKey: .dining)
         try container.encodeIfPresent(self.outlets, forKey: .outlets)
+        try container.encodeIfPresent(self.computers, forKey: .computers)
         try container.encodeIfPresent(self.rating, forKey: .rating)
     }
 }

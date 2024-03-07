@@ -16,19 +16,19 @@ struct FilterModel: Identifiable, Codable {
 
 class FilterViewModel: ObservableObject {
     @Published var atmosphereFilter = [
-        FilterModel(id: 0, name: "outdoors", selected: false),
+        FilterModel(id: 0, name: SubAreaModel.CodingKeys.outdoors.rawValue, selected: false),
     ]
     
     @Published var volumeFilter = [
-        FilterModel(id: 0, name: "groupStudy", selected: false),
+        FilterModel(id: 0, name: SubAreaModel.CodingKeys.groupStudy.rawValue, selected: false),
     ]
     
     @Published var featureFilter = [
-        FilterModel(id: 0, name: "microwave", selected: false),
-        FilterModel(id: 1, name: "printing", selected: false),
-        FilterModel(id: 2, name: "outlets", selected: false),
-        FilterModel(id: 3, name: "computers", selected: false),
-        FilterModel(id: 4, name: "food", selected: false),
+        FilterModel(id: 0, name: SubAreaModel.CodingKeys.microwave.rawValue, selected: false),
+        FilterModel(id: 1, name: SubAreaModel.CodingKeys.printer.rawValue, selected: false),
+        FilterModel(id: 2, name: SubAreaModel.CodingKeys.outlets.rawValue, selected: false),
+        FilterModel(id: 3, name: SubAreaModel.CodingKeys.computers.rawValue, selected: false),
+        FilterModel(id: 4, name: SubAreaModel.CodingKeys.dining.rawValue, selected: false),
     ]
     
     func atmoFilterRowTapped(filterRow: FilterModel) {
@@ -44,7 +44,16 @@ class FilterViewModel: ObservableObject {
     }
     
     // Get Filtered Areas
-    func getFilteredAreas() {
-        // send atmosphereFilter, volumeFilter, and featureFilter to the AreaManager
+    func getFilteredAreas(atmosphereFilter: [FilterModel], volumeFilter: [FilterModel], featureFilter: [FilterModel]) async throws -> [AreaModel]? {
+        let filteredAreas = try await AreaManager.shared.getFilteredArea(atmosphereFilter: atmosphereFilter, volumeFilter: volumeFilter, featureFilter: featureFilter)
+        
+        // Filter Applied
+        if let filteredAreas = filteredAreas {
+            return filteredAreas
+        }
+        // No Filter Applied, return all the areas
+        else {
+            return try await AreaManager.shared.getAllArea()
+        }
     }
 }
