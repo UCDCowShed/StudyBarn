@@ -12,7 +12,6 @@ struct MapView: View {
     @State private var position : MapCameraPosition = .automatic
     @EnvironmentObject private var viewModel: SelectViewModel
     @State private var showSearchView = false
-    @StateObject private var mapViewModel: MapViewModel = MapViewModel()
     
     var body: some View {
         NavigationStack{
