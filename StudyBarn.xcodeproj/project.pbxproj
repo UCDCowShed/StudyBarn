@@ -56,7 +56,7 @@
 		F18758692B886083004CC7FE /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18758682B886083004CC7FE /* GoogleLoginButton.swift */; };
 		F1C49A4A2B919CB3008CC172 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A482B919CB3008CC172 /* SearchBar.swift */; };
 		F1C49A4B2B919CB3008CC172 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A492B919CB3008CC172 /* SearchView.swift */; };
-		F1C49A4E2B91AB38008CC172 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A4D2B91AB38008CC172 /* ExploreViewModel.swift */; };
+		F1C49A4E2B91AB38008CC172 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A4D2B91AB38008CC172 /* SelectViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,7 +103,7 @@
 		F18758682B886083004CC7FE /* GoogleLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleLoginButton.swift; path = StudyBarn/Login/GoogleLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		F1C49A482B919CB3008CC172 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		F1C49A492B919CB3008CC172 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		F1C49A4D2B91AB38008CC172 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
+		F1C49A4D2B91AB38008CC172 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,15 +168,15 @@
 				07F7B4E02B7EE69800D077A1 /* StudyBarnApp.swift */,
 				07F7B4E22B7EE69800D077A1 /* ContentView.swift */,
 				F13687C02B883CB600A9A974 /* RootView.swift */,
-				07F7B4F22B7EE7E400D077A1 /* MapView.swift */,
 				F1351EDC2B8EC9A8005864D1 /* ProfileView.swift */,
-				07F7B4F82B7EE89B00D077A1 /* SelectView.swift */,
+				F10ABC4E2B9A90FE00193DD7 /* Select */,
 				F169F4592B8FF97100DCA7D5 /* Admin */,
 				F13687732B8808B100A9A974 /* Authentication */,
 				846231A72B919122003F25C2 /* Components */,
 				F1C49A4C2B91AB22008CC172 /* Explore */,
 				F187586A2B886478004CC7FE /* Location */,
 				F13687902B8839BC00A9A974 /* Login */,
+				F10ABC4B2B9A905B00193DD7 /* Map */,
 				07D3C3E82B8ED24700EEEE57 /* Search */,
 				F1351ED12B8EA2E9005864D1 /* Managers */,
 				F1351ECC2B8EA2C1005864D1 /* Models */,
@@ -202,6 +202,23 @@
 				846231A82B919135003F25C2 /* ListingCarouselView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F10ABC4B2B9A905B00193DD7 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				07F7B4F22B7EE7E400D077A1 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		F10ABC4E2B9A90FE00193DD7 /* Select */ = {
+			isa = PBXGroup;
+			children = (
+				07F7B4F82B7EE89B00D077A1 /* SelectView.swift */,
+				F1C49A4D2B91AB38008CC172 /* SelectViewModel.swift */,
+			);
+			path = Select;
 			sourceTree = "<group>";
 		};
 		F1351ECC2B8EA2C1005864D1 /* Models */ = {
@@ -282,7 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				07F7B4EE2B7EE6B300D077A1 /* ExploreView.swift */,
-				F1C49A4D2B91AB38008CC172 /* ExploreViewModel.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -405,7 +421,7 @@
 				07F7B4E12B7EE69800D077A1 /* StudyBarnApp.swift in Sources */,
 				F169F45B2B8FFA0800DCA7D5 /* AddAreaView.swift in Sources */,
 				F1351ECE2B8EA2DC005864D1 /* UserModel.swift in Sources */,
-				F1C49A4E2B91AB38008CC172 /* ExploreViewModel.swift in Sources */,
+				F1C49A4E2B91AB38008CC172 /* SelectViewModel.swift in Sources */,
 				F113CE752B9686BB00638901 /* SubAreaView.swift in Sources */,
 				F113CE6F2B965B3000638901 /* DetailsViewModel.swift in Sources */,
 				F1351ED32B8EA303005864D1 /* UserManager.swift in Sources */,

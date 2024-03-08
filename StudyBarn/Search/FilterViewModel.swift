@@ -13,8 +13,7 @@ struct FilterModel: Identifiable, Codable {
     var selected: Bool
 }
 
-
-class FilterViewModel: ObservableObject {
+final class FilterViewModel: ObservableObject {
     @Published var atmosphereFilter = [
         FilterModel(id: 0, name: SubAreaModel.CodingKeys.outdoors.rawValue, selected: false),
     ]

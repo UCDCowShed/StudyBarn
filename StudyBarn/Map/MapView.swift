@@ -8,26 +8,24 @@
 import SwiftUI
 import MapKit
 
-extension CLLocationCoordinate2D {
-    static let shields = CLLocationCoordinate2D(latitude: 38.5397, longitude: -121.7495)
-    static let tlc = CLLocationCoordinate2D(latitude: 38.5387, longitude: -121.7542)
-}
-
 struct MapView: View {
     @State private var position : MapCameraPosition = .automatic
-    
-    @State private var searchResults: [AreaModel] = []
-    
+    @EnvironmentObject private var viewModel: SelectViewModel
     @State private var showSearchView = false
+    @StateObject private var mapViewModel: MapViewModel = MapViewModel()
     
     var body: some View {
         NavigationStack{
             if showSearchView {
-                SearchView(show: $showSearchView, areas: $searchResults)
+                SearchView(show: $showSearchView)
+                    .environmentObject(viewModel)
             } else {
                 Map(position: $position) {
-                    Marker("Shields", coordinate: .shields)
-                    Marker("TLC", coordinate: .tlc)
+                    ForEach(Array(viewModel.areaCoordinates.keys), id: \.self) { name in
+                        if let coor = viewModel.areaCoordinates[name] {
+                            Marker(name, coordinate: coor)
+                        }
+                    }
                 }
                 .safeAreaInset(edge: .top) {
                     HStack {
@@ -50,4 +48,5 @@ struct MapView: View {
 
 #Preview {
     MapView()
+        .environmentObject(SelectViewModel())
 }
