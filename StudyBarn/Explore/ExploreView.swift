@@ -37,7 +37,7 @@ struct ExploreView: View {
                                             .navigationBarBackButtonHidden(false)
                                     } label: {
                                         LocationBoxView(area: area)
-                                            .frame(height:400)
+                                            .frame(height:320)
                                             .clipShape(RoundedRectangle(cornerRadius: 10))
                                     }
                                     .buttonStyle(PlainButtonStyle())

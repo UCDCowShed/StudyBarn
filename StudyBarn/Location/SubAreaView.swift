@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SubAreaView: View {
     
+    @EnvironmentObject private var userViewModel: UserViewModel
     let subArea: SubAreaModel?
     
     var body: some View {
@@ -36,6 +37,14 @@ struct SubAreaView: View {
                     }
                     .font(.footnote)
                     Spacer()
+                    if userViewModel.user?.admin ?? false {
+                        // Images button
+                        NavigationLink {
+                            AddImageView(areaID: subArea?.subAreaId, isArea: false)
+                        } label: {
+                            Image(systemName: "photo")
+                        }
+                    }
                     // Is My Favorite Button
                     VStack (spacing: 10) {
                         HeartButtonView()
@@ -106,4 +115,5 @@ struct SubAreaView: View {
 
 #Preview {
     SubAreaView(subArea: nil)
+        .environmentObject(UserViewModel())
 }
