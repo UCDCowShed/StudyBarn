@@ -25,6 +25,7 @@ We all individually worked on our respective tasks and views to add more functio
 - Added filter and sort functionality for areas using Firebase querying
 - Added SubAreaBox Component
 - Scroll Down to update feature
+- Fixed issues with Map filtering
 
 **Jinho Yon**: 
 
