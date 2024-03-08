@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ExploreView: View {
     
-    @StateObject private var viewModel: ExploreViewModel = ExploreViewModel()
+    @EnvironmentObject private var viewModel: SelectViewModel
     @EnvironmentObject private var userViewModel: UserViewModel
+    @Binding var allAreas: [AreaModel]
     
     @State private var showSearchView = false
     @State private var loadingAreas = true
-    @State private var allAreas: [AreaModel] = []
     @State private var firstLoaded: Bool = true
     
     var body: some View {
@@ -97,6 +97,7 @@ struct ExploreView: View {
 }
 
 #Preview {
-    ExploreView()
+    ExploreView(allAreas: .constant([AreaModel(areaId: "temp", name: "temp", rating: 0.0, images: ["temp/url"], openHour: HourMin(hour: 2, minute: 2), closeHour: HourMin(hour: 2, minute: 2), latitude: 100.0, longitude: -100.0)]))
+        .environmentObject(SelectViewModel())
         .environmentObject(UserViewModel())
 }

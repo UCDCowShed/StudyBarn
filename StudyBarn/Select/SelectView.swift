@@ -10,16 +10,20 @@ import SwiftUI
 struct SelectView: View {
     
     @Binding var showSignInView: Bool
+    @StateObject private var viewModel: SelectViewModel = SelectViewModel()
     @StateObject var userViewModel = UserViewModel()
+    
+    @State var allAreas: [AreaModel] = []
     
     var body: some View {
         TabView {
-            ExploreView()
+            ExploreView(allAreas: $allAreas)
+                .environmentObject(viewModel)
                 .tabItem {
                     Label("Explore", systemImage: "magnifyingglass")
                 }
                 .environmentObject(userViewModel)
-            MapView()
+            MapView(allAreas: $allAreas)
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }

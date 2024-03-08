@@ -15,15 +15,14 @@ extension CLLocationCoordinate2D {
 
 struct MapView: View {
     @State private var position : MapCameraPosition = .automatic
-    
-    @State private var searchResults: [AreaModel] = []
-    
+    @Binding var allAreas: [AreaModel]
+    @EnvironmentObject private var viewModel: SelectViewModel
     @State private var showSearchView = false
     
     var body: some View {
         NavigationStack{
             if showSearchView {
-                SearchView(show: $showSearchView, areas: $searchResults)
+                SearchView(show: $showSearchView, areas: $allAreas)
             } else {
                 Map(position: $position) {
                     Marker("Shields", coordinate: .shields)
@@ -49,5 +48,6 @@ struct MapView: View {
 }
 
 #Preview {
-    MapView()
+    MapView(allAreas: .constant([AreaModel(areaId: "temp", name: "temp", rating: 0.0, images: ["temp/url"], openHour: HourMin(hour: 2, minute: 2), closeHour: HourMin(hour: 2, minute: 2), latitude: 100.0, longitude: -100.0)]))
+        .environmentObject(SelectViewModel())
 }

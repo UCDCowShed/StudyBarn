@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-final class ExploreViewModel: ObservableObject {
+final class SelectViewModel: ObservableObject {
     @Published var areas: [AreaModel]? = []
     
     func loadAllArea() async throws -> [AreaModel]?{
