@@ -30,7 +30,9 @@ We all individually worked on our respective tasks and views to add more functio
 
 
 ## Commits
-<img width="1286" alt="스크린샷 2024-03-07 오후 3 58 21" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/227c3883-6ad5-40d3-896c-<img width="1279" alt="스크린샷 2024-03-07 오후 3 58 35" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/bdc4f8e4-9c82-4701-8c7d-8d738eb16c87">
+<img width="1283" alt="스크린샷 2024-03-07 오후 6 27 07" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/08107b78-a7ab-4ed6-bbae-bbc5c87d8cde">
+<img width="1284" alt="스크린샷 2024-03-07 오후 6 26 43" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/129c70c5-d19f-42de-b11f-222cec3d8645">
+<img width="1279" alt="스크린샷 2024-03-07 오후 3 58 35" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/bdc4f8e4-9c82-4701-8c7d-8d738eb16c87">
 3cdbdd3e1476">
 <img width="1281" alt="스크린샷 2024-03-07 오후 3 58 52" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/060a649c-4dc6-44c4-939d-d6792ae96c56">
 <img width="1285" alt="스크린샷 2024-03-07 오후 4 00 50" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/f14f3394-769d-4d9f-b824-fcd6afdac103">
