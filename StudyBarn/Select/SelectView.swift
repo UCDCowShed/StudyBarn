@@ -13,17 +13,16 @@ struct SelectView: View {
     @StateObject private var viewModel: SelectViewModel = SelectViewModel()
     @StateObject var userViewModel = UserViewModel()
     
-    @State var allAreas: [AreaModel] = []
-    
     var body: some View {
         TabView {
-            ExploreView(allAreas: $allAreas)
+            ExploreView()
                 .environmentObject(viewModel)
                 .tabItem {
                     Label("Explore", systemImage: "magnifyingglass")
                 }
                 .environmentObject(userViewModel)
-            MapView(allAreas: $allAreas)
+            MapView()
+                .environmentObject(viewModel)
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }

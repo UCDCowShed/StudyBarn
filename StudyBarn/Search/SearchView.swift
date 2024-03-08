@@ -14,8 +14,8 @@ enum SearchOptions {
 
 struct SearchView: View {
     @Binding var show : Bool
-    @Binding var areas: [AreaModel]
     @StateObject var filterViewModel = FilterViewModel()
+    @EnvironmentObject private var viewModel: SelectViewModel
     
     @State var multiSelection = Set<UUID>()
     @State var extend_filter : Bool = false
@@ -24,38 +24,40 @@ struct SearchView: View {
     var body: some View {
         VStack {
             // Search Bar
-            VStack(alignment: .leading){
-                Text("")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .imageScale(.small)
-                    TextField("Search", text: $search)
-                        .font(.subheadline)
-                }
-                .frame(height: 45)
-                .padding(.horizontal)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(lineWidth: 0.5)
-                        .foregroundStyle(Color(.systemGray4))
-                        .shadow(color: .black.opacity(0.4), radius:2)
-                }
-            }
-            .padding()
-            .clipShape(RoundedRectangle(cornerRadius: 5))
-            .shadow(radius: 10)
+//            VStack(alignment: .leading){
+//                Text("")
+//                    .font(.title2)
+//                    .fontWeight(.semibold)
+//                HStack {
+//                    Image(systemName: "magnifyingglass")
+//                        .imageScale(.small)
+//                    TextField("Search", text: $search)
+//                        .font(.subheadline)
+//                }
+//                .frame(height: 45)
+//                .padding(.horizontal)
+//                .overlay {
+//                    RoundedRectangle(cornerRadius: 5)
+//                        .stroke(lineWidth: 0.5)
+//                        .foregroundStyle(Color(.systemGray4))
+//                        .shadow(color: .black.opacity(0.4), radius:2)
+//                }
+//            }
+//            .padding()
+//            .clipShape(RoundedRectangle(cornerRadius: 5))
+//            .shadow(radius: 10)
             
             // Determine Collapsing Filter View
             if extend_filter {
                 ExtendedFilterView()
+                    .padding(.top, 20)
                     .environmentObject(filterViewModel)
                     .onTapGesture {
                         extend_filter.toggle()
                     }
             } else {
                 CollapsedFilterView()
+                    .padding(.top, 20)
                     .onTapGesture {
                         extend_filter.toggle()
                     }
@@ -87,7 +89,8 @@ struct SearchView: View {
                             let filteredAreas = try await filterViewModel.getFilteredAreas(atmosphereFilter: filterViewModel.atmosphereFilter, volumeFilter:filterViewModel.volumeFilter, featureFilter: filterViewModel.featureFilter)
                             // Update Areas when there are filters applied
                             if let filteredAreas = filteredAreas {
-                                areas = filteredAreas
+                                viewModel.areas = filteredAreas
+                                viewModel.getCoordinates(areas: viewModel.areas ?? [])
                             }
                         }
                         catch {
@@ -222,6 +225,6 @@ struct CollapsedFilterView: View {
 }
 
 #Preview {
-    SearchView(show : .constant(false), areas: .constant([AreaModel(areaId: "temp", name: "temp", rating: 0.0, images: ["temp/url"], openHour: HourMin(hour: 2, minute: 2), closeHour: HourMin(hour: 2, minute: 2), latitude: 100.0, longitude: -100.0)]))
+    SearchView(show : .constant(false))
         .environmentObject(FilterViewModel())
 }

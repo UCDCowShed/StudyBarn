@@ -6,16 +6,9 @@
 //
 
 import Foundation
+import MapKit
 
 @MainActor
 final class MapViewModel: ObservableObject {
-    @Published var areas: [AreaModel]? = []
-    
-    func loadAllArea() async throws -> [AreaModel]?{
-        let allArea = try await AreaManager.shared.getAllArea()
-        
-        return allArea
-    }
-    
     
 }
