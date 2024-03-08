@@ -28,3 +28,12 @@ We all individually worked on our respective tasks and views to add more functio
 
 **Jinho Yon**: 
 
+
+## Commits
+<img width="1286" alt="스크린샷 2024-03-07 오후 3 58 21" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/227c3883-6ad5-40d3-896c-<img width="1279" alt="스크린샷 2024-03-07 오후 3 58 35" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/bdc4f8e4-9c82-4701-8c7d-8d738eb16c87">
+3cdbdd3e1476">
+<img width="1281" alt="스크린샷 2024-03-07 오후 3 58 52" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/060a649c-4dc6-44c4-939d-d6792ae96c56">
+<img width="1285" alt="스크린샷 2024-03-07 오후 4 00 50" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/f14f3394-769d-4d9f-b824-fcd6afdac103">
+<img width="1289" alt="스크린샷 2024-03-07 오후 4 01 06" src="https://github.com/UCDCowShed/StudyBarn/assets/91804894/af99a1af-3092-4072-843e-09fd4c7cd58e">
+
+
