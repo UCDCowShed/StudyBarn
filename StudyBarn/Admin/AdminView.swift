@@ -24,7 +24,7 @@ struct AdminView: View {
                 Label("Add SubArea", systemImage: "folder")
             }
         }
-        .foregroundColor(.black)
+        .foregroundStyle(Color("TextColor"))
 
     }
 }

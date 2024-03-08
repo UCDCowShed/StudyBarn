@@ -77,7 +77,7 @@ struct SearchView: View {
                         Image(systemName: "chevron.left")
                         Text("Back")
                     }
-                    .foregroundStyle(.black.opacity(0.8))
+                    .foregroundStyle(Color("TextColor").opacity(0.8))
                 }
                 Spacer()
                 
@@ -105,7 +105,7 @@ struct SearchView: View {
                         Text("Search")
                         Image(systemName: "chevron.right")
                     }
-                    .foregroundStyle(.black.opacity(0.8))
+                    .foregroundStyle(Color("TextColor").opacity(0.8))
                 }
             }
             .padding()
@@ -122,18 +122,20 @@ struct ExtendedFilterView: View {
                 Text("Choose filters")
                     .padding()
                     .font(.subheadline)
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(Color("TextColor").opacity(0.7))
                 Spacer()
                 Image(systemName: "chevron.up")
                     .padding()
-                    .foregroundStyle(.black)
+                    .foregroundStyle(Color("TextColor"))
             }
             VStack {
                 HStack {
                     Text("Atmosphere")
                         .multilineTextAlignment(.leading)
+                        .foregroundStyle(Color("TitleFont"))
                     Spacer()
                 }
+                .padding([.top, .trailing])
                 ForEach(filterViewModel.atmosphereFilter) { filter in
                     HStack {
                         Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
@@ -142,18 +144,22 @@ struct ExtendedFilterView: View {
                         Spacer()
                     }
                     .font(.subheadline)
-                    .padding(.horizontal)
+                    .padding([.top, .leading, .trailing])
                     .foregroundStyle(Color("FilterList"))
                     .contentShape(Rectangle())
                     .onTapGesture {
                         filterViewModel.atmoFilterRowTapped(filterRow: filter)
                     }
                 }
+                .padding([.top, .trailing])
+                
                 HStack {
                     Text("Volume Levels")
                         .multilineTextAlignment(.leading)
+                        .foregroundStyle(Color("TitleFont"))
                     Spacer()
                 }
+                .padding([.top, .trailing])
                 ForEach(filterViewModel.volumeFilter) { filter in
                     HStack {
                         Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
@@ -162,7 +168,7 @@ struct ExtendedFilterView: View {
                         Spacer()
                     }
                     .font(.subheadline)
-                    .padding(.horizontal)
+                    .padding([.leading, .trailing])
                     .foregroundStyle(Color("FilterList"))
                     .contentShape(Rectangle())
                     .onTapGesture {
@@ -172,8 +178,10 @@ struct ExtendedFilterView: View {
                 HStack {
                     Text("Features")
                         .multilineTextAlignment(.leading)
+                        .foregroundStyle(Color("TitleFont"))
                     Spacer()
                 }
+                .padding([.top, .trailing])
                 ForEach(filterViewModel.featureFilter) { filter in
                     HStack {
                         Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
@@ -182,7 +190,7 @@ struct ExtendedFilterView: View {
                         Spacer()
                     }
                     .font(.subheadline)
-                    .padding(.horizontal)
+                    .padding([.top, .leading, .trailing])     
                     .foregroundStyle(Color("FilterList"))
                     .contentShape(Rectangle())
                     .onTapGesture {
@@ -196,7 +204,7 @@ struct ExtendedFilterView: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(lineWidth: 0.5)
                 .foregroundStyle(Color(.systemGray4))
-                .shadow(color: .black.opacity(0.4), radius:2)
+                .shadow(color: Color("FilterList").opacity(0.4), radius:2)
         }
         .padding(.horizontal)
     }
@@ -208,17 +216,17 @@ struct CollapsedFilterView: View {
             Text("Choose filters")
                 .padding()
                 .font(.subheadline)
-                .foregroundStyle(.gray)
+                .foregroundStyle(Color("TextColor").opacity(0.7))
             Spacer()
             Image(systemName: "chevron.down")
                 .padding()
-                .foregroundStyle(.black)
+                .foregroundStyle(Color("TextColor"))
         }
         .overlay {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(lineWidth: 0.5)
                 .foregroundStyle(Color(.systemGray4))
-                .shadow(color: .black.opacity(0.4), radius:2)
+                .shadow(color: Color("TextColor").opacity(0.4), radius:2)
         }
         .padding(.horizontal)
     }

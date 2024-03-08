@@ -16,7 +16,7 @@ struct LocationBoxView: View {
             TabView {
                 ListingCarouselView(area: area, subArea: nil, isArea: true)
             }
-            .frame(height: 320)
+            .frame(height: 220)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .tabViewStyle(.page)
             HStack(alignment: .top) {
@@ -34,6 +34,7 @@ struct LocationBoxView: View {
                     }
                     .font(.subheadline)
                     HeartButtonView()
+                        .padding(.top, 8.0)
                 }
                 
             }
