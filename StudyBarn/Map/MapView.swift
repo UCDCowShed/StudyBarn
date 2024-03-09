@@ -23,6 +23,8 @@ struct MapView: View {
                     ForEach(Array(viewModel.areaCoordinates.keys), id: \.self) { name in
                         if let coor = viewModel.areaCoordinates[name] {
                             Marker(name, coordinate: coor)
+                            // show area pop up when clicked on, pass in area here
+                                //.onTapGesture(count: Int, perform: <#T##() -> Void#>)
                         }
                     }
                 }
