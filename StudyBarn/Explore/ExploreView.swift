@@ -30,7 +30,8 @@ struct ExploreView: View {
                     if !loadingAreas {
                         ScrollView {
                             VStack(spacing: 50) {
-                                ForEach(viewModel.areas ?? [], id: \.self) { area in
+                                ForEach(viewModel.areasIds, id: \.self) { areaId in
+                                    let area = viewModel.areasHashmap[areaId]
                                     NavigationLink {
                                         DetailsView(area: area)
                                             .environmentObject(userViewModel)
