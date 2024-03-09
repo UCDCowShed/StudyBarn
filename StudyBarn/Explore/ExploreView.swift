@@ -29,7 +29,7 @@ struct ExploreView: View {
                     // Render areas
                     if !loadingAreas {
                         ScrollView {
-                            LazyVStack(spacing: 50) {
+                            VStack(spacing: 50) {
                                 ForEach(viewModel.areas ?? [], id: \.self) { area in
                                     NavigationLink {
                                         DetailsView(area: area)

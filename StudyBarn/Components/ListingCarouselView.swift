@@ -26,20 +26,25 @@ struct ListingCarouselView: View {
                         ProgressView()
                     }
                 }
+            } else {
+                Image("Shields-outside")
             }
         }
         .tabViewStyle(.page)
         .task {
             if let area = area, let isArea = isArea {
                 if let images = area.images {
-                    let urls = try? await ImageManager.shared.getAllImages(areaID: area.areaId, images: images, isArea: isArea)
-                    self.urls = urls
+                    if !images.isEmpty {
+                        let urls = try? await ImageManager.shared.getAllImages(areaID: area.areaId, images: images, isArea: isArea)
+                        self.urls = urls
+                    }
                 }
-            }
-            if let subArea = area, let isArea = isArea {
+            } else if let subArea = area, let isArea = isArea {
                 if let images = subArea.images {
-                    let urls = try? await ImageManager.shared.getAllImages(areaID: subArea.areaId, images: images, isArea: isArea)
-                    self.urls = urls
+                    if !images.isEmpty {
+                        let urls = try? await ImageManager.shared.getAllImages(areaID: subArea.areaId, images: images, isArea: isArea)
+                        self.urls = urls
+                    }
                 }
             }
         }

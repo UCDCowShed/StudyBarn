@@ -15,6 +15,7 @@
 		077301482B9AB1B800387F47 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 077301472B9AB1B800387F47 /* FirebaseFirestore */; };
 		0773014A2B9AB1B800387F47 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 077301492B9AB1B800387F47 /* FirebaseFirestoreSwift */; };
 		0773014C2B9AB1B800387F47 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0773014B2B9AB1B800387F47 /* FirebaseStorage */; };
+		07904E1B2B9CDF46003B44AC /* MapAreaPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07904E1A2B9CDF46003B44AC /* MapAreaPopupView.swift */; };
 		079C3E702B979EA800DBEEAF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C3E6F2B979EA800DBEEAF /* ImageManager.swift */; };
 		079C3E752B97A30200DBEEAF /* AddImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C3E742B97A30200DBEEAF /* AddImageViewModel.swift */; };
 		07A093B92B883F0D00FC5511 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A093B82B883F0D00FC5511 /* DetailsView.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07904E1A2B9CDF46003B44AC /* MapAreaPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAreaPopupView.swift; sourceTree = "<group>"; };
 		079C3E6F2B979EA800DBEEAF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		079C3E742B97A30200DBEEAF /* AddImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewModel.swift; sourceTree = "<group>"; };
 		07A093B82B883F0D00FC5511 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
@@ -167,8 +169,9 @@
 				F18758652B88428A004CC7FE /* GoogleService-Info.plist */,
 				07F7B4E02B7EE69800D077A1 /* StudyBarnApp.swift */,
 				07F7B4E22B7EE69800D077A1 /* ContentView.swift */,
-				F13687C02B883CB600A9A974 /* RootView.swift */,
 				F1351EDC2B8EC9A8005864D1 /* ProfileView.swift */,
+				F13687C02B883CB600A9A974 /* RootView.swift */,
+				F10ABC4E2B9A90FE00193DD7 /* Select */,
 				F169F4592B8FF97100DCA7D5 /* Admin */,
 				F13687732B8808B100A9A974 /* Authentication */,
 				846231A72B919122003F25C2 /* Components */,
@@ -208,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				07F7B4F22B7EE7E400D077A1 /* MapView.swift */,
+				07904E1A2B9CDF46003B44AC /* MapAreaPopupView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -394,6 +398,7 @@
 				F169F4542B8FB36900DCA7D5 /* SubAreaManager.swift in Sources */,
 				07F7B4FD2B7FBCC200D077A1 /* LocationBoxView.swift in Sources */,
 				07F7B4E32B7EE69800D077A1 /* ContentView.swift in Sources */,
+				07904E1B2B9CDF46003B44AC /* MapAreaPopupView.swift in Sources */,
 				F13687BF2B883B8300A9A974 /* Utilities.swift in Sources */,
 				F136878F2B88398200A9A974 /* LoginViewModel.swift in Sources */,
 				F18758692B886083004CC7FE /* GoogleLoginButton.swift in Sources */,
@@ -557,6 +562,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyBarn/Preview Content\"";
@@ -588,6 +594,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyBarn/Preview Content\"";
