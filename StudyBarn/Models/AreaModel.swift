@@ -22,6 +22,13 @@ struct AreaModel: Codable, Hashable {
     let closeHour: HourMin?
     let latitude: Double?
     let longitude: Double?
+    let outdoors: Bool?
+    let groupStudy: Bool?
+    let microwave: Bool?
+    let printer: Bool?
+    let dining: Bool?
+    let outlets: Bool?
+    let computers: Bool?
     
     init(areaId: String, name: String, rating: Double?, images: [String]?, openHour: HourMin?, closeHour: HourMin?, latitude: Double?, longitude: Double?) {
         self.areaId = areaId
@@ -32,6 +39,13 @@ struct AreaModel: Codable, Hashable {
         self.closeHour = closeHour
         self.latitude = latitude
         self.longitude = longitude
+        self.outdoors = nil
+        self.groupStudy = nil
+        self.microwave = nil
+        self.printer = nil
+        self.dining = nil
+        self.outlets = nil
+        self.computers = nil
     }
     
     enum CodingKeys: String, CodingKey {
@@ -43,6 +57,13 @@ struct AreaModel: Codable, Hashable {
         case closeHour
         case latitude
         case longitude
+        case outdoors
+        case groupStudy
+        case microwave
+        case printer
+        case dining
+        case outlets
+        case computers
     }
     
     init(from decoder: Decoder) throws {
@@ -55,6 +76,13 @@ struct AreaModel: Codable, Hashable {
         self.closeHour = try container.decodeIfPresent(HourMin.self, forKey: .closeHour)
         self.latitude = try container.decodeIfPresent(Double.self, forKey: .latitude)
         self.longitude = try container.decodeIfPresent(Double.self, forKey: .longitude)
+        self.outdoors = try container.decodeIfPresent(Bool.self, forKey: .outdoors)
+        self.groupStudy = try container.decodeIfPresent(Bool.self, forKey: .groupStudy)
+        self.microwave = try container.decodeIfPresent(Bool.self, forKey: .microwave)
+        self.printer = try container.decodeIfPresent(Bool.self, forKey: .printer)
+        self.dining = try container.decodeIfPresent(Bool.self, forKey: .dining)
+        self.outlets = try container.decodeIfPresent(Bool.self, forKey: .outlets)
+        self.computers = try container.decodeIfPresent(Bool.self, forKey: .computers)
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -66,6 +94,13 @@ struct AreaModel: Codable, Hashable {
         try container.encodeIfPresent(self.closeHour, forKey: .closeHour)
         try container.encodeIfPresent(self.latitude, forKey: .latitude)
         try container.encodeIfPresent(self.longitude, forKey: .longitude)
+        try container.encodeIfPresent(self.outdoors, forKey: .outdoors)
+        try container.encodeIfPresent(self.groupStudy, forKey: .groupStudy)
+        try container.encodeIfPresent(self.microwave, forKey: .microwave)
+        try container.encodeIfPresent(self.printer, forKey: .printer)
+        try container.encodeIfPresent(self.dining, forKey: .dining)
+        try container.encodeIfPresent(self.outlets, forKey: .outlets)
+        try container.encodeIfPresent(self.computers, forKey: .computers)
     }
     
 }
