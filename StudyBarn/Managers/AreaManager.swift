@@ -62,6 +62,10 @@ final class AreaManager {
         return nil
     }
     
+    func updateAreaFeatures(area: AreaModel) async throws {
+        try areaDocument(areaId: area.areaId).setData(from: area, merge: true)
+    }
+    
     func getAllArea() async throws -> [AreaModel] {
         let snapshot = try await areaCollection.order(by: "rating", descending: true).getDocuments()
         
