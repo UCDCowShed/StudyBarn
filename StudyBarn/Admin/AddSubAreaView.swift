@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddSubAreaView: View {
     
+    @EnvironmentObject private var viewModel: SelectViewModel
+    
     @StateObject var addSubAreaViewModel = AddSubAreaViewModel()
     
     // All Default values are false
@@ -27,8 +29,9 @@ struct AddSubAreaView: View {
     private func addNewSubArea() {
         Task {
             let floorInt = Int(self.floor) ?? 0
+            let area = viewModel.areasHashmap[self.areaId]
             
-            try await addSubAreaViewModel.addNewSubArea(subAreaName: self.subAreaName, areaId: self.areaId, floor: floorInt, outdoors: self.outdoors, groupStudy: self.groupStudy, microwave: self.microwave, printer: self.printer, dining: self.dining, outlets: self.outlets, computers: self.computers)
+            try await addSubAreaViewModel.addNewSubArea(subAreaName: self.subAreaName, areaId: self.areaId, floor: floorInt, outdoors: self.outdoors, groupStudy: self.groupStudy, microwave: self.microwave, printer: self.printer, dining: self.dining, outlets: self.outlets, computers: self.computers, areaModel: area)
         }
     }
     
@@ -143,5 +146,6 @@ struct AddSubAreaView: View {
 #Preview {
     NavigationStack {
         AddSubAreaView()
+            .environmentObject(SelectViewModel())
     }
 }

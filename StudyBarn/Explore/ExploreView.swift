@@ -29,7 +29,7 @@ struct ExploreView: View {
                     // Render areas
                     if !loadingAreas {
                         ScrollView {
-                            VStack(spacing: 50) {
+                            VStack(spacing: 20) {
                                 ForEach(viewModel.areasIds, id: \.self) { areaId in
                                     let area = viewModel.areasHashmap[areaId]
                                     NavigationLink {

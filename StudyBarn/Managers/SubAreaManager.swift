@@ -20,8 +20,11 @@ final class SubAreaManager {
         return subAreaCollection.document(subAreaId)
     }
     
-    func createNewSubArea(subArea: SubAreaModel) async throws {
+    func createNewSubArea(subArea: SubAreaModel, area: AreaModel) async throws {
+        // Create new SubArea
         try subAreaDocument(subAreaId: subArea.subAreaId).setData(from: subArea, merge: false)
+        // Modify Area with new features
+        try AreaManager.shared.updateAreaFeatures(area: area)
     }
     
     // Returns Document Id for creating AreaModel

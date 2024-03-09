@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-enum SearchOptions {
-    case location
-    case building
-}
 
 struct SearchView: View {
     @Binding var show : Bool
@@ -18,50 +14,16 @@ struct SearchView: View {
     @EnvironmentObject private var viewModel: SelectViewModel
     
     @State var multiSelection = Set<UUID>()
-    @State var extend_filter : Bool = false
     @State var search: String = ""
     
     var body: some View {
         VStack {
-            // Search Bar
-//            VStack(alignment: .leading){
-//                Text("")
-//                    .font(.title2)
-//                    .fontWeight(.semibold)
-//                HStack {
-//                    Image(systemName: "magnifyingglass")
-//                        .imageScale(.small)
-//                    TextField("Search", text: $search)
-//                        .font(.subheadline)
-//                }
-//                .frame(height: 45)
-//                .padding(.horizontal)
-//                .overlay {
-//                    RoundedRectangle(cornerRadius: 5)
-//                        .stroke(lineWidth: 0.5)
-//                        .foregroundStyle(Color(.systemGray4))
-//                        .shadow(color: .black.opacity(0.4), radius:2)
-//                }
-//            }
-//            .padding()
-//            .clipShape(RoundedRectangle(cornerRadius: 5))
-//            .shadow(radius: 10)
             
-            // Determine Collapsing Filter View
-            if extend_filter {
+            //Filter View
                 ExtendedFilterView()
                     .padding(.top, 20)
                     .environmentObject(filterViewModel)
-                    .onTapGesture {
-                        extend_filter.toggle()
-                    }
-            } else {
-                CollapsedFilterView()
-                    .padding(.top, 20)
-                    .onTapGesture {
-                        extend_filter.toggle()
-                    }
-            }
+
             
             Spacer()
             
@@ -209,27 +171,27 @@ struct ExtendedFilterView: View {
     }
 }
 
-struct CollapsedFilterView: View {
-    var body: some View {
-        HStack {
-            Text("Choose filters")
-                .padding()
-                .font(.subheadline)
-                .foregroundStyle(Color("TextColor").opacity(0.7))
-            Spacer()
-            Image(systemName: "chevron.down")
-                .padding()
-                .foregroundStyle(Color("TextColor"))
-        }
-        .overlay {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 0.5)
-                .foregroundStyle(Color(.systemGray4))
-                .shadow(color: Color("TextColor").opacity(0.4), radius:2)
-        }
-        .padding(.horizontal)
-    }
-}
+//struct CollapsedFilterView: View {
+//    var body: some View {
+//        HStack {
+//            Text("Choose filters")
+//                .padding()
+//                .font(.subheadline)
+//                .foregroundStyle(Color("TextColor").opacity(0.7))
+//            Spacer()
+//            Image(systemName: "chevron.down")
+//                .padding()
+//                .foregroundStyle(Color("TextColor"))
+//        }
+//        .overlay {
+//            RoundedRectangle(cornerRadius: 10)
+//                .stroke(lineWidth: 0.5)
+//                .foregroundStyle(Color(.systemGray4))
+//                .shadow(color: Color("TextColor").opacity(0.4), radius:2)
+//        }
+//        .padding(.horizontal)
+//    }
+//}
 
 #Preview {
     SearchView(show : .constant(false))

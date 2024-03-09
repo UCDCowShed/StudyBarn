@@ -16,9 +16,11 @@ struct LocationBoxView: View {
             TabView {
                 ListingCarouselView(area: area, subArea: nil, isArea: true)
             }
-            .frame(height: 220)
+            .frame(height: 200)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .tabViewStyle(.page)
+            // Detailed Features
+            FeatureListingView(area: area, subArea: nil)
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
                     Text(area?.name ?? "Area")

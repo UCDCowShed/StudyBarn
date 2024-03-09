@@ -19,15 +19,8 @@ struct MapAreaPopupView: View {
             .frame(height: 170)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .tabViewStyle(.page)
-            // Scroll view of features
-            ScrollView(.horizontal, showsIndicators: false){
-                HStack (spacing: 18) {
-                    Image(systemName: "tree.fill")
-                    Image(systemName: "house.fill")
-                    Image(systemName: "printer.fill")
-                    Image(systemName: "desktopcomputer")
-                }.padding(.horizontal)
-            }
+            // Detailed Features
+            FeatureListingView(area: area, subArea: nil)
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
                     Text(area?.name ?? "Area")
