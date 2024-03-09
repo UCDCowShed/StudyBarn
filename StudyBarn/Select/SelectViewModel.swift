@@ -10,21 +10,29 @@ import MapKit
 
 @MainActor
 final class SelectViewModel: ObservableObject {
-    @Published var areas: [AreaModel]? = []
+    @Published var areasIds: [String] = []
+    @Published var areasHashmap: [String: AreaModel] = [:]
     @Published var areaCoordinates: [String: CLLocationCoordinate2D] = [:]
     
-    func getCoordinates(areas: [AreaModel]){
+    // Update areas hashmap and coordinates
+    func loadNewAreas(newAreas: [AreaModel]) {
         areaCoordinates = [:]
-        for area in areas {
-            print(area.name)
-            areaCoordinates[area.name] = CLLocationCoordinate2D(latitude: area.latitude ?? -1, longitude: area.longitude ?? -1)
+        areasHashmap = [:]
+        areasIds = []
+        
+        for newArea in newAreas {
+            // update area coordinates
+            areaCoordinates[newArea.areaId] = CLLocationCoordinate2D(latitude: newArea.latitude ?? -1, longitude: newArea.longitude ?? -1)
+            // update areas' Ids
+            areasIds.append(newArea.areaId)
+            // update areas
+            areasHashmap[newArea.areaId] = newArea
         }
     }
     
     func loadAllArea() async throws {
-        areas = try await AreaManager.shared.getAllArea()
-        if let areas = areas {
-            self.getCoordinates(areas: areas)
-        }
+        let areas = try await AreaManager.shared.getAllArea()
+        // Update areas hashmap and coordinates
+        self.loadNewAreas(newAreas: areas)
     }
 }

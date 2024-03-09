@@ -20,11 +20,14 @@ struct MapView: View {
                     .environmentObject(viewModel)
             } else {
                 Map(position: $position) {
-                    ForEach(Array(viewModel.areaCoordinates.keys), id: \.self) { name in
-                        if let coor = viewModel.areaCoordinates[name] {
+                    ForEach(Array(viewModel.areaCoordinates.keys), id: \.self) { areaId in
+                        // Get area name and coordinates
+                        let name = viewModel.areasHashmap[areaId]?.name
+                        let coor = viewModel.areaCoordinates[areaId]
+                        if let name = name, let coor = coor {
                             Marker(name, coordinate: coor)
                             // show area pop up when clicked on, pass in area here
-                                //.onTapGesture(count: Int, perform: <#T##() -> Void#>)
+                            //.onTapGesture(count: Int, perform: <#T##() -> Void#>)
                         }
                     }
                 }
