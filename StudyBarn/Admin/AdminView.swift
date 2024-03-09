@@ -10,6 +10,8 @@ import PhotosUI
 
 struct AdminView: View {
     
+    @EnvironmentObject private var viewModel: SelectViewModel
+    
     var body: some View {
         VStack (spacing: 40){
             NavigationLink {
@@ -20,6 +22,7 @@ struct AdminView: View {
             
             NavigationLink {
                 AddSubAreaView()
+                    .environmentObject(viewModel)
             } label: {
                 Label("Add SubArea", systemImage: "folder")
             }
@@ -32,5 +35,6 @@ struct AdminView: View {
 #Preview {
     NavigationStack {
         AdminView()
+            .environmentObject(SelectViewModel())
     }
 }

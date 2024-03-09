@@ -33,6 +33,7 @@ struct SelectView: View {
                 .environmentObject(userViewModel)
             if userViewModel.user?.admin ?? false {
                 AdminView()
+                    .environmentObject(viewModel)
                     .tabItem {
                         Label("Admin", systemImage: "folder")
                     }

@@ -54,7 +54,7 @@ struct SubAreaView: View {
                 Spacer()
                 
                 // Detailed Features
-                featureListingView(subArea: subArea)
+                FeatureListingView(area: nil, subArea: subArea)
                 Spacer()
             }
             .padding(.horizontal, 8)
