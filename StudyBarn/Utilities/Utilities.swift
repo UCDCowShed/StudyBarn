@@ -30,6 +30,17 @@ final class Utilities {
         }
         return controller
     }
+    
+    func getCurrentDate() -> String {
+        let currentDate = Date()
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+
+        let dayString = dateFormatter.string(from: currentDate)
+        
+        return dayString
+    }
 }
 
 extension String {

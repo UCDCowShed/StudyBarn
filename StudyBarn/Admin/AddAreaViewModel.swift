@@ -17,14 +17,25 @@ final class AddAreaViewModel: ObservableObject {
         let hour = Calendar.current.component(.hour, from: hours)
         let minute = Calendar.current.component(.minute, from: hours)
         return HourMin(hour: hour, minute: minute)
+        
     }
     
-    func addNewArea(areaName: String, openHour: Date, closeHour: Date, latitude: String, longitude: String) async throws {
-        
+    // Create Week HourMin
+    private func formatWeekHours(hours: [String: Date]) -> [String: HourMin] {
+        var formattedHours: [String: HourMin] = [:]
+        for hour in Array(hours.keys) {
+            if let date = hours[hour] {
+                formattedHours[hour] = self.formattedHours(hours: date)
+            }
+        }
+        return formattedHours
+    }
+    
+    func addNewArea(areaName: String, openHours: [String: Date], closeHours: [String: Date], latitude: String, longitude: String) async throws {
         // Initialize area values
         let areaId = AreaManager.shared.getDocumentId()
-        let openHourFormatted = formattedHours(hours: openHour)
-        let closeHourFormatted = formattedHours(hours: closeHour)
+        let openHourFormatted = formatWeekHours(hours: openHours)
+        let closeHourFormatted = formatWeekHours(hours: closeHours)
         let rating = 0.0
         let images: [String]? = []
         

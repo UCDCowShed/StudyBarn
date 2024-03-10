@@ -10,6 +10,7 @@ import SwiftUI
 struct MapAreaPopupView: View {
     
     let area: AreaModel?
+    let todayDate: String = Utilities.shared.getCurrentDate()
     
     var body: some View {
         ZStack {
@@ -30,7 +31,8 @@ struct MapAreaPopupView: View {
                         VStack(alignment: .leading) {
                             Text(area?.name ?? "Area")
                                 .font(.title3)
-                            Text("\(AreaManager.shared.formatHours(hours: area?.openHour)) - \(AreaManager.shared.formatHours(hours: area?.closeHour))")
+                            // Default is "Closed"
+                            Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
                                 .font(.subheadline)
                         }
                         Spacer()
