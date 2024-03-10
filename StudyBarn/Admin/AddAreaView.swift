@@ -30,9 +30,11 @@ struct AddAreaView: View {
     @State private var longitude: String = ""
     
     private func addNewArea() {
-        let openHours = [0: openHourMon, 1: openHourTue, 2: openHourWed, 3: openHourThr, 4: openHourFri, 5: openHourSat, 6: openHourSun]
+        let dates = ["Monday", "TuesDay", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
         
-        let closeHours = [0: closeHourMon, 1: closeHourTue, 2: closeHourWed, 3: closeHourThr, 4: closeHourFri, 5: closeHourSat, 6: closeHourSun]
+        let openHours = [dates[0]: openHourMon, dates[1]: openHourTue, dates[2]: openHourWed, dates[3]: openHourThr, dates[4]: openHourFri, dates[5]: openHourSat, dates[6]: openHourSun]
+        
+        let closeHours = [dates[0]: closeHourMon, dates[1]: closeHourTue, dates[2]: closeHourWed, dates[3]: closeHourThr, dates[4]: closeHourFri, dates[5]: closeHourSat, dates[6]: closeHourSun]
         Task {
             try await addAreaViewModel.addNewArea(areaName: areaName, openHours: openHours, closeHours: closeHours, latitude: latitude, longitude: longitude)
         }
@@ -61,7 +63,6 @@ struct AddAreaView: View {
                 DatePicker("Close Sat Hours", selection: $closeHourSat, displayedComponents: .hourAndMinute)
                 DatePicker("Open Sun Hours", selection: $openHourSun, displayedComponents: .hourAndMinute)
                 DatePicker("Close Sun Hours", selection: $closeHourSun, displayedComponents: .hourAndMinute)
-                
                 // Get latitude
                 TextField(
                     "Latitude",

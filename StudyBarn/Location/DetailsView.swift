@@ -13,6 +13,7 @@ struct DetailsView: View {
     @EnvironmentObject private var userViewModel: UserViewModel
     
     let area: AreaModel?
+    let todayDate: String = Utilities.shared.getCurrentDate()
     
     @State private var loadingSubAreas = false
     @State private var allSubAreasFromArea: [SubAreaModel] = []
@@ -37,7 +38,8 @@ struct DetailsView: View {
                         Text("\(area?.rating ?? 0.0, specifier: "%.1f")")
                     }
                     
-                    Text("")
+                    // Default is "Closed"
+                    Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
                         .font(.subheadline)
                         .foregroundStyle(.gray)
                     

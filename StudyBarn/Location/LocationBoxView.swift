@@ -10,6 +10,7 @@ import SwiftUI
 struct LocationBoxView: View {
 
     let area: AreaModel?
+    let todayDate: String = Utilities.shared.getCurrentDate()
 
     var body: some View {
         VStack(spacing: 8) {
@@ -25,7 +26,8 @@ struct LocationBoxView: View {
                 VStack(alignment: .leading) {
                     Text(area?.name ?? "Area")
                         .font(.title)
-                    Text("")
+                    // Default is "Closed"
+                    Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
                         .font(.subheadline)
                 }
                 Spacer()

@@ -20,6 +20,28 @@ final class AreaManager {
         return areaCollection.document(areaId)
     }
     
+    private func setAmPm(hours: HourMin) -> String {
+        let minute = hours.minute == 0 ? "00" : String(hours.minute)
+        let hour = hours.hour >= 12 ? String(hours.hour == 12 ? hours.hour : hours.hour - 12) : String(hours.hour)
+        let amOrPm = hours.hour >= 12 ? "PM" : "AM"
+        return hour + ":" + minute + amOrPm
+    }
+    
+    func formatHours (openHour: HourMin, closeHour: HourMin) -> String {
+        // Check if closed (openHour and closeHour mismatch where openHour happens later than closeHours)
+        if openHour.hour > closeHour.hour {
+            return "Closed"
+        }
+        else if openHour.hour == closeHour.hour && openHour.minute > closeHour.minute {
+            return "Closed"
+        }
+        
+        let openHour = self.setAmPm(hours: openHour)
+        let closeHour = self.setAmPm(hours: closeHour)
+        
+        return openHour + " - " + closeHour
+    }
+    
     // Returns Document Id for creating AreaModel
     func getDocumentId() -> String {
         return areaCollection.document().documentID
@@ -73,10 +95,10 @@ final class AreaManager {
         
         try await areaDocument(areaId: areaId).updateData(data)
     }
-
+    
     // Filter By Items
     func getFilteredArea(atmosphereFilter: [FilterModel], volumeFilter: [FilterModel], featureFilter: [FilterModel]) async throws -> [AreaModel]? {
-     
+        
         var areaIds: [String] = []
         var filteredAreas: [AreaModel] = []
         

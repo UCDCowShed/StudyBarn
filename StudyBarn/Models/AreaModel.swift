@@ -18,8 +18,8 @@ struct AreaModel: Codable, Hashable {
     let name: String
     let rating: Double?
     let images: [String]?
-    let openHour: [Int: HourMin?]
-    let closeHour: [Int: HourMin?]
+    let openHour: [String: HourMin]
+    let closeHour: [String: HourMin]
     let latitude: Double?
     let longitude: Double?
     var outdoors: Bool?
@@ -32,7 +32,7 @@ struct AreaModel: Codable, Hashable {
     var outlets: Bool?
     var computers: Bool?
     
-    init(areaId: String, name: String, rating: Double?, images: [String]?, openHour: [Int: HourMin?], closeHour: [Int: HourMin?], latitude: Double?, longitude: Double?) {
+    init(areaId: String, name: String, rating: Double?, images: [String]?, openHour: [String: HourMin], closeHour: [String: HourMin], latitude: Double?, longitude: Double?) {
         self.areaId = areaId
         self.name = name
         self.rating = rating
@@ -78,8 +78,8 @@ struct AreaModel: Codable, Hashable {
         self.name = try container.decode(String.self, forKey: .name)
         self.rating = try container.decodeIfPresent(Double.self, forKey: .rating)
         self.images = try container.decodeIfPresent([String].self, forKey: .images)
-        self.openHour = try container.decode([Int : HourMin?].self, forKey: .openHour)
-        self.closeHour = try container.decode([Int : HourMin?].self, forKey: .closeHour)
+        self.openHour = try container.decode([String : HourMin].self, forKey: .openHour)
+        self.closeHour = try container.decode([String : HourMin].self, forKey: .closeHour)
         self.latitude = try container.decodeIfPresent(Double.self, forKey: .latitude)
         self.longitude = try container.decodeIfPresent(Double.self, forKey: .longitude)
         self.outdoors = try container.decodeIfPresent(Bool.self, forKey: .outdoors)
