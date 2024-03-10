@@ -12,35 +12,42 @@ struct MapAreaPopupView: View {
     let area: AreaModel?
     
     var body: some View {
-        VStack(spacing: 8) {
-            TabView {
-                ListingCarouselView(area: area, subArea: nil, isArea: true)
-            }
-            .frame(height: 170)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .tabViewStyle(.page)
-            // Detailed Features
-            FeatureListingView(area: area, subArea: nil)
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    Text(area?.name ?? "Area")
-                        .font(.title)
-                    Text("")
-                        .font(.subheadline)
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .frame(height: 170)
+                .foregroundStyle(Color("PlainBG"))
+            HStack(spacing: 8) {
+                TabView {
+                    ListingCarouselView(area: area, subArea: nil, isArea: true)
                 }
-                Spacer()
+                .frame(height: 170)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .tabViewStyle(.page)
+                // Detailed Features
                 VStack {
-                    HStack(spacing: 2) {
-                        Image(systemName: "star.fill")
-                        Text("\(area?.rating ?? 0.0, specifier: "%.1f")")
+                    FeatureListingView(area: area, subArea: nil)
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading) {
+                            Text(area?.name ?? "Area")
+                                .font(.title3)
+                            Text("\(AreaManager.shared.formatHours(hours: area?.openHour)) - \(AreaManager.shared.formatHours(hours: area?.closeHour))")
+                                .font(.subheadline)
+                        }
+                        Spacer()
+                        VStack {
+                            HStack(spacing: 2) {
+                                Image(systemName: "star.fill")
+                                Text("\(area?.rating ?? 0.0, specifier: "%.1f")")
+                            }
+                            .font(.subheadline)
+                            HeartButtonView()
+                                .padding(.top, 8.0)
+                        }
+                        
                     }
-                    .font(.subheadline)
-                    HeartButtonView()
-                        .padding(.top, 8.0)
                 }
-                
+                .padding()
             }
-            .padding()
         }
     }
 }
