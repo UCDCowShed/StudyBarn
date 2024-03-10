@@ -22,17 +22,34 @@ final class AreaManager {
     
     private func setAmPm(hours: HourMin) -> String {
         let minute = hours.minute == 0 ? "00" : String(hours.minute)
-        let hour = hours.hour >= 12 ? String(hours.hour == 12 ? hours.hour : hours.hour - 12) : String(hours.hour)
+        var hour = hours.hour >= 12 ? String(hours.hour == 12 ? hours.hour : hours.hour - 12) : String(hours.hour)
         let amOrPm = hours.hour >= 12 ? "PM" : "AM"
+        
+        // Reformat if 0 hour
+        if hour == "0" {
+            hour = "12"
+        }
+        
         return hour + ":" + minute + amOrPm
     }
     
     func formatHours (openHour: HourMin, closeHour: HourMin) -> String {
+        // Check Always opened 00:00AM - 00:00AM
+        if openHour.hour == 0 && closeHour.hour == 0 && openHour.minute == 0 && closeHour.minute == 0 {
+            return "Always Open"
+        }
+        
+        var formattedCloseHour = closeHour.hour
+        
+        if formattedCloseHour == 0 {
+            formattedCloseHour = 24
+        }
+        
         // Check if closed (openHour and closeHour mismatch where openHour happens later than closeHours)
-        if openHour.hour > closeHour.hour {
+        if openHour.hour > formattedCloseHour {
             return "Closed"
         }
-        else if openHour.hour == closeHour.hour && openHour.minute > closeHour.minute {
+        else if openHour.hour == formattedCloseHour && openHour.minute > closeHour.minute {
             return "Closed"
         }
         
