@@ -32,22 +32,24 @@ struct MapView: View {
                                         ZStack {
                                             Image(systemName: "circle.fill")
                                                 .resizable()
-                                                .frame(maxWidth: 20, maxHeight: 25)
+                                                .frame(maxWidth: 45, maxHeight: 50)
                                                 .padding(.bottom, 18)
                                                 .foregroundStyle(Color("Pincolor"))
                                             Image(systemName: "triangle.fill")
+                                                .frame(maxWidth: 40, maxHeight: 45)
                                                 .rotationEffect(Angle(degrees: 180))
                                                 .foregroundStyle(Color("Pincolor"))
                                             Image(systemName: "book")
                                                 .resizable()
-                                                .frame(maxWidth: 13, maxHeight: 10)
+                                                .frame(maxWidth: 16, maxHeight: 13)
                                                 .padding(.bottom, 15)
                                                 .foregroundStyle(.white)
                                         }
-                                        .padding()
+                                        .padding(30)
                                         .onTapGesture() {
                                             showPopUp = (true, areaId)
                                         }
+                                        .padding(-30)
                                 }
                                 // show area pop up when clicked on, pass in area here
                             }
