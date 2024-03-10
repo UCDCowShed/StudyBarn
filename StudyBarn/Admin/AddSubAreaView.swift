@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct AddSubAreaView: View {
-    
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject private var viewModel: SelectViewModel
-    
+    let areaId: String?
     @StateObject var addSubAreaViewModel = AddSubAreaViewModel()
     
     // All Default values are false
     @State private var subAreaName: String = ""
-    @State private var areaId: String = ""
     @State private var floor: String = ""
     @State private var outdoors: Bool = false
     @State private var groupStudy: Bool = false
@@ -27,11 +26,13 @@ struct AddSubAreaView: View {
 
     
     private func addNewSubArea() {
-        Task {
-            let floorInt = Int(self.floor) ?? 0
-            let area = viewModel.areasHashmap[self.areaId]
-            
-            try await addSubAreaViewModel.addNewSubArea(subAreaName: self.subAreaName, areaId: self.areaId, floor: floorInt, outdoors: self.outdoors, groupStudy: self.groupStudy, microwave: self.microwave, printer: self.printer, dining: self.dining, outlets: self.outlets, computers: self.computers, areaModel: area)
+        if let areaId {
+            Task {
+                let floorInt = Int(self.floor) ?? 0
+                let area = viewModel.areasHashmap[areaId]
+                
+                try await addSubAreaViewModel.addNewSubArea(subAreaName: self.subAreaName, areaId: areaId, floor: floorInt, outdoors: self.outdoors, groupStudy: self.groupStudy, microwave: self.microwave, printer: self.printer, dining: self.dining, outlets: self.outlets, computers: self.computers, areaModel: area)
+            }
         }
     }
     
@@ -42,11 +43,6 @@ struct AddSubAreaView: View {
                 TextField(
                     "SubArea Name",
                     text: $subAreaName
-                )
-                // Get areaId
-                TextField(
-                    "Area Id",
-                    text: $areaId
                 )
                 // Get floor
                 TextField(
@@ -129,6 +125,7 @@ struct AddSubAreaView: View {
                 // Submit form button
                 Button {
                     addNewSubArea()
+                    self.presentationMode.wrappedValue.dismiss()
                 } label: {
                     HStack {
                         Spacer()
@@ -145,7 +142,7 @@ struct AddSubAreaView: View {
 
 #Preview {
     NavigationStack {
-        AddSubAreaView()
+        AddSubAreaView(areaId: "")
             .environmentObject(SelectViewModel())
     }
 }

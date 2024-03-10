@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DetailsView: View {
-    @StateObject private var viewModel: DetailsViewModel = DetailsViewModel()
+    @StateObject private var detailsViewModel: DetailsViewModel = DetailsViewModel()
+    @EnvironmentObject private var viewModel: SelectViewModel
     @EnvironmentObject private var userViewModel: UserViewModel
     
     let area: AreaModel?
@@ -61,6 +62,16 @@ struct DetailsView: View {
             
             Divider()
             
+            if userViewModel.user?.admin ?? false {
+                // Images button
+                NavigationLink {
+                    AddSubAreaView(areaId: area?.areaId)
+                        .environmentObject(viewModel)
+                } label: {
+                    Text("Add subarea")
+                }
+            }
+            
             // Display SubAreas
             VStack{
                 if loadingSubAreas {
@@ -82,7 +93,7 @@ struct DetailsView: View {
             Task {
                 do {
                     if let area = self.area {
-                        allSubAreasFromArea = try await viewModel.loadAllSubAreaFromArea(areaId: area.areaId) ?? []
+                        allSubAreasFromArea = try await detailsViewModel.loadAllSubAreaFromArea(areaId: area.areaId) ?? []
                         loadingSubAreas = false
                     }
                 }
