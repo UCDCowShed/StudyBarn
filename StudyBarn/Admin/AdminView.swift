@@ -19,13 +19,6 @@ struct AdminView: View {
             } label: {
                 Label("Add Area", systemImage: "folder")
             }
-            
-            NavigationLink {
-                AddSubAreaView()
-                    .environmentObject(viewModel)
-            } label: {
-                Label("Add SubArea", systemImage: "folder")
-            }
         }
         .foregroundStyle(Color("TextColor"))
 

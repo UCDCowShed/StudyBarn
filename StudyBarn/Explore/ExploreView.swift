@@ -34,6 +34,7 @@ struct ExploreView: View {
                                     let area = viewModel.areasHashmap[areaId]
                                     NavigationLink {
                                         DetailsView(area: area)
+                                            .environmentObject(viewModel)
                                             .environmentObject(userViewModel)
                                             .navigationBarBackButtonHidden(false)
                                     } label: {
