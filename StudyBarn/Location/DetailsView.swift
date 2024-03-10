@@ -37,7 +37,7 @@ struct DetailsView: View {
                         Text("\(area?.rating ?? 0.0, specifier: "%.1f")")
                     }
                     
-                    Text("\(AreaManager.shared.formatHours(hours: area?.openHour)) - \(AreaManager.shared.formatHours(hours: area?.closeHour))")
+                    Text("")
                         .font(.subheadline)
                         .foregroundStyle(.gray)
                     

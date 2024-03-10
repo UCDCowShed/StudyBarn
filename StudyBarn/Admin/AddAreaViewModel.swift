@@ -13,18 +13,34 @@ import FirebaseFirestoreSwift
 final class AddAreaViewModel: ObservableObject {
     
     // Change Time to HourMin
-    private func formattedHours(hours: Date) -> HourMin {
-        let hour = Calendar.current.component(.hour, from: hours)
-        let minute = Calendar.current.component(.minute, from: hours)
-        return HourMin(hour: hour, minute: minute)
+    private func formattedHours(hours: Date?) -> HourMin? {
+        if let hours = hours {
+            let hour = Calendar.current.component(.hour, from: hours)
+            let minute = Calendar.current.component(.minute, from: hours)
+            return HourMin(hour: hour, minute: minute)
+        }
+        return nil
     }
     
-    func addNewArea(areaName: String, openHour: Date, closeHour: Date, latitude: String, longitude: String) async throws {
-        
+    // Create Week HourMin
+    private func formatWeekHours(hours: [Int: Date?]) -> [Int: HourMin?] {
+        var formattedHours: [Int: HourMin] = [:]
+        for hour in Array(hours.keys) {
+            if let date = hours[hour] {
+                formattedHours[hour] = self.formattedHours(hours: date)
+            }
+            else {
+                formattedHours[hour] = nil
+            }
+        }
+        return formattedHours
+    }
+    
+    func addNewArea(areaName: String, openHours: [Int: Date?], closeHours: [Int: Date?], latitude: String, longitude: String) async throws {
         // Initialize area values
         let areaId = AreaManager.shared.getDocumentId()
-        let openHourFormatted = formattedHours(hours: openHour)
-        let closeHourFormatted = formattedHours(hours: closeHour)
+        let openHourFormatted = formatWeekHours(hours: openHours)
+        let closeHourFormatted = formatWeekHours(hours: closeHours)
         let rating = 0.0
         let images: [String]? = []
         

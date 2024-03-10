@@ -20,28 +20,6 @@ final class AreaManager {
         return areaCollection.document(areaId)
     }
     
-    func formatHours (hours: HourMin?) -> String {
-        guard let hours = hours else { return "00:00"}
-        
-        // Set Minute
-        let minute = hours.minute == 0 ? "00" : String(hours.minute)
-        
-        // PM
-        if hours.hour > 12 {
-            let formatHour = hours.hour - 12
-            return "\(formatHour):\(minute) PM"
-        }
-        // 12 PM
-        else if hours.hour == 12 {
-            return "\(hours.hour):\(minute) PM"
-        }
-        // AM
-        else {
-            return "\(hours.hour):\(minute) AM"
-        }
-        
-    }
-    
     // Returns Document Id for creating AreaModel
     func getDocumentId() -> String {
         return areaCollection.document().documentID

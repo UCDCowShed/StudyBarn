@@ -25,7 +25,7 @@ struct LocationBoxView: View {
                 VStack(alignment: .leading) {
                     Text(area?.name ?? "Area")
                         .font(.title)
-                    Text("\(AreaManager.shared.formatHours(hours: area?.openHour)) - \(AreaManager.shared.formatHours(hours: area?.closeHour))")
+                    Text("")
                         .font(.subheadline)
                 }
                 Spacer()
