@@ -18,13 +18,13 @@ struct FeatureListingView: View {
                 if let area {
                     if area.outdoors ?? false {
                         VStack {
-                            Image("tree.fill")
+                            Image(systemName: "tree.fill")
                             Text("Outdoors")
                         }
                     }
                     if area.indoors ?? false {
                         VStack {
-                            Image("house.fill")
+                            Image(systemName: "house.fill")
                             Text("Indoors")
                         }
                     }
@@ -38,13 +38,13 @@ struct FeatureListingView: View {
                 if let area {
                     if area.groupStudy ?? false {
                         VStack {
-                            Image("speaker.wave.3.fill")
+                            Image(systemName: "speaker.wave.3.fill")
                             Text("GroupStudy")
                         }
                     }
                     if area.quietStudy ?? false {
                         VStack {
-                            Image("speaker.slash.fill")
+                            Image(systemName: "speaker.slash.fill")
                             Text("QuietStudy")
                         }
                     }
