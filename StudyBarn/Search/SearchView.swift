@@ -18,12 +18,10 @@ struct SearchView: View {
     
     var body: some View {
         VStack {
-            
             //Filter View
-                ExtendedFilterView()
-                    .padding(.top, 20)
-                    .environmentObject(filterViewModel)
-
+            FiltersView()
+                .padding(.top, 20)
+                .environmentObject(filterViewModel)
             
             Spacer()
             
@@ -70,128 +68,155 @@ struct SearchView: View {
                 }
             }
             .padding()
-        }   
+        }
     }
 }
 
-struct ExtendedFilterView: View {
+struct FiltersView: View {
     @EnvironmentObject var filterViewModel: FilterViewModel
     
     var body: some View {
         VStack{
             HStack {
-                Text("Choose filters")
-                    .padding()
-                    .font(.subheadline)
-                    .foregroundStyle(Color("TextColor").opacity(0.7))
-                Spacer()
-                Image(systemName: "chevron.up")
-                    .padding()
-                    .foregroundStyle(Color("TextColor"))
-            }
-            VStack {
-                HStack {
-                    Text("Atmosphere")
-                        .multilineTextAlignment(.leading)
-                        .foregroundStyle(Color("TitleFont"))
-                    Spacer()
+                VStack(alignment: .leading, spacing: 7) {
+                    Text("Choose Filters")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color("TextColor"))
+                    Text("Choosing 'none' will include all areas.")
+                        .font(.footnote)
+                        .foregroundStyle(.gray)
                 }
-                .padding([.top, .trailing])
-                ForEach(filterViewModel.atmosphereFilter) { filter in
-                    HStack {
-                        Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
-                            .font(.footnote)
-                        Text(filter.name.capitalizedWord)
-                        Spacer()
-                    }
-                    .font(.subheadline)
-                    .padding([.top, .leading, .trailing])
-                    .foregroundStyle(Color("FilterList"))
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        filterViewModel.atmoFilterRowTapped(filterRow: filter)
-                    }
-                }
-                .padding([.top, .trailing])
                 
-                HStack {
-                    Text("Volume Levels")
-                        .multilineTextAlignment(.leading)
-                        .foregroundStyle(Color("TitleFont"))
-                    Spacer()
-                }
-                .padding([.top, .trailing])
-                ForEach(filterViewModel.volumeFilter) { filter in
-                    HStack {
-                        Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
-                            .font(.footnote)
-                        Text(filter.name.capitalizedWord)
-                        Spacer()
-                    }
-                    .font(.subheadline)
-                    .padding([.leading, .trailing])
-                    .foregroundStyle(Color("FilterList"))
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        filterViewModel.volumeFilterRowTapped(filterRow: filter)
-                    }
-                }
-                HStack {
-                    Text("Features")
-                        .multilineTextAlignment(.leading)
-                        .foregroundStyle(Color("TitleFont"))
-                    Spacer()
-                }
-                .padding([.top, .trailing])
-                ForEach(filterViewModel.featureFilter) { filter in
-                    HStack {
-                        Image(systemName: filter.selected ? "checkmark.square.fill" : "square")
-                            .font(.footnote)
-                        Text(filter.name.capitalizedWord)
-                        Spacer()
-                    }
-                    .font(.subheadline)
-                    .padding([.top, .leading, .trailing])     
-                    .foregroundStyle(Color("FilterList"))
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        filterViewModel.featureFilterRowTapped(filterRow: filter)
-                    }
-                }
+                Spacer()
             }
             .padding()
+            
+            
+            // Choose Filters
+            VStack {
+                HStack {
+                    // Atmosphere
+                    Button {
+                        filterViewModel.atmoFilterRowTapped(filterRow: filterViewModel.atmosphereFilter[0])
+                    } label: {
+                        VStack {
+                            Image(systemName: "tree.fill")
+                            Text("Outdoors")
+                        }
+                        .modifier(FilterItem(isSelected: filterViewModel.atmosphereFilter[0].selected))
+                        .modifier(FilterBox(isSelected: filterViewModel.atmosphereFilter[0].selected))
+                    }
+                    Spacer()
+                    // Volume Levels
+                    Button {
+                        filterViewModel.volumeFilterRowTapped(filterRow: filterViewModel.volumeFilter[0])
+                    } label: {
+                        VStack {
+                            Image(systemName: "speaker.wave.3.fill")
+                            Text("GroupStudy")
+                        }
+                        .modifier(FilterItem(isSelected: filterViewModel.volumeFilter[0].selected))
+                        .modifier(FilterBox(isSelected: filterViewModel.volumeFilter[0].selected))
+                    }
+                    Spacer()
+                    // Microwave
+                    Button {
+                        filterViewModel.featureFilterRowTapped(filterRow: filterViewModel.featureFilter[0])
+                    } label: {
+                        VStack {
+                            Image(systemName: "microwave.fill")
+                            Text("Microwave")
+                        }
+                        .modifier(FilterItem(isSelected: filterViewModel.featureFilter[0].selected))
+                        .modifier(FilterBox(isSelected: filterViewModel.featureFilter[0].selected))
+                    }
+                }
+                .padding(.horizontal)
+                HStack {
+                    // Printer
+                    Button {
+                        filterViewModel.featureFilterRowTapped(filterRow: filterViewModel.featureFilter[1])
+                    } label: {
+                        VStack {
+                            Image(systemName: "printer.fill")
+                            Text("Printer")
+                        }
+                        .modifier(FilterItem(isSelected: filterViewModel.featureFilter[1].selected))
+                        .modifier(FilterBox(isSelected: filterViewModel.featureFilter[1].selected))
+                    }
+                    Spacer()
+                    // Outlets
+                    Button {
+                        filterViewModel.featureFilterRowTapped(filterRow: filterViewModel.featureFilter[2])
+                    } label: {
+                        VStack {
+                            Image(systemName: "poweroutlet.type.b.square.fill")
+                            Text("Outlets")
+                        }
+                        .modifier(FilterItem(isSelected: filterViewModel.featureFilter[2].selected))
+                        .modifier(FilterBox(isSelected: filterViewModel.featureFilter[2].selected))
+                    }
+                    Spacer()
+                    // Computers
+                    Button {
+                        filterViewModel.featureFilterRowTapped(filterRow: filterViewModel.featureFilter[3])
+                    } label: {
+                        VStack {
+                            Image(systemName: "desktopcomputer")
+                            Text("Computers")
+                        }
+                        .modifier(FilterItem(isSelected: filterViewModel.featureFilter[3].selected))
+                        .modifier(FilterBox(isSelected: filterViewModel.featureFilter[3].selected))
+                    }
+                }
+                .padding(.horizontal)
+                HStack {
+                    // Dining
+                    Button {
+                        filterViewModel.featureFilterRowTapped(filterRow: filterViewModel.featureFilter[4])
+                    } label: {
+                        VStack {
+                            Image(systemName: "fork.knife")
+                            Text("Dining")
+                        }
+                        .modifier(FilterItem(isSelected: filterViewModel.featureFilter[4].selected))
+                        .modifier(FilterBox(isSelected: filterViewModel.featureFilter[4].selected))
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal)
+            }
         }
-        .overlay {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 0.5)
-                .foregroundStyle(Color(.systemGray4))
-                .shadow(color: Color("FilterList").opacity(0.4), radius:2)
-        }
-        .padding(.horizontal)
     }
 }
 
-//struct CollapsedFilterView: View {
-//    var body: some View {
-//        HStack {
-//            Text("Choose filters")
-//                .padding()
-//                .font(.subheadline)
-//                .foregroundStyle(Color("TextColor").opacity(0.7))
-//            Spacer()
-//            Image(systemName: "chevron.down")
-//                .padding()
-//                .foregroundStyle(Color("TextColor"))
-//        }
-//        .overlay {
-//            RoundedRectangle(cornerRadius: 10)
-//                .stroke(lineWidth: 0.5)
-//                .foregroundStyle(Color(.systemGray4))
-//                .shadow(color: Color("TextColor").opacity(0.4), radius:2)
-//        }
-//        .padding(.horizontal)
-//    }
-//}
+struct FilterItem: ViewModifier {
+    var isSelected: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .frame(width:80, height: 80)
+            .padding()
+            .font(.system(size: 13, weight: .semibold))
+            .foregroundStyle(isSelected ? .blue : Color("FilterList"))
+    }
+}
+
+struct FilterBox: ViewModifier {
+    var isSelected: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 0.5)
+                    .foregroundStyle(isSelected ? .blue : Color("FilterList"))
+                    .shadow(color: Color(.systemGray4).opacity(0.4), radius:2)
+            }
+    }
+}
+
 
 #Preview {
     SearchView(show : .constant(false))

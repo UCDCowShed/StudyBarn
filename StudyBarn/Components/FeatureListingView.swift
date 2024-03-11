@@ -82,6 +82,13 @@ struct FeatureListingView: View {
                         Text("Microwave")
                     }
                 }
+                // Microwave
+                if area?.computers ?? subArea?.computers ?? false {
+                    VStack{
+                        Image(systemName: "desktopcomputer")
+                        Text("Computers")
+                    }
+                }
             }
             .font(.footnote)
             .foregroundStyle(Color("TitleFont"))
