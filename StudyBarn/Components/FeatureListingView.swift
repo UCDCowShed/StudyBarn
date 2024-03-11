@@ -87,8 +87,6 @@ struct FeatureListingView: View {
             .foregroundStyle(Color("TitleFont"))
             .fontWeight(.semibold)
         }
-        .padding(.leading)
-        .padding(.top)
         .scrollTargetBehavior(.paging)
     }
 }

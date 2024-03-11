@@ -59,6 +59,46 @@ final class AreaManager {
         return openHour + " - " + closeHour
     }
     
+    // Determine Area opened or closed
+    // Return True if opened
+    func determineOpenOrClose(openHour: HourMin?, closeHour: HourMin?) -> Bool {
+        guard let openHour = openHour else {return false}
+        guard let closeHour = closeHour else {return false}
+        
+        // Check Always opened 00:00AM - 00:00AM
+        if openHour.hour == 0 && closeHour.hour == 0 && openHour.minute == 0 && closeHour.minute == 0 {
+            return true
+        }
+        
+        let curTime = Utilities.shared.getCurrentTime()
+        
+        // Format 0AM to 24
+        var formattedCloseHour = closeHour.hour
+        
+        if formattedCloseHour == 0 {
+            formattedCloseHour = 24
+        }
+        
+        // Before Open Hour
+        if curTime.hour < openHour.hour {
+            return false
+        }
+        // Before Open Hour: same hour but before minute
+        else if curTime.hour == openHour.hour && curTime.minute <= openHour.minute {
+            return false
+        }
+        // After Closed Hour: same hour but after the minute
+        else if curTime.hour == formattedCloseHour && curTime.minute >= closeHour.minute {
+            return false
+        }
+        // After Closed Hour
+        else if curTime.hour > formattedCloseHour {
+            return false
+        }
+        // In between Open and Close Hours
+        return true
+    }
+    
     // Returns Document Id for creating AreaModel
     func getDocumentId() -> String {
         return areaCollection.document().documentID
