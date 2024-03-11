@@ -28,8 +28,6 @@ final class SelectViewModel: ObservableObject {
             // update areas
             areasHashmap[newArea.areaId] = newArea
         }
-        
-        print(areasIds)
     }
     
     func loadAllArea() async throws {
