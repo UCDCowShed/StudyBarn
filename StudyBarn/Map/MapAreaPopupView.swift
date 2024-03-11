@@ -26,7 +26,6 @@ struct MapAreaPopupView: View {
                 .tabViewStyle(.page)
                 // Detailed Features
                 VStack {
-                    FeatureListingView(area: area, subArea: nil)
                     HStack(alignment: .top) {
                         VStack(alignment: .leading) {
                             Text(area?.name ?? "Area")
@@ -36,17 +35,25 @@ struct MapAreaPopupView: View {
                                 .font(.subheadline)
                         }
                         Spacer()
+                        // Open/Close Indicator
                         VStack {
-                            HStack(spacing: 2) {
-                                Image(systemName: "star.fill")
-                                Text("\(area?.rating ?? 0.0, specifier: "%.1f")")
+                            // Opened
+                            if AreaManager.shared.determineOpenOrClose(openHour: area?.openHour[todayDate], closeHour: area?.closeHour[todayDate]) {
+                                Text("Open")
+                                    .font(.headline)
+                                    .foregroundStyle(.green)
                             }
-                            .font(.subheadline)
-                            HeartButtonView()
-                                .padding(.top, 8.0)
+                            // Closed
+                            else {
+                                Text("Closed")
+                                    .font(.headline)
+                                    .foregroundStyle(.red)
+                            }
+                            
                         }
                         
                     }
+                    FeatureListingView(area: area, subArea: nil)
                 }
                 .padding()
             }
