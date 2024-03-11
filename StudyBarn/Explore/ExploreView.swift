@@ -28,6 +28,29 @@ struct ExploreView: View {
                 ZStack {
                     // Render areas
                     if !loadingAreas {
+                        // Reload if nothing is displayed
+                        if viewModel.areasIds.isEmpty {
+                            // Refresh Button
+                            VStack {
+                                    
+                                Button {
+                                    Task {
+                                        try await viewModel.loadAllArea()
+                                    }
+                                } label: {
+                                    VStack {
+                                        Image(systemName: "arrow.clockwise.circle.fill")
+                                            .font(.system(size: 40))
+                                            .foregroundStyle(.gray)
+                                    }
+                                }
+                                Text("Nothing Found.")
+                                    .font(.title)
+                                Text("Please Refresh it.")
+                                    .font(.footnote)
+                                    .foregroundStyle(.gray)
+                            }
+                        }
                         ScrollView {
                             VStack(spacing: 20) {
                                 ForEach(viewModel.areasIds, id: \.self) { areaId in
@@ -44,7 +67,6 @@ struct ExploreView: View {
                                     }
                                     .buttonStyle(PlainButtonStyle())
                                 }
-                                
                             }
                             .padding()
                         }
