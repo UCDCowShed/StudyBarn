@@ -23,6 +23,7 @@ struct SelectView: View {
                 .environmentObject(userViewModel)
             MapView()
                 .environmentObject(viewModel)
+                .environmentObject(userViewModel)
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }

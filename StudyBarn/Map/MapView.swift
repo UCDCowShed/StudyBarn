@@ -11,9 +11,12 @@ import MapKit
 struct MapView: View {
     @State private var position : MapCameraPosition = .automatic
     @EnvironmentObject private var viewModel: SelectViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @State private var showSearchView = false
     @State private var showPopUp: (Bool, String) = (false, "")
+    @State private var gotoDetailsView: (Bool, String) = (false, "")
     
+    //let locationManager = CLLocationManager()
     
     var body: some View {
         NavigationStack{
@@ -29,34 +32,36 @@ struct MapView: View {
                             let coor = viewModel.areaCoordinates[areaId]
                             if let name = name, let coor = coor {
                                 Annotation(name, coordinate: coor) {
+                                    Button {
+                                        showPopUp = (true, areaId)
+                                        print("clicked, showPopUp = \(showPopUp.0) areaId = \(showPopUp.1)")
+                                    } label: {
                                         ZStack {
                                             Image(systemName: "circle.fill")
-                                                .resizable()
-                                                .frame(maxWidth: 45, maxHeight: 50)
+                                                .font(.system(size: 25))
                                                 .padding(.bottom, 18)
                                                 .foregroundStyle(Color("Pincolor"))
                                             Image(systemName: "triangle.fill")
-                                                .frame(maxWidth: 40, maxHeight: 45)
+                                                .font(.system(size: 25))
                                                 .rotationEffect(Angle(degrees: 180))
                                                 .foregroundStyle(Color("Pincolor"))
                                             Image(systemName: "book")
                                                 .resizable()
-                                                .frame(maxWidth: 16, maxHeight: 13)
+                                                .frame(maxWidth: 15, maxHeight: 12)
                                                 .padding(.bottom, 15)
                                                 .foregroundStyle(.white)
                                         }
-                                        .padding(30)
-                                        .onTapGesture() {
-                                            showPopUp = (true, areaId)
-                                        }
-                                        .padding(-30)
+                                    }
                                 }
                                 // show area pop up when clicked on, pass in area here
                             }
                         }
+                        //UserAnnotation()
                     }
-                    .onTapGesture {
-                        showPopUp = (false, "")
+                    .onChange(of: showPopUp.1) {
+                        if showPopUp.0 {
+                            print("popup view showing areaId \(showPopUp.1)")
+                        }
                     }
                     .safeAreaInset(edge: .top) {
                         HStack {
@@ -69,17 +74,28 @@ struct MapView: View {
                                 }
                         }
                     }
-                    if showPopUp.0 {
-                        VStack {
-                            Spacer()
+                    VStack {
+                        Spacer()
+                            .onTapGesture {
+                                showPopUp = (false, "")
+                            }
+                        if showPopUp.0 {
                             MapAreaPopupView(area: viewModel.areasHashmap[showPopUp.1])
+                                .onTapGesture() {
+                                    gotoDetailsView = showPopUp
+                                }
+                                .padding()
                         }
-                        .padding()
-
                     }
                 }
+                
                 .onChange(of: showSearchView) {
                     position = .automatic
+                }
+                .navigationDestination(isPresented: $gotoDetailsView.0) {
+                    DetailsView(area: viewModel.areasHashmap[gotoDetailsView.1])
+                        .environmentObject(viewModel)
+                        .environmentObject(userViewModel)
                 }
             }
         }
@@ -89,4 +105,5 @@ struct MapView: View {
 #Preview {
     MapView()
         .environmentObject(SelectViewModel())
+        .environmentObject(UserViewModel())
 }

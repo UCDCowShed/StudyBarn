@@ -110,5 +110,6 @@ struct DetailsView: View {
 
 #Preview {
     DetailsView(area: nil)
+        .environmentObject(SelectViewModel())
         .environmentObject(UserViewModel())
 }
