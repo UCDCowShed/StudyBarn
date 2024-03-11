@@ -20,29 +20,42 @@ struct LocationBoxView: View {
             .frame(height: 200)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .tabViewStyle(.page)
-            // Detailed Features
-            FeatureListingView(area: area, subArea: nil)
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    Text(area?.name ?? "Area")
-                        .font(.title)
-                    // Default is "Closed"
-                    Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
-                        .font(.subheadline)
-                }
-                Spacer()
-                VStack {
-                    HStack(spacing: 2) {
-                        Image(systemName: "star.fill")
-                        Text("\(area?.rating ?? 0.0, specifier: "%.1f")")
-                    }
-                    .font(.subheadline)
-                    HeartButtonView()
-                        .padding(.top, 8.0)
-                }
+            
+            VStack{
+                // Detailed Features
+                FeatureListingView(area: area, subArea: nil)
                 
+                // Descriptions
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Text(area?.name ?? "Area")
+                            .font(.title)
+                        // Default is "Closed"
+                        Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
+                            .font(.subheadline)
+                    }
+                    Spacer()
+                    
+                    // Open/Close Indicator
+                    VStack {
+                        // Opened
+                        if AreaManager.shared.determineOpenOrClose(openHour: area?.openHour[todayDate], closeHour: area?.closeHour[todayDate]) {
+                            Text("Open")
+                                .font(.headline)
+                                .foregroundStyle(.green)
+                        }
+                        // Closed
+                        else {
+                            Text("Closed")
+                                .font(.headline)
+                                .foregroundStyle(.red)
+                        }
+                        
+                    }
+                }
             }
-            .padding()
+            .padding(.horizontal)
+            
         }
     }
 }

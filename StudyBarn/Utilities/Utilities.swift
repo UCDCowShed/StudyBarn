@@ -33,13 +33,20 @@ final class Utilities {
     
     func getCurrentDate() -> String {
         let currentDate = Date()
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
 
         let dayString = dateFormatter.string(from: currentDate)
         
         return dayString
+    }
+    
+    func getCurrentTime() -> HourMin {
+        let curDate = Date()
+        let hour = Calendar.current.component(.hour, from: curDate)
+        let minute = Calendar.current.component(.minute, from: curDate)
+        
+        return HourMin(hour: hour, minute: minute)
     }
 }
 
