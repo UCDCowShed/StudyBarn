@@ -32,7 +32,6 @@ struct ExploreView: View {
                         if viewModel.areasIds.isEmpty {
                             // Refresh Button
                             VStack {
-                                    
                                 Button {
                                     Task {
                                         try await viewModel.loadAllArea()
