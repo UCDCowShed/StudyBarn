@@ -96,7 +96,7 @@ struct ExploreView: View {
                                 // Load all areas
                                 try await viewModel.loadAllArea()
                                 // Initialize and start monitoring user movements
-                                await viewModel.initializeMonitor()
+                                await viewModel.initializeMonitor(userId: userViewModel.user?.userId)
                                 startMonitoring = true
                                 firstLoaded = false
                             }

@@ -50,7 +50,12 @@ struct SelectView: View {
         // Start Monitoring when the monitor is setup
         .onChange(of: startMonitoring) {
             Task {
-                await viewModel.startMonitorAreas()
+                do {
+                    try await viewModel.startMonitorAreas()
+                }
+                catch {
+                    print(error)
+                }
             }
         }
     }

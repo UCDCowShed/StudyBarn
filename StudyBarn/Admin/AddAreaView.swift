@@ -30,7 +30,7 @@ struct AddAreaView: View {
     @State private var longitude: String = ""
     
     private func addNewArea() {
-        let dates = ["Monday", "TuesDay", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        let dates = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
         
         let openHours = [dates[0]: openHourMon, dates[1]: openHourTue, dates[2]: openHourWed, dates[3]: openHourThr, dates[4]: openHourFri, dates[5]: openHourSat, dates[6]: openHourSun]
         
