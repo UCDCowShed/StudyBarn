@@ -34,6 +34,7 @@
 		F1058D2C2B97F80B0067319B /* HeartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1058D2B2B97F80B0067319B /* HeartButtonView.swift */; };
 		F10E9FD92B9FD5AE00DBCD79 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E9FD82B9FD5AE00DBCD79 /* MapManager.swift */; };
 		F10E9FDB2B9FE07F00DBCD79 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E9FDA2B9FE07F00DBCD79 /* MapViewModel.swift */; };
+		F10E9FDD2BA015AB00DBCD79 /* UserAreaTrackedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E9FDC2BA015AB00DBCD79 /* UserAreaTrackedModel.swift */; };
 		F113CE6F2B965B3000638901 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113CE6E2B965B3000638901 /* DetailsViewModel.swift */; };
 		F113CE752B9686BB00638901 /* SubAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113CE742B9686BB00638901 /* SubAreaView.swift */; };
 		F1351ECE2B8EA2DC005864D1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1351ECD2B8EA2DC005864D1 /* UserModel.swift */; };
@@ -84,6 +85,7 @@
 		F1058D2B2B97F80B0067319B /* HeartButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartButtonView.swift; sourceTree = "<group>"; };
 		F10E9FD82B9FD5AE00DBCD79 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		F10E9FDA2B9FE07F00DBCD79 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		F10E9FDC2BA015AB00DBCD79 /* UserAreaTrackedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaTrackedModel.swift; sourceTree = "<group>"; };
 		F113CE6E2B965B3000638901 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F113CE742B9686BB00638901 /* SubAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubAreaView.swift; sourceTree = "<group>"; };
 		F1351ECD2B8EA2DC005864D1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				F1351ED62B8EAA6E005864D1 /* UserViewModel.swift */,
 				F169F4492B8FAB0800DCA7D5 /* AreaModel.swift */,
 				F169F44D2B8FAB2200DCA7D5 /* SubAreaModel.swift */,
+				F10E9FDC2BA015AB00DBCD79 /* UserAreaTrackedModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				F199DB692B9D1408007BA9DF /* FeatureListingView.swift in Sources */,
 				F1C49A4B2B919CB3008CC172 /* SearchView.swift in Sources */,
 				F169F4522B8FB36000DCA7D5 /* AreaManager.swift in Sources */,
+				F10E9FDD2BA015AB00DBCD79 /* UserAreaTrackedModel.swift in Sources */,
 				079C3E752B97A30200DBEEAF /* AddImageViewModel.swift in Sources */,
 				07F7B4EF2B7EE6B400D077A1 /* ExploreView.swift in Sources */,
 				F13687B72B883B3D00A9A974 /* SignInGoogleHelper.swift in Sources */,

@@ -15,6 +15,7 @@ struct ExploreView: View {
     @State private var showSearchView = false
     @State private var loadingAreas = true
     @State private var firstLoaded: Bool = true
+    @Binding var startMonitoring: Bool
     
     var body: some View {
         NavigationStack {
@@ -90,9 +91,13 @@ struct ExploreView: View {
                 .onAppear() {
                     Task {
                         do {
-                            // Load only when no areas to display
+                            // Load when app just started
                             if firstLoaded {
+                                // Load all areas
                                 try await viewModel.loadAllArea()
+                                // Initialize and start monitoring user movements
+                                await viewModel.initializeMonitor(userId: userViewModel.user?.userId)
+                                startMonitoring = true
                                 firstLoaded = false
                             }
                             loadingAreas = false
@@ -118,7 +123,7 @@ struct ExploreView: View {
 }
 
 #Preview {
-    ExploreView()
+    ExploreView(startMonitoring: .constant(false))
         .environmentObject(SelectViewModel())
         .environmentObject(UserViewModel())
 }
