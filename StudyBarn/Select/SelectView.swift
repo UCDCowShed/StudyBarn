@@ -12,21 +12,22 @@ struct SelectView: View {
     @Binding var showSignInView: Bool
     @StateObject private var viewModel: SelectViewModel = SelectViewModel()
     @StateObject var userViewModel = UserViewModel()
+    @State var startMonitoring: Bool = false
     
     var body: some View {
         TabView {
-            ExploreView()
-                .environmentObject(viewModel)
+            ExploreView(startMonitoring: $startMonitoring)
                 .tabItem {
                     Label("Explore", systemImage: "magnifyingglass")
                 }
-                .environmentObject(userViewModel)
-            MapView()
                 .environmentObject(viewModel)
                 .environmentObject(userViewModel)
+            MapView()
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }
+                .environmentObject(viewModel)
+                .environmentObject(userViewModel)
             ProfileView(showSignInView: $showSignInView)
                 .tabItem {
                     Label("Profile", systemImage: "person.fill")
@@ -34,15 +35,23 @@ struct SelectView: View {
                 .environmentObject(userViewModel)
             if userViewModel.user?.admin ?? false {
                 AdminView()
-                    .environmentObject(viewModel)
                     .tabItem {
                         Label("Admin", systemImage: "folder")
                     }
+                    .environmentObject(viewModel)
             }
         }
         // Load user from the database once app starts
         .task {
             try? await userViewModel.loadUser()
+            // set user to selectViewModel when user gets loaded
+            viewModel.setUserId(userId: userViewModel.user?.userId)
+        }
+        // Start Monitoring when the monitor is setup
+        .onChange(of: startMonitoring) {
+            Task {
+                await viewModel.startMonitorAreas()
+            }
         }
     }
 }

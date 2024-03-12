@@ -13,7 +13,7 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
     static let shared = MapManager()
     private override init() {}
     
-    // By Default, user turned off location tracking on there phone
+    // By Default, assume that user turned off location tracking on their phone settings
     var locationManager: CLLocationManager? = nil
     
     func checkIfLocationServiceIsEnabled() {
@@ -23,9 +23,7 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
                 
                 // Critical Section
                 DispatchQueue.main.async {
-                    print("set location manager")
                     self.locationManager = CLLocationManager()
-                    print("set it")
                     guard let locationManager = self.locationManager else { return }
                     locationManager.delegate = self
                 }
@@ -43,14 +41,12 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
             
         case .notDetermined:
             // Ask Permission
-            print("Authorization not set")
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
             print("Your Location is restricted..")
         case .denied:
             print("Location Permission Denied. The User needs to enable this from the settings.")
         case .authorizedAlways, .authorizedWhenInUse:
-            print("Authorized to use")
             break
         @unknown default:
             break
