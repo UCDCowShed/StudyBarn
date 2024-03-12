@@ -18,10 +18,6 @@ struct MapView: View {
     @State var gotoDetailsView: Bool = false
     @State var refresh: Bool = false
     
-    let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 38.5382, longitude: -121.7617), span: MKCoordinateSpan(latitudeDelta: 1000, longitudeDelta: 1000))
-    
-    //let locationManager = CLLocationManager()
-    @State private var gotoDetailsView: (Bool, String) = (false, "")
     
     var body: some View {
         NavigationStack{
