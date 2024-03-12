@@ -14,7 +14,10 @@ struct MapView: View {
     @EnvironmentObject private var userViewModel: UserViewModel
     @State private var showSearchView = false
     @State private var showPopUp: (Bool, String) = (false, "")
-    @State private var gotoDetailsView: (Bool, String) = (false, "")
+    @State var gotoDetailsView: Bool = false
+    @State var refresh: Bool = false
+    
+    let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 38.5382, longitude: -121.7617), span: MKCoordinateSpan(latitudeDelta: 1000, longitudeDelta: 1000))
     
     //let locationManager = CLLocationManager()
     
@@ -58,9 +61,13 @@ struct MapView: View {
                         }
                         //UserAnnotation()
                     }
-                    .onChange(of: showPopUp.1) {
-                        if showPopUp.0 {
-                            print("popup view showing areaId \(showPopUp.1)")
+                    .onChange(of: refresh) {
+                        if refresh {
+                            Task {
+                                try await viewModel.loadAllArea()
+                            }
+                            position = .automatic
+                            refresh = false
                         }
                     }
                     .safeAreaInset(edge: .top) {
@@ -70,30 +77,29 @@ struct MapView: View {
                                     withAnimation(.snappy) {
                                         showSearchView.toggle()
                                     }
-                                    position = .automatic
                                 }
                         }
                     }
                     VStack {
                         Spacer()
-                            .onTapGesture {
-                                showPopUp = (false, "")
-                            }
                         if showPopUp.0 {
-                            MapAreaPopupView(area: viewModel.areasHashmap[showPopUp.1])
-                                .onTapGesture() {
-                                    gotoDetailsView = showPopUp
-                                }
+                            MapAreaPopupView(area: viewModel.areasHashmap[showPopUp.1], gotoDetailsView: $gotoDetailsView, refresh: $refresh)
+                                .environmentObject(viewModel)
                                 .padding()
                         }
                     }
+                    .onTapGesture {
+                        showPopUp = (false, "")
+                    }
                 }
-                
                 .onChange(of: showSearchView) {
                     position = .automatic
+                    if Array(viewModel.areaCoordinates.keys).isEmpty {
+                        showPopUp = (false, "")
+                    }
                 }
-                .navigationDestination(isPresented: $gotoDetailsView.0) {
-                    DetailsView(area: viewModel.areasHashmap[gotoDetailsView.1])
+                .navigationDestination(isPresented: $gotoDetailsView) {
+                    DetailsView(area: viewModel.areasHashmap[showPopUp.1])
                         .environmentObject(viewModel)
                         .environmentObject(userViewModel)
                 }
