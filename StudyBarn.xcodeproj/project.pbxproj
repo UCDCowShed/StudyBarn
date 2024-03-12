@@ -32,6 +32,8 @@
 		07F7B4FD2B7FBCC200D077A1 /* LocationBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B4FC2B7FBCC200D077A1 /* LocationBoxView.swift */; };
 		846231A92B919135003F25C2 /* ListingCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846231A82B919135003F25C2 /* ListingCarouselView.swift */; };
 		F1058D2C2B97F80B0067319B /* HeartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1058D2B2B97F80B0067319B /* HeartButtonView.swift */; };
+		F10E9FD92B9FD5AE00DBCD79 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E9FD82B9FD5AE00DBCD79 /* MapManager.swift */; };
+		F10E9FDB2B9FE07F00DBCD79 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E9FDA2B9FE07F00DBCD79 /* MapViewModel.swift */; };
 		F113CE6F2B965B3000638901 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113CE6E2B965B3000638901 /* DetailsViewModel.swift */; };
 		F113CE752B9686BB00638901 /* SubAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113CE742B9686BB00638901 /* SubAreaView.swift */; };
 		F1351ECE2B8EA2DC005864D1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1351ECD2B8EA2DC005864D1 /* UserModel.swift */; };
@@ -80,6 +82,8 @@
 		07F7B4FC2B7FBCC200D077A1 /* LocationBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBoxView.swift; sourceTree = "<group>"; };
 		846231A82B919135003F25C2 /* ListingCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCarouselView.swift; sourceTree = "<group>"; };
 		F1058D2B2B97F80B0067319B /* HeartButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartButtonView.swift; sourceTree = "<group>"; };
+		F10E9FD82B9FD5AE00DBCD79 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
+		F10E9FDA2B9FE07F00DBCD79 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		F113CE6E2B965B3000638901 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F113CE742B9686BB00638901 /* SubAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubAreaView.swift; sourceTree = "<group>"; };
 		F1351ECD2B8EA2DC005864D1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 			children = (
 				07F7B4F22B7EE7E400D077A1 /* MapView.swift */,
 				07904E1A2B9CDF46003B44AC /* MapAreaPopupView.swift */,
+				F10E9FDA2B9FE07F00DBCD79 /* MapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 				F169F4512B8FB36000DCA7D5 /* AreaManager.swift */,
 				F169F4532B8FB36900DCA7D5 /* SubAreaManager.swift */,
 				079C3E6F2B979EA800DBEEAF /* ImageManager.swift */,
+				F10E9FD82B9FD5AE00DBCD79 /* MapManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				F18758692B886083004CC7FE /* GoogleLoginButton.swift in Sources */,
 				F169F44A2B8FAB0800DCA7D5 /* AreaModel.swift in Sources */,
 				07F7B4F32B7EE7E400D077A1 /* MapView.swift in Sources */,
+				F10E9FDB2B9FE07F00DBCD79 /* MapViewModel.swift in Sources */,
 				07A093B92B883F0D00FC5511 /* DetailsView.swift in Sources */,
 				F199DB692B9D1408007BA9DF /* FeatureListingView.swift in Sources */,
 				F1C49A4B2B919CB3008CC172 /* SearchView.swift in Sources */,
@@ -427,6 +434,7 @@
 				F1058D2C2B97F80B0067319B /* HeartButtonView.swift in Sources */,
 				F169F4582B8FF92200DCA7D5 /* AdminView.swift in Sources */,
 				07F7B4E12B7EE69800D077A1 /* StudyBarnApp.swift in Sources */,
+				F10E9FD92B9FD5AE00DBCD79 /* MapManager.swift in Sources */,
 				F169F45B2B8FFA0800DCA7D5 /* AddAreaView.swift in Sources */,
 				F1351ECE2B8EA2DC005864D1 /* UserModel.swift in Sources */,
 				F1C49A4E2B91AB38008CC172 /* SelectViewModel.swift in Sources */,
