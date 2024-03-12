@@ -9,7 +9,8 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @State private var position : MapCameraPosition = .automatic
+    @StateObject private var mapViewModel: MapViewModel = MapViewModel()
+    @State private var position : MapCameraPosition = .userLocation(fallback: .automatic)
     @EnvironmentObject private var viewModel: SelectViewModel
     @EnvironmentObject private var userViewModel: UserViewModel
     @State private var showSearchView = false
@@ -20,6 +21,7 @@ struct MapView: View {
     let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 38.5382, longitude: -121.7617), span: MKCoordinateSpan(latitudeDelta: 1000, longitudeDelta: 1000))
     
     //let locationManager = CLLocationManager()
+    @State private var gotoDetailsView: (Bool, String) = (false, "")
     
     var body: some View {
         NavigationStack{
@@ -56,10 +58,15 @@ struct MapView: View {
                                         }
                                     }
                                 }
-                                // show area pop up when clicked on, pass in area here
                             }
                         }
-                        //UserAnnotation()
+                    }
+                    .mapControls {
+                        MapUserLocationButton()
+                        MapPitchToggle()
+                    }
+                    .onAppear() {
+                        mapViewModel.checkIfLocationServiceIsEnabled()
                     }
                     .onChange(of: refresh) {
                         if refresh {
@@ -77,6 +84,7 @@ struct MapView: View {
                                     withAnimation(.snappy) {
                                         showSearchView.toggle()
                                     }
+                                    position = .userLocation(fallback: .automatic)
                                 }
                         }
                     }
@@ -97,6 +105,7 @@ struct MapView: View {
                     if Array(viewModel.areaCoordinates.keys).isEmpty {
                         showPopUp = (false, "")
                     }
+                    position = .userLocation(fallback: .automatic)
                 }
                 .navigationDestination(isPresented: $gotoDetailsView) {
                     DetailsView(area: viewModel.areasHashmap[showPopUp.1])
