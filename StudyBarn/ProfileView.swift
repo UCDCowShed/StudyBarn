@@ -84,11 +84,12 @@ struct ProfileView: View {
                                         .stroke(.red, lineWidth: 0.8)
                                 )
                         }
-                        .padding(.leading, 10)
+                        .padding(.leading, 16)
                         Spacer()
                         
                     }
                 }
+                .padding()
                 Spacer()
                 
                 Divider()
