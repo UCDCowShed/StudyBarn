@@ -35,8 +35,6 @@ struct DetailsView: View {
                         Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
                             .font(.custom("Futura", size: 16))
                             .foregroundStyle(.gray)
-                    
-                    
                 }
                 Spacer()
                 VStack {
@@ -56,7 +54,6 @@ struct DetailsView: View {
                         Text("Visited")
                             .font(.custom("Futura", size: 14))
                     }
-                    .opacity(0.6)
                 }
                 
             }
