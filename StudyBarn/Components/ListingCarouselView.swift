@@ -39,16 +39,18 @@ struct ListingCarouselView: View {
                         self.urls = urls
                     }
                 }
-            } else if let subArea = area, let isArea = isArea {
+            }
+            if let subArea = subArea, let isArea = isArea {
                 if let images = subArea.images {
                     if !images.isEmpty {
-                        let urls = try? await ImageManager.shared.getAllImages(areaID: subArea.areaId, images: images, isArea: isArea)
+                        print("subarea view images loading")
+                        let urls = try? await ImageManager.shared.getAllImages(areaID: subArea.subAreaId, images: images, isArea: isArea)
+                        print("got images for subarea")
                         self.urls = urls
                     }
                 }
             }
         }
-        
     }
 }
 
