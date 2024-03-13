@@ -27,7 +27,12 @@ struct ListingCarouselView: View {
                     }
                 }
             } else {
-                Image("Shields-outside")
+                VStack {
+                    Image("StudyBarnLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                }
             }
         }
         .tabViewStyle(.page)

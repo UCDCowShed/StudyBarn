@@ -54,11 +54,11 @@ struct ExploreView: View {
                             }
                         }
                         ScrollView {
-                            VStack(spacing: 20) {
+                            VStack(spacing: 15) {
                                 ForEach(viewModel.areasIds, id: \.self) { areaId in
                                     let area = viewModel.areasHashmap[areaId]
                                     NavigationLink {
-                                        DetailsView(area: area)
+                                        DetailsView(area: area, frequency: viewModel.areaVisitFrequencies[areaId]?.count)
                                             .environmentObject(viewModel)
                                             .environmentObject(userViewModel)
                                             .navigationBarBackButtonHidden(false)
@@ -102,6 +102,8 @@ struct ExploreView: View {
                                 startMonitoring = true
                                 firstLoaded = false
                             }
+                            // Load area visit frequencies
+                            try await viewModel.loadAreaVisitFrequencies(userId: userViewModel.user?.userId)
                             loadingAreas = false
                         }
                         catch {
@@ -114,6 +116,8 @@ struct ExploreView: View {
                         loadingAreas = true
                         // Reload by push down
                         try await viewModel.loadAllArea()
+                        // Load area visit frequencies
+                        try await viewModel.loadAreaVisitFrequencies(userId: userViewModel.user?.userId)
                         loadingAreas = false
                     } catch {
                         print(error)

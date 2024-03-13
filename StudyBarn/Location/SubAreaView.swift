@@ -16,7 +16,7 @@ struct SubAreaView: View {
         HStack (alignment: .top) {
             ListingCarouselView(area: nil, subArea: subArea, isArea: false)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                .frame(width: 120, height: 140)
+                .frame(width: 120, height: 120)
                 .tabViewStyle(.page)
             
             // Details of SubArea

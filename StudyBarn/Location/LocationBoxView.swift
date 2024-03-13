@@ -50,8 +50,8 @@ struct LocationBoxView: View {
                                 .font(.headline)
                                 .foregroundStyle(.red)
                         }
-                        
                     }
+                    .padding(.vertical)
                 }
             }
             .padding(.horizontal)

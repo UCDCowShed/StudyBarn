@@ -18,71 +18,108 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationView {
-            VStack () {
+            // Entire View
+            VStack {
+                Spacer()
+                // Profile Details / Logout
                 VStack(alignment: .center, spacing: 10) {
-                    // PROFILE IMAGE
-                    if let userImage = userViewModel.user?.photoUrl {
-                        AsyncImage(url: URL(string: userImage)) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100)
-                                .clipShape(Circle())
-                        } placeholder: {
-                            ProgressView()
-                        }
-                    }
-                    else {
-                        Image("profile")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100)
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.black, lineWidth: 2)
-                            )
-                    }
-                    // USER NAME
-                    Text("\(userViewModel.user?.name ?? "User Name")")
-                        .foregroundStyle(Color("TextColor"))
-                    // USER EMAIL
-                    Text("\(userViewModel.user?.email ?? "User Email")")
-                        .foregroundStyle(Color("TextColor"))
-                        .font(.subheadline)
-            
-                    Text("Logout")
-                        .foregroundStyle(.red)
-                        .onTapGesture {
-                            Task {
-                                do {
-                                    try AuthenticationManager.shared.signOut()
-                                    // Removes monitored areas
-                                    await viewModel.removeMonitorAreas(monitor: monitor)
-                                    showSignInView = true
-                                }
-                                catch {
-                                    print("Failed Logout")
-                                }
+                    HStack {
+                        // PROFILE IMAGE
+                        if let userImage = userViewModel.user?.photoUrl {
+                            AsyncImage(url: URL(string: userImage)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(Circle())
+                                    .overlay(
+                                        Circle()
+                                            .stroke(Color("TextColor"), lineWidth: 2)
+                                    )
+                            } placeholder: {
+                                ProgressView()
                             }
                         }
-                        .frame(width: 100, height: 30)
-                        .overlay( /// apply a rounded border
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(.red, lineWidth: 1)
-                        )
-                        .padding()
-                }
-                
-                Spacer()
-                
-                LazyVStack(spacing: 50) {
-                    ForEach(favoriteSubAreas, id: \.self) { subArea in
-                        SubAreaView(subArea: subArea)
-                            .padding()
+                        else {
+                            Image("DefaultProfileImage")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                                .clipShape(Circle())
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color("TextColor"), lineWidth: 2)
+                                )
+                        }
+                        // User Details
+                        VStack (alignment: .leading){
+                            // USER NAME
+                            Text("\(userViewModel.user?.name ?? "User Name")")
+                                .font(.headline)
+                                .foregroundStyle(Color("TextColor"))
+                            // USER EMAIL
+                            Text("\(userViewModel.user?.email ?? "test@testtestestest.com")")
+                                .foregroundStyle(Color("TextColor"))
+                                .font(.subheadline)
+                            Text("Logout")
+                                .font(.caption)
+                                .foregroundStyle(.red)
+                                .onTapGesture {
+                                    Task {
+                                        do {
+                                            try AuthenticationManager.shared.signOut()
+                                            // Removes monitored areas
+                                            await viewModel.removeMonitorAreas(monitor: monitor)
+                                            showSignInView = true
+                                        }
+                                        catch {
+                                            print("Failed Logout")
+                                        }
+                                    }
+                                }
+                                .frame(width: 60, height: 24)
+                                .overlay( /// apply a rounded border
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(.red, lineWidth: 0.8)
+                                )
+                        }
+                        .padding(.leading, 10)
+                        Spacer()
+                        
                     }
                 }
+                Spacer()
+                
+                Divider()
+                    .padding(.vertical)
+                
+                // Favorites
+                VStack(alignment: .leading, spacing: 7) {
+                    VStack (alignment: .leading){
+                        Text("Your Favorite Study Spots")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(Color("TextColor"))
+                        Text("Add Your Favorite Study Spots!")
+                            .font(.footnote)
+                            .foregroundStyle(.gray)
+                        
+                    }
+                    .padding(.bottom, 6)
+                    
+                    ScrollView {
+                        LazyVStack(spacing: 15) {
+                            ForEach(favoriteSubAreas, id: \.self) { subArea in
+                                SubAreaView(subArea: subArea)
+                                    .padding(.top, 4)
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal, 4)
+                Spacer()
             }
+            .padding()
             .onAppear() {
                 Task {
                     do {
