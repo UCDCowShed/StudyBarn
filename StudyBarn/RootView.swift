@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct RootView: View {
     
     @State private var showSignInView: Bool = false
+    @State var appFirstLaunched: Bool = true
+    @State var monitor: CLMonitor? = nil
     
     var body: some View {
         ZStack {
             if !showSignInView {
                 NavigationStack {
-                    SelectView(showSignInView: $showSignInView)
+                    SelectView(showSignInView: $showSignInView, appFirstLaunched: $appFirstLaunched, monitor: $monitor)
                 }
             }
         }

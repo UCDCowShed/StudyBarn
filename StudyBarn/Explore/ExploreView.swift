@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ExploreView: View {
     
@@ -16,6 +17,7 @@ struct ExploreView: View {
     @State private var loadingAreas = true
     @State private var firstLoaded: Bool = true
     @Binding var startMonitoring: Bool
+    @Binding var monitor: CLMonitor?
     
     var body: some View {
         NavigationStack {
@@ -95,8 +97,8 @@ struct ExploreView: View {
                             if firstLoaded {
                                 // Load all areas
                                 try await viewModel.loadAllArea()
-                                // Initialize and start monitoring user movements
-                                await viewModel.initializeMonitor(userId: userViewModel.user?.userId)
+                                // Set Conditions on Monitor
+                                await viewModel.setConditionOnMonitor(monitor: monitor)
                                 startMonitoring = true
                                 firstLoaded = false
                             }
@@ -123,7 +125,7 @@ struct ExploreView: View {
 }
 
 #Preview {
-    ExploreView(startMonitoring: .constant(false))
+    ExploreView(startMonitoring: .constant(false), monitor: .constant(nil))
         .environmentObject(SelectViewModel())
         .environmentObject(UserViewModel())
 }

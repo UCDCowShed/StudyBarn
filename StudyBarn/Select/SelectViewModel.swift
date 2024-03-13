@@ -13,7 +13,6 @@ final class SelectViewModel: ObservableObject {
     @Published var areasIds: [String] = []
     @Published var areasHashmap: [String: AreaModel] = [:]
     @Published var areaCoordinates: [String: CLLocationCoordinate2D] = [:]
-    @Published var monitor: CLMonitor? = nil
     @Published var userId: String? = nil
     
     // Set User Id
@@ -52,69 +51,73 @@ final class SelectViewModel: ObservableObject {
     
     // Initialize Monitor with given Coordinates
     // should happen only once with all the area when app starts
-    func initializeMonitor(userId: String?) async {
+    func initializeMonitor() async -> CLMonitor {
         print("Initialize monitor")
-        if self.userId == nil {
-            setUserId(userId: userId)
-        }
-        
-        guard let userIdSaved = self.userId else {
-            print("Error with initializing monitor..userId not saved.")
-            return
-        }
-        
-        monitor = await CLMonitor(userIdSaved)
-        
-        guard let monitor = monitor else {
-            print("Monitor is not initialized successfully.")
-            return
-        }
-        
-        // Convert Coordinates into conditions for monitor and add to the monitor
-        for areaCoor in areaCoordinates {
-            // User within 15 meters of this area will be considered to be "entered"
-            let areaCondition = CLMonitor.CircularGeographicCondition(center: areaCoor.value, radius: 5)
-            // Identifier as areaId
-            await monitor.add(areaCondition, identifier: areaCoor.key, assuming: .unsatisfied)
-        }
+        return await CLMonitor("StudySpotMonitor")
     }
     
-    func startMonitorAreas() async throws {
-        print("start monitor")
-        if monitor == nil {
-            guard let userId = self.userId else {
-                print("Error with starting monitor..userId not saved.")
-                return
-            }
-            monitor = await CLMonitor(userId)
+    func setConditionOnMonitor(monitor: CLMonitor?) async {
+        print("setting conditions on monitor")
+        // Convert Coordinates into conditions for monitor and add to the monitor
+        for areaCoor in areaCoordinates {
+            // User within 10 meters of this area will be considered to be "entered"
+            let areaCondition = CLMonitor.CircularGeographicCondition(center: areaCoor.value, radius: 10)
+            // Identifier as areaId
+            await monitor?.add(areaCondition, identifier: areaCoor.key, assuming: .unsatisfied)
         }
         
-        Task {            
-            guard let monitor = self.monitor else {
-                print("Error with starting monitor.. monitor does not exist..")
-                return
-            }
-            
+    }
+    
+    // Happends when the user logs in
+    func startMonitorAreas(monitor: CLMonitor?) async {
+        print("start monitor")
+        guard let monitor = monitor else {
+            print("Error with starting monitor.. monitor does not exist..")
+            return
+        }
+        
+        Task {
+
             for try await event in await monitor.events {
                 switch event.state {
-                // User entered some studyspots
+                    // User entered some studyspots
                 case .satisfied:
-                    if let userId = userId {
+                    print("Entered: " + event.identifier)
+                    if let userId = self.userId {
+                        print("try saving tracked data")
                         // Save User Movement into database
-                        try await saveUserTrackingInfo(userId: userId, areaId: event.identifier)
+                        do {
+                            try await saveUserTrackingInfo(userId: userId, areaId: event.identifier)
+                            print("seems like saved the tracked data")
+                        }
+                        catch {
+                            print("Failed saving data: ")
+                            print(error)
+                        }
                     }
                     else {
                         print("Error saving tracked data...userId does not exists..")
                     }
-                    print("Entered: " + event.identifier)
-                
-                // User exited out of the studySpots
+                    print("ran everything")
+                    
+                    // User exited out of the studySpots
                 case .unknown, .unsatisfied:
                     print("Exited: " + event.identifier)
                     
                 default:
                     print("No Location Registered")
                 }
+            }
+        }
+    }
+    
+    // Happens when the user logs out
+    func removeMonitorAreas(monitor: CLMonitor?) async {
+        print("Stop Monitor")
+        
+        if let identifiers = await monitor?.identifiers {
+            for anIdentifier in identifiers {
+                await monitor?.remove(anIdentifier)
             }
         }
     }

@@ -6,17 +6,20 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SelectView: View {
     
     @Binding var showSignInView: Bool
+    @Binding var appFirstLaunched: Bool
+    @Binding var monitor: CLMonitor?
     @StateObject private var viewModel: SelectViewModel = SelectViewModel()
     @StateObject var userViewModel = UserViewModel()
     @State var startMonitoring: Bool = false
     
     var body: some View {
         TabView {
-            ExploreView(startMonitoring: $startMonitoring)
+            ExploreView(startMonitoring: $startMonitoring, monitor: $monitor)
                 .tabItem {
                     Label("Explore", systemImage: "magnifyingglass")
                 }
@@ -28,10 +31,11 @@ struct SelectView: View {
                 }
                 .environmentObject(viewModel)
                 .environmentObject(userViewModel)
-            ProfileView(showSignInView: $showSignInView)
+            ProfileView(showSignInView: $showSignInView, monitor: $monitor)
                 .tabItem {
                     Label("Profile", systemImage: "person.fill")
                 }
+                .environmentObject(viewModel)
                 .environmentObject(userViewModel)
             if userViewModel.user?.admin ?? false {
                 AdminView()
@@ -50,17 +54,18 @@ struct SelectView: View {
         // Start Monitoring when the monitor is setup
         .onChange(of: startMonitoring) {
             Task {
-                do {
-                    try await viewModel.startMonitorAreas()
+                // Initialize and start monitoring user movements
+                if appFirstLaunched {
+                    print("here")
+                    monitor = await viewModel.initializeMonitor()
+                    appFirstLaunched = false
                 }
-                catch {
-                    print(error)
-                }
+                await viewModel.startMonitorAreas(monitor: monitor)
             }
         }
     }
 }
 
 #Preview {
-    SelectView(showSignInView: .constant(false))
+    SelectView(showSignInView: .constant(false), appFirstLaunched: .constant(false), monitor: .constant(nil))
 }
