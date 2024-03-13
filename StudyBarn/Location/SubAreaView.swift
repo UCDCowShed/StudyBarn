@@ -47,7 +47,8 @@ struct SubAreaView: View {
                     }
                     // Is My Favorite Button
                     VStack (spacing: 10) {
-                        HeartButtonView()
+                        HeartButtonView(subAreaId: subArea?.subAreaId)
+                            .environmentObject(userViewModel)
                     }
                     .padding(.bottom, 20)
                 }

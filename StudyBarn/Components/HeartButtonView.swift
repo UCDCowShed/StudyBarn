@@ -7,38 +7,44 @@
 
 import SwiftUI
 
-@MainActor
-final class HeartButtonViewModel: ObservableObject {
-    func toggleFavorite(heart: String) -> String {
-        // add functionality for adding and removing the favorite from the user
-        return heart == "heart" ? "heart.fill" : "heart"
-    }
-}
 
 struct HeartButtonView: View {
+    let subAreaId: String?
     
     @State private var heart = "heart"
-    @StateObject private var viewModel: HeartButtonViewModel = HeartButtonViewModel()
+    @EnvironmentObject var userViewModel: UserViewModel
 
+    func toggleFavorite(heart: String) -> String {
+        guard let subAreaId = subAreaId else {
+            print("Error with toggle favorite..")
+            return "heart"
+        }
+        // Remove Favorites
+        if userViewModel.checkFavorite(locationId: subAreaId) ?? false {
+            userViewModel.removeUserFavorite(favorite: subAreaId)
+            return "heart"
+        }
+        // Add Favorites
+        else {
+            userViewModel.addUserFavorite(favorite: subAreaId)
+            return "heart.fill"
+        }
+    }
     
     var body: some View {
         Button {
-            heart = viewModel.toggleFavorite(heart: heart)
+            heart = toggleFavorite(heart: heart)
         } label : {
             Image(systemName: heart)
                 .font(.title2)
                 .foregroundColor(Color.red.opacity(0.8))
         }
-        .onAppear{
-            // Initialize the Heart Type ("Heart Fill" if my favorite)
-//            if let isMyFavorite = isMyFavorite {
-//                heart = isMyFavorite ? "heart.fill" : "heart"
-//            }
+        .onAppear() {
+            heart = userViewModel.checkFavorite(locationId: subAreaId ?? "") ?? false ? "heart.fill" : "heart"
         }
-            
     }
 }
 
 #Preview {
-    HeartButtonView()
+    HeartButtonView(subAreaId: "test")
 }

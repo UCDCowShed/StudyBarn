@@ -53,10 +53,6 @@ struct DetailsView: View {
                         Image(systemName: "photo")
                     }
                 }
-                // Is My Favorite Button
-                VStack (spacing: 10) {
-                   HeartButtonView()
-                }
             }
             .padding(.vertical, 4)
             .padding(.horizontal, 20)
