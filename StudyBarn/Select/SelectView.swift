@@ -45,6 +45,7 @@ struct SelectView: View {
                     .environmentObject(viewModel)
             }
         }
+        .font(.custom("Futura", size: 18))
         // Load user from the database once app starts
         .task {
             try? await userViewModel.loadUser()

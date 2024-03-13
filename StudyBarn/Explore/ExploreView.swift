@@ -47,9 +47,9 @@ struct ExploreView: View {
                                     }
                                 }
                                 Text("Nothing Found.")
-                                    .font(.title)
+                                    .font(.custom("Futura", size: 20))
                                 Text("Please Refresh it.")
-                                    .font(.footnote)
+                                    .font(.custom("Futura", size: 14))
                                     .foregroundStyle(.gray)
                             }
                         }
