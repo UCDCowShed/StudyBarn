@@ -47,4 +47,5 @@ struct HeartButtonView: View {
 
 #Preview {
     HeartButtonView(subAreaId: "test")
+        .environmentObject(UserViewModel())
 }

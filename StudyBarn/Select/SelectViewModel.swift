@@ -14,6 +14,7 @@ final class SelectViewModel: ObservableObject {
     @Published var areasHashmap: [String: AreaModel] = [:]
     @Published var areaCoordinates: [String: CLLocationCoordinate2D] = [:]
     @Published var userId: String? = nil
+    @Published var areaVisitFrequencies: [String: AreaTrackModel] = [:]
     
     // Set User Id
     func setUserId(userId: String?){
@@ -120,5 +121,12 @@ final class SelectViewModel: ObservableObject {
                 await monitor?.remove(anIdentifier)
             }
         }
+    }
+    
+    func loadAreaVisitFrequencies(userId: String?) async throws {
+        guard let userId = userId else { return }
+        
+        let frequencies = try await MapManager.shared.getUserTrackedInfo(userId: userId)
+        areaVisitFrequencies = frequencies
     }
 }

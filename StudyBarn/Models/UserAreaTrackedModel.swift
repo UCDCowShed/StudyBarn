@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct AreaTrack: Codable, Hashable {
+struct AreaTrackModel: Codable, Hashable {
     let count: Int
     let dateModified: Date
 }
 
 struct UserAreaTrackedModel: Codable, Hashable {
     let userId: String
-    let areaTracked: [String: AreaTrack]
+    let areaTracked: [String: AreaTrackModel]
     
     init(
         userId: String,
-        areaTracked: [String: AreaTrack]
+        areaTracked: [String: AreaTrackModel]
     ) {
         self.userId = userId
         self.areaTracked = areaTracked
@@ -32,7 +32,7 @@ struct UserAreaTrackedModel: Codable, Hashable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.userId = try container.decode(String.self, forKey: .userId)
-        self.areaTracked = try container.decode([String : AreaTrack].self, forKey: .areaTracked)
+        self.areaTracked = try container.decode([String : AreaTrackModel].self, forKey: .areaTracked)
     }
     
     func encode(to encoder: Encoder) throws {

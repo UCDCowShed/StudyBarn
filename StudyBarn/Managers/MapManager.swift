@@ -67,6 +67,22 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
         checkLocationAuthorization()
     }
     
+    // Get User Tracked Info
+    func getUserTrackedInfo(userId: String) async throws -> [String: AreaTrackModel] {
+        let document = try? await userAreaTrackedDocument(userId: userId).getDocument()
+        
+        if document?.exists ?? false {
+            guard let document = document else {
+                print("nothing found...")
+                return [:]
+            }
+            let userTrackedData = try document.data(as: UserAreaTrackedModel.self)
+            
+            return userTrackedData.areaTracked
+        }
+        return [:]
+    }
+    
     // Save Tracked user's data into the database
     func saveUserTrackedData(userId: String, areaId: String) async throws {
         print("start reading data")
@@ -101,7 +117,7 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
                     print("Could not get count..")
                     return
                 }
-                let newData = [areaId: AreaTrack(count: count + 1, dateModified: curDateInDate)]
+                let newData = [areaId: AreaTrackModel(count: count + 1, dateModified: curDateInDate)]
                 let newInsertData = UserAreaTrackedModel(userId: userId, areaTracked: newData)
                 try userAreaTrackedDocument(userId: userId).setData(from: newInsertData, merge: true)
                 print("Saved tracked data (areaId already existed)")
@@ -113,7 +129,7 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
         }
         // Create new data if does not exist
         print("no data found, try saving the data here")
-        let newData = [areaId: AreaTrack(count: 1, dateModified: curDateInDate)]
+        let newData = [areaId: AreaTrackModel(count: 1, dateModified: curDateInDate)]
         let newInsertData = UserAreaTrackedModel(userId: userId, areaTracked: newData)
         try userAreaTrackedDocument(userId: userId).setData(from: newInsertData, merge: true)
         print("Saved tracked data")

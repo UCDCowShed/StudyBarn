@@ -13,6 +13,7 @@ struct DetailsView: View {
     @EnvironmentObject private var userViewModel: UserViewModel
     
     let area: AreaModel?
+    let frequency: Int?
     let todayDate: String = Utilities.shared.getCurrentDate()
     
     @State private var loadingSubAreas = false
@@ -28,31 +29,37 @@ struct DetailsView: View {
             HStack {
                 // Area name and Time Range
                 VStack (alignment: .leading, spacing: 4) {
-                    Text("\(area?.name ?? "Test")")
-                        .font(.title)
-                        .fontWeight(.semibold)
+                        Text("\(area?.name ?? "Test")")
+                            .font(.title)
+                            .fontWeight(.semibold)
+                        // Default is "Closed"
+                        Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
+                            .font(.subheadline)
+                            .foregroundStyle(.gray)
                     
-                    // Rating
-                    HStack(spacing: 2) {
-                        Image(systemName: "star.fill")
-                        Text("\(area?.rating ?? 0.0, specifier: "%.1f")")
-                    }
-                    
-                    // Default is "Closed"
-                    Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
-                        .font(.subheadline)
-                        .foregroundStyle(.gray)
                     
                 }
                 Spacer()
-                if userViewModel.user?.admin ?? false {
-                    // Images button
-                    NavigationLink {
-                        AddImageView(areaID: area?.areaId, isArea: true)
-                    } label: {
-                        Image(systemName: "photo")
+                VStack {
+                    // Admin adding picture
+                    if userViewModel.user?.admin ?? false {
+                        // Images button
+                        NavigationLink {
+                            AddImageView(areaID: area?.areaId, isArea: true)
+                        } label: {
+                            Image(systemName: "photo")
+                        }
                     }
+                    // Showing Frequencies
+                    VStack (spacing: 4){
+                        Text("\(frequency ?? 0)")
+                            .font(.title2)
+                        Text("Visited")
+                            .font(.footnote)
+                    }
+
                 }
+                
             }
             .padding(.vertical, 4)
             .padding(.horizontal, 20)
@@ -105,7 +112,7 @@ struct DetailsView: View {
 }
 
 #Preview {
-    DetailsView(area: nil)
+    DetailsView(area: nil, frequency: nil)
         .environmentObject(SelectViewModel())
         .environmentObject(UserViewModel())
 }
