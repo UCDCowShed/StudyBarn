@@ -43,6 +43,14 @@ final class SubAreaManager {
         return nil
     }
     
+    func addSubareaImage(subareaId: String, name: String) async throws {
+        let data: [String: Any] = [
+            "images": FieldValue.arrayUnion([name])
+        ]
+        
+        try await subAreaDocument(subAreaId: subareaId).updateData(data)
+    }
+    
     func getAllSubAreaFromAreaId(areaId: String) async throws -> [SubAreaModel] {
         let snapshot = try await subAreaCollection.whereField(SubAreaModel.CodingKeys.areaId.rawValue, isEqualTo: areaId).getDocuments()
         

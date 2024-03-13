@@ -137,7 +137,7 @@ final class AreaManager {
         return areas
     }
     
-    func addImage(areaId: String, name: String) async throws {
+    func addAreaImage(areaId: String, name: String) async throws {
         let data: [String: Any] = [
             "images": FieldValue.arrayUnion([name])
         ]

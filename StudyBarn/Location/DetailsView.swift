@@ -76,7 +76,7 @@ struct DetailsView: View {
                     ProgressView()
                 }
                 else {
-                    LazyVStack(spacing: 50) {
+                    VStack(spacing: 50) {
                         ForEach(allSubAreasFromArea, id: \.self) { subArea in
                             SubAreaView(subArea: subArea)
                                 .padding()
