@@ -67,6 +67,7 @@ struct SearchView: View {
                     .foregroundStyle(Color("TextColor").opacity(0.8))
                 }
             }
+            .font(.custom("Futura", size: 18))
             .padding()
         }
     }
@@ -80,11 +81,11 @@ struct FiltersView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 7) {
                     Text("Choose Filters")
-                        .font(.title3)
+                        .font(.custom("Futura", size: 22))
                         .fontWeight(.semibold)
                         .foregroundStyle(Color("TextColor"))
                     Text("Choosing 'none' will include all areas.")
-                        .font(.footnote)
+                        .font(.custom("Futura", size: 14))
                         .foregroundStyle(.gray)
                 }
                 
@@ -198,7 +199,7 @@ struct FilterItem: ViewModifier {
         content
             .frame(width:80, height: 80)
             .padding()
-            .font(.system(size: 13, weight: .semibold))
+            .font(.custom("Futura", size: 14))
             .foregroundStyle(isSelected ? .blue : Color("FilterList"))
     }
 }
