@@ -96,17 +96,16 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
                     return
                 }
                 
-                // current date has passed one more day than the last date modified: save data
-                if convertedLastDate < curDate {
-                    guard let count = userTrackedData.areaTracked[areaId]?.count else {
-                        print("Could not get count..")
-                        return
-                    }
-                    let newData = [areaId: AreaTrack(count: count + 1, dateModified: curDateInDate)]
-                    let newInsertData = UserAreaTrackedModel(userId: userId, areaTracked: newData)
-                    try userAreaTrackedDocument(userId: userId).setData(from: newInsertData, merge: true)
-                    print("Saved tracked data (areaId already existed)")
+                // Count entered
+                guard let count = userTrackedData.areaTracked[areaId]?.count else {
+                    print("Could not get count..")
+                    return
                 }
+                let newData = [areaId: AreaTrack(count: count + 1, dateModified: curDateInDate)]
+                let newInsertData = UserAreaTrackedModel(userId: userId, areaTracked: newData)
+                try userAreaTrackedDocument(userId: userId).setData(from: newInsertData, merge: true)
+                print("Saved tracked data (areaId already existed)")
+                
                 
                 return
             }
