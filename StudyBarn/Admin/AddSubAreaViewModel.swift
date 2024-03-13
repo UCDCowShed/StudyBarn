@@ -21,77 +21,79 @@ final class AddSubAreaViewModel: ObservableObject {
         
         let subArea = SubAreaModel(subAreaId: subAreaId, name: subAreaName, areaId: areaId, floor: floor, images: images, outdoors: outdoors, groupStudy: groupStudy, microwave: microwave, printer: printer, dining: dining, outlets: outlets, computers: computers, rating: rating)
         
-        // Modify Area with the new features
-        if var areaModel = areaModel {
-            if let areaHasFeature = areaModel.outdoors {
+        // Modify existing Area with the new features
+        if var area = areaModel {
+            
+            // if the area has an outdoor parameter
+            if let areaHasFeature = area.outdoors {
+                // if the area already has outdoors, check if it is false or true, if true, area should be true
                 if areaHasFeature || outdoors {
-                    areaModel.outdoors = true
+                    area.outdoors = true
                 }
+            // if the area does not have an outdoor parameter, then the parameter should be set
             } else {
-                areaModel.outdoors = outdoors
+                area.outdoors = outdoors
             }
-            if let areaHasFeature = areaModel.indoors {
+            if let areaHasFeature = area.indoors {
                 if areaHasFeature || !outdoors {
-                    areaModel.indoors = true
+                    area.indoors = true
                 }
             } else {
-                areaModel.indoors = !outdoors
+                area.indoors = !outdoors
             }
-            if let areaHasFeature = areaModel.quietStudy {
+            if let areaHasFeature = area.quietStudy {
                 if areaHasFeature || !groupStudy {
-                    areaModel.quietStudy = true
+                    area.quietStudy = true
                 }
             } else {
-                areaModel.quietStudy = !groupStudy
+                area.quietStudy = !groupStudy
             }
-            if let areaHasFeature = areaModel.groupStudy {
+            if let areaHasFeature = area.groupStudy {
                 if areaHasFeature || groupStudy {
-                    areaModel.groupStudy = true
+                    area.groupStudy = true
                 }
             } else {
-                areaModel.groupStudy = groupStudy
+                area.groupStudy = groupStudy
             }
-            if let areaHasFeature = areaModel.microwave {
+            if let areaHasFeature = area.microwave {
                 if areaHasFeature || microwave {
-                    areaModel.microwave = true
+                    area.microwave = true
                 }
             } else {
-                areaModel.microwave = microwave
+                area.microwave = microwave
             }
-            if let areaHasFeature = areaModel.printer {
+            if let areaHasFeature = area.printer {
                 if areaHasFeature || printer {
-                    areaModel.printer = true
+                    area.printer = true
                 }
             } else {
-                areaModel.printer = printer
+                area.printer = printer
             }
-            if let areaHasFeature = areaModel.dining {
+            if let areaHasFeature = area.dining {
                 if areaHasFeature || dining {
-                    areaModel.dining = true
+                    area.dining = true
                 }
             } else {
-                areaModel.dining = dining
+                area.dining = dining
             }
-            if let areaHasFeature = areaModel.outlets {
+            if let areaHasFeature = area.outlets {
                 if areaHasFeature || outlets {
-                    areaModel.outlets = true
+                    area.outlets = true
                 }
             } else {
-                areaModel.outlets = outlets
+                area.outlets = outlets
             }
-            if let areaHasFeature = areaModel.computers {
+            if let areaHasFeature = area.computers {
                 if areaHasFeature || computers {
-                    areaModel.computers = true
+                    area.computers = true
                 }
             } else {
-                areaModel.computers = computers
+                area.computers = computers
             }
             // Create SubArea
-            try await SubAreaManager.shared.createNewSubArea(subArea: subArea, area: areaModel)
-        }
-        
-        
-        
+            try await SubAreaManager.shared.createNewSubArea(subArea: subArea, area: area)
+            
+        }       
     }
     
 }
