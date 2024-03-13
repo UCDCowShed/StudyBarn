@@ -124,7 +124,6 @@ struct ProfileView: View {
                 Task {
                     do {
                         favoriteSubAreas = try await userViewModel.getAllFavoriteSubAreas()
-                        print(favoriteSubAreas)
                     }
                     catch {
                         print("Failed getting favorite subareas...")

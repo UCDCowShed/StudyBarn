@@ -102,15 +102,15 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
             // AreaId exists, increment value by one if data modified is not today
             if userTrackedData.areaTracked[areaId] != nil {
                 print("areaId exists")
-                let lastDateModified = userTrackedData.areaTracked[areaId]?.dateModified
-                guard let convertedLastDate = Utilities.shared.getYearMonthDay(dateToConvert: lastDateModified) else {
-                    print("Error with saving tracked data into the firebase..")
-                    return
-                }
-                guard let curDate = Utilities.shared.getYearMonthDay(dateToConvert: curDateInDate) else {
-                    print("Error with saving tracked data into the firebase..")
-                    return
-                }
+//                let lastDateModified = userTrackedData.areaTracked[areaId]?.dateModified
+//                guard let convertedLastDate = Utilities.shared.getYearMonthDay(dateToConvert: lastDateModified) else {
+//                    print("Error with saving tracked data into the firebase..")
+//                    return
+//                }
+//                guard let curDate = Utilities.shared.getYearMonthDay(dateToConvert: curDateInDate) else {
+//                    print("Error with saving tracked data into the firebase..")
+//                    return
+//                }
                 
                 // Count entered
                 guard let count = userTrackedData.areaTracked[areaId]?.count else {

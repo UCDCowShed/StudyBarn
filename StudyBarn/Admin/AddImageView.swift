@@ -21,7 +21,6 @@ struct AddImageView: View {
             }
         }
         .onChange(of: selectedItem) { oldValue, newValue in
-            print("Selected image")
             if let newValue, let areaID, let isArea {
                 addImageViewModel.addImage(item: newValue, areaID: areaID, isArea: isArea)
             }

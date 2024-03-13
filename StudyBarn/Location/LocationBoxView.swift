@@ -54,7 +54,6 @@ struct LocationBoxView: View {
                     .padding(.vertical)
                 }
             }
-            .padding(.horizontal)
             
         }
     }

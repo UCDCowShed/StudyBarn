@@ -33,7 +33,6 @@ final class ImageManager {
     }
     
     func getImageURL(areaID: String, path: String, isArea: Bool) async throws -> URL {
-        print (areaReference(areaID: areaID, isArea: isArea).child(path))
         return try await areaReference(areaID: areaID, isArea: isArea).child(path).downloadURL()
     }
     
