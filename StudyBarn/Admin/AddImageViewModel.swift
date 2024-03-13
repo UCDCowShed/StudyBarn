@@ -22,8 +22,6 @@ final class AddImageViewModel: ObservableObject {
             } else {
                 try await SubAreaManager.shared.addSubareaImage(subareaId: areaID, name: name)
             }
-            print("SUCCESS")
-            print(name)
         }
     }
 }
