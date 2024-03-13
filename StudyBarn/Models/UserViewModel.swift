@@ -44,4 +44,10 @@ final class UserViewModel: ObservableObject {
         }
         return nil
     }
+    
+    // Get All Favorite SubAreas by user
+    func getAllFavoriteSubAreas() async throws -> [SubAreaModel]{
+        let subAreas = try await SubAreaManager.shared.getAllFavoriteSubAreas(subAreaIds: user?.favorites ?? [])
+        return subAreas
+    }
 }

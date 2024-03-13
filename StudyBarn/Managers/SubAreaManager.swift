@@ -56,6 +56,19 @@ final class SubAreaManager {
         
         return subAreas
     }
+    
+    func getAllFavoriteSubAreas(subAreaIds: [String]) async throws -> [SubAreaModel] {
+        var favoriteSubAreas: [SubAreaModel] = []
+        
+        for subAreaId in subAreaIds {
+            let subArea = try await self.getArea(subAreaId: subAreaId)
+            if let subArea = subArea {
+                favoriteSubAreas.append(subArea)
+            }
+        }
+        
+        return favoriteSubAreas
+    }
 
     // Get Filtered subAreas
     func getFilteredSubArea(atmosphereFilter: [FilterModel], volumeFilter: [FilterModel], featureFilter: [FilterModel]) async throws -> [SubAreaModel]? {
