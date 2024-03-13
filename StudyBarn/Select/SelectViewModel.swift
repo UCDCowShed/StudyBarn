@@ -61,7 +61,7 @@ final class SelectViewModel: ObservableObject {
         print("setting conditions on monitor")
         // Convert Coordinates into conditions for monitor and add to the monitor
         for areaCoor in areaCoordinates {
-            // User within 10 meters of this area will be considered to be "entered"
+            // User within 3 meters of this area will be considered to be "entered"
             let areaCondition = CLMonitor.CircularGeographicCondition(center: areaCoor.value, radius: 3)
             // Identifier as areaId
             await monitor?.add(areaCondition, identifier: areaCoor.key, assuming: .unsatisfied)
