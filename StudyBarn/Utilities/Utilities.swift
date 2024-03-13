@@ -61,6 +61,18 @@ struct YearMonthDay {
         }
         return false
     }
+    static func ==(lhs: YearMonthDay, rhs: YearMonthDay) -> Bool {
+        if lhs.year == rhs.year {
+            return true
+        }
+        else if lhs.month == rhs.month {
+            return true
+        }
+        else if lhs.day == rhs.month {
+            return true
+        }
+        return false
+    }
     
 }
 

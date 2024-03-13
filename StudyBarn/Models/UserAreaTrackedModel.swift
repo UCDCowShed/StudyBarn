@@ -16,7 +16,15 @@ struct UserAreaTrackedModel: Codable, Hashable {
     let userId: String
     let areaTracked: [String: AreaTrack]
     
-    enum CodingKeys: String, CodingKey {
+    init(
+        userId: String,
+        areaTracked: [String: AreaTrack]
+    ) {
+        self.userId = userId
+        self.areaTracked = areaTracked
+    }
+    
+    enum CodingKeys: CodingKey {
         case userId
         case areaTracked
     }
@@ -32,5 +40,6 @@ struct UserAreaTrackedModel: Codable, Hashable {
         try container.encode(self.userId, forKey: .userId)
         try container.encode(self.areaTracked, forKey: .areaTracked)
     }
+    
 
 }

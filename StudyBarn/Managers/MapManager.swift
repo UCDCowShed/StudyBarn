@@ -69,16 +69,23 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
     
     // Save Tracked user's data into the database
     func saveUserTrackedData(userId: String, areaId: String) async throws {
+        print("start reading data")
         // Get User Data
         let document = try? await userAreaTrackedDocument(userId: userId).getDocument()
         let curDateInDate = Date()
-        
+        print("now need to check document")
         // Convert data to UserAreaTrackedModel format
-        if let document = document {
+        if document?.exists ?? false {
+            print("got something from database")
+            guard let document = document else {
+                print("nothing found...")
+                return
+            }
             let userTrackedData = try document.data(as: UserAreaTrackedModel.self)
             
             // AreaId exists, increment value by one if data modified is not today
             if userTrackedData.areaTracked[areaId] != nil {
+                print("areaId exists")
                 let lastDateModified = userTrackedData.areaTracked[areaId]?.dateModified
                 guard let convertedLastDate = Utilities.shared.getYearMonthDay(dateToConvert: lastDateModified) else {
                     print("Error with saving tracked data into the firebase..")
@@ -91,18 +98,25 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
                 
                 // current date has passed one more day than the last date modified: save data
                 if convertedLastDate < curDate {
-                    let count = userTrackedData.areaTracked[areaId]?.count
-                    let newData = AreaTrack(count: count ?? 0 + 1, dateModified: curDateInDate)
-                    try await userAreaTrackedDocument(userId: userId).setData([ areaId: newData ], merge: true)
+                    guard let count = userTrackedData.areaTracked[areaId]?.count else {
+                        print("Could not get count..")
+                        return
+                    }
+                    let newData = [areaId: AreaTrack(count: count + 1, dateModified: curDateInDate)]
+                    let newInsertData = UserAreaTrackedModel(userId: userId, areaTracked: newData)
+                    try userAreaTrackedDocument(userId: userId).setData(from: newInsertData, merge: true)
                     print("Saved tracked data (areaId already existed)")
                 }
                 
                 return
             }
+            print("end of checking document exists")
         }
         // Create new data if does not exist
-        let newData = AreaTrack(count: 1, dateModified: curDateInDate)
-        try await userAreaTrackedDocument(userId: userId).setData([ areaId: newData ], merge: true)
+        print("no data found, try saving the data here")
+        let newData = [areaId: AreaTrack(count: 1, dateModified: curDateInDate)]
+        let newInsertData = UserAreaTrackedModel(userId: userId, areaTracked: newData)
+        try userAreaTrackedDocument(userId: userId).setData(from: newInsertData, merge: true)
         print("Saved tracked data")
     }
 }
