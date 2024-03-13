@@ -14,10 +14,11 @@ struct ProfileView: View {
     @Binding var monitor: CLMonitor?
     @EnvironmentObject var viewModel: SelectViewModel
     @EnvironmentObject var userViewModel: UserViewModel
+    @State private var favoriteSubAreas: [SubAreaModel] = []
     
     var body: some View {
         NavigationView {
-            ZStack (alignment: .top) {
+            VStack () {
                 VStack(alignment: .center, spacing: 10) {
                     // PROFILE IMAGE
                     if let userImage = userViewModel.user?.photoUrl {
@@ -71,6 +72,27 @@ struct ProfileView: View {
                                 .stroke(.red, lineWidth: 1)
                         )
                         .padding()
+                }
+                
+                Spacer()
+                
+                LazyVStack(spacing: 50) {
+                    ForEach(favoriteSubAreas, id: \.self) { subArea in
+                        SubAreaView(subArea: subArea)
+                            .padding()
+                    }
+                }
+            }
+            .onAppear() {
+                Task {
+                    do {
+                        favoriteSubAreas = try await userViewModel.getAllFavoriteSubAreas()
+                        print(favoriteSubAreas)
+                    }
+                    catch {
+                        print("Failed getting favorite subareas...")
+                        print(error)
+                    }
                 }
             }
         }
