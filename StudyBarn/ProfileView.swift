@@ -6,18 +6,18 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ProfileView: View {
     
     @Binding var showSignInView: Bool
+    @Binding var monitor: CLMonitor?
+    @EnvironmentObject var viewModel: SelectViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         NavigationView {
             ZStack (alignment: .top) {
-//                Rectangle()
-//                    .fill(Color.white)
-//                    .frame(height: 500, alignment: .center)
                 VStack(alignment: .center, spacing: 10) {
                     // PROFILE IMAGE
                     if let userImage = userViewModel.user?.photoUrl {
@@ -56,6 +56,8 @@ struct ProfileView: View {
                             Task {
                                 do {
                                     try AuthenticationManager.shared.signOut()
+                                    // Removes monitored areas
+                                    await viewModel.removeMonitorAreas(monitor: monitor)
                                     showSignInView = true
                                 }
                                 catch {
@@ -77,6 +79,7 @@ struct ProfileView: View {
 
 
 #Preview {
-    ProfileView(showSignInView: .constant(false))
+    ProfileView(showSignInView: .constant(false), monitor: .constant(nil))
         .environmentObject(UserViewModel())
+        .environmentObject(SelectViewModel())
 }

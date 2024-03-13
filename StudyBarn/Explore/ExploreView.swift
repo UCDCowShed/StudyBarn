@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ExploreView: View {
     
@@ -15,6 +16,8 @@ struct ExploreView: View {
     @State private var showSearchView = false
     @State private var loadingAreas = true
     @State private var firstLoaded: Bool = true
+    @Binding var startMonitoring: Bool
+    @Binding var monitor: CLMonitor?
     
     var body: some View {
         NavigationStack {
@@ -90,9 +93,13 @@ struct ExploreView: View {
                 .onAppear() {
                     Task {
                         do {
-                            // Load only when no areas to display
+                            // Load when app just started
                             if firstLoaded {
+                                // Load all areas
                                 try await viewModel.loadAllArea()
+                                // Set Conditions on Monitor
+                                await viewModel.setConditionOnMonitor(monitor: monitor)
+                                startMonitoring = true
                                 firstLoaded = false
                             }
                             loadingAreas = false
@@ -118,7 +125,7 @@ struct ExploreView: View {
 }
 
 #Preview {
-    ExploreView()
+    ExploreView(startMonitoring: .constant(false), monitor: .constant(nil))
         .environmentObject(SelectViewModel())
         .environmentObject(UserViewModel())
 }
