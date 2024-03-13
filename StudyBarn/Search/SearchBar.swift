@@ -13,6 +13,8 @@ struct SearchBar: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                 Text("Filter")
+                    .padding(.leading, 4)
+                    .font(.custom("Futura", size: 18))
                     .opacity(0.5)
                 Spacer()
             }

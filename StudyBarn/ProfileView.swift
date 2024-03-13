@@ -55,14 +55,15 @@ struct ProfileView: View {
                         VStack (alignment: .leading){
                             // USER NAME
                             Text("\(userViewModel.user?.name ?? "User Name")")
-                                .font(.headline)
+                                .font(.custom("Futura", size: 18))
+                                .fontWeight(.semibold)
                                 .foregroundStyle(Color("TextColor"))
                             // USER EMAIL
                             Text("\(userViewModel.user?.email ?? "test@testtestestest.com")")
                                 .foregroundStyle(Color("TextColor"))
-                                .font(.subheadline)
+                                .font(.custom("Futura", size: 16))
                             Text("Logout")
-                                .font(.caption)
+                                .font(.custom("Futura", size: 12))
                                 .foregroundStyle(.red)
                                 .onTapGesture {
                                     Task {
@@ -83,11 +84,11 @@ struct ProfileView: View {
                                         .stroke(.red, lineWidth: 0.8)
                                 )
                         }
-                        .padding(.leading, 10)
+                        .padding(.leading, 16)
                         Spacer()
-                        
                     }
                 }
+                .padding()
                 Spacer()
                 
                 Divider()
@@ -97,11 +98,11 @@ struct ProfileView: View {
                 VStack(alignment: .leading, spacing: 7) {
                     VStack (alignment: .leading){
                         Text("Your Favorite Study Spots")
-                            .font(.title3)
+                            .font(.custom("Futura", size: 20))
                             .fontWeight(.semibold)
                             .foregroundStyle(Color("TextColor"))
                         Text("Add Your Favorite Study Spots!")
-                            .font(.footnote)
+                            .font(.custom("Futura", size: 16))
                             .foregroundStyle(.gray)
                         
                     }

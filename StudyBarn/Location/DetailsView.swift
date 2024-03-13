@@ -30,14 +30,11 @@ struct DetailsView: View {
                 // Area name and Time Range
                 VStack (alignment: .leading, spacing: 4) {
                         Text("\(area?.name ?? "Test")")
-                            .font(.title)
-                            .fontWeight(.semibold)
+                        .font(.custom("Futura", size: 24))
                         // Default is "Closed"
                         Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
-                            .font(.subheadline)
+                            .font(.custom("Futura", size: 16))
                             .foregroundStyle(.gray)
-                    
-                    
                 }
                 Spacer()
                 VStack {
@@ -51,13 +48,12 @@ struct DetailsView: View {
                         }
                     }
                     // Showing Frequencies
-                    VStack (spacing: 4){
+                    VStack (spacing: 2){
                         Text("\(frequency ?? 0)")
-                            .font(.title2)
+                            .font(.custom("Futura", size: 20))
                         Text("Visited")
-                            .font(.footnote)
+                            .font(.custom("Futura", size: 14))
                     }
-
                 }
                 
             }

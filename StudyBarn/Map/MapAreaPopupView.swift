@@ -33,10 +33,10 @@ struct MapAreaPopupView: View {
                         HStack(alignment: .top) {
                             VStack(alignment: .leading) {
                                 Text(area.name)
-                                    .font(.title3)
+                                    .font(.custom("Futura", size: 18))
                                 // Default is "Closed"
                                 Text(AreaManager.shared.formatHours(openHour: area.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
-                                    .font(.subheadline)
+                                    .font(.custom("Futura", size: 16))
                             }
                             Spacer()
                             // Open/Close Indicator
@@ -44,17 +44,15 @@ struct MapAreaPopupView: View {
                                 // Opened
                                 if AreaManager.shared.determineOpenOrClose(openHour: area.openHour[todayDate], closeHour: area.closeHour[todayDate]) {
                                     Text("Open")
-                                        .font(.headline)
                                         .foregroundStyle(.green)
                                 }
                                 // Closed
                                 else {
                                     Text("Closed")
-                                        .font(.headline)
                                         .foregroundStyle(.red)
                                 }
-                                
                             }
+                            .font(.custom("Futura", size: 18))
                             
                         }
                         FeatureListingView(area: area, subArea: nil)
@@ -71,6 +69,7 @@ struct MapAreaPopupView: View {
                     .foregroundStyle(Color("PlainBG"))
                 HStack {
                     Text("Nothing found, please refresh the page.")
+                        .font(.custom("Futura", size: 16))
                 }
             }.onTapGesture() {
                 refresh = true

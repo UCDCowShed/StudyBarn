@@ -26,7 +26,7 @@ struct SubAreaView: View {
                     // Area name and Time Range
                     VStack (alignment: .leading, spacing: 4) {
                         Text("\(subArea?.name ?? "Test Sub")")
-                            .fontWeight(.semibold)
+                            .font(.custom("Futura", size: 16))
                         // Rating
 //                        HStack(spacing: 2) {
 //                            Image(systemName: "star.fill")
@@ -34,6 +34,7 @@ struct SubAreaView: View {
 //                        }
                         // Floor
                         Text("Floor - \(subArea?.floor ?? 1)")
+                            .font(.custom("Futura", size: 12))
                     }
                     .font(.footnote)
                     Spacer()
