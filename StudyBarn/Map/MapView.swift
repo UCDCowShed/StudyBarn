@@ -73,6 +73,9 @@ struct MapView: View {
                             refresh = false
                         }
                     }
+                    .onChange(of: showPopUp.1) {
+                        
+                    }
                     .safeAreaInset(edge: .top) {
                         HStack {
                             SearchBar()
@@ -91,9 +94,6 @@ struct MapView: View {
                                 .environmentObject(viewModel)
                                 .padding()
                         }
-                    }
-                    .onTapGesture {
-                        showPopUp = (false, "")
                     }
                 }
                 .onChange(of: showSearchView) {
