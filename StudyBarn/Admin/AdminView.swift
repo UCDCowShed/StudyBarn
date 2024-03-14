@@ -21,7 +21,6 @@ struct AdminView: View {
             }
         }
         .foregroundStyle(Color("TextColor"))
-
     }
 }
 

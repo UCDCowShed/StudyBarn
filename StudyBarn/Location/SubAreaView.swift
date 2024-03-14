@@ -9,8 +9,10 @@ import SwiftUI
 
 struct SubAreaView: View {
     
+    @EnvironmentObject private var viewModel: SelectViewModel
     @EnvironmentObject private var userViewModel: UserViewModel
     let subArea: SubAreaModel?
+    let profile: Bool?
     
     var body: some View {
         HStack (alignment: .top) {
@@ -25,6 +27,12 @@ struct SubAreaView: View {
                 HStack(alignment: .center) {
                     // Area name and Time Range
                     VStack (alignment: .leading, spacing: 4) {
+                        if let profile {
+                            if profile {
+                                Text(viewModel.areasHashmap[subArea?.areaId ?? ""]?.name ?? "Area name")
+                                    .font(.custom("Futura", size: 10))
+                            }
+                        }
                         Text("\(subArea?.name ?? "Test Sub")")
                             .font(.custom("Futura", size: 16))
                         // Rating
@@ -69,6 +77,7 @@ struct SubAreaView: View {
 }
 
 #Preview {
-    SubAreaView(subArea: nil)
+    SubAreaView(subArea: nil, profile: nil)
+        .environmentObject(SelectViewModel())
         .environmentObject(UserViewModel())
 }
