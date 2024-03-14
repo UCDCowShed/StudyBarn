@@ -45,6 +45,10 @@ struct SelectView: View {
                     .environmentObject(viewModel)
             }
         }
+        .background {
+            Color("Details")
+                .ignoresSafeArea()
+        }
         .font(.custom("Futura", size: 18))
         // Load user from the database once app starts
         .task {

@@ -59,8 +59,8 @@
 		F18758662B88428A004CC7FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F18758652B88428A004CC7FE /* GoogleService-Info.plist */; };
 		F18758692B886083004CC7FE /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18758682B886083004CC7FE /* GoogleLoginButton.swift */; };
 		F199DB692B9D1408007BA9DF /* FeatureListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F199DB682B9D1408007BA9DF /* FeatureListingView.swift */; };
-		F1C49A4A2B919CB3008CC172 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A482B919CB3008CC172 /* SearchBar.swift */; };
-		F1C49A4B2B919CB3008CC172 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A492B919CB3008CC172 /* SearchView.swift */; };
+		F1C49A4A2B919CB3008CC172 /* FilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A482B919CB3008CC172 /* FilterBar.swift */; };
+		F1C49A4B2B919CB3008CC172 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A492B919CB3008CC172 /* FilterView.swift */; };
 		F1C49A4E2B91AB38008CC172 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C49A4D2B91AB38008CC172 /* SelectViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,8 +111,8 @@
 		F18758672B8842D5004CC7FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F18758682B886083004CC7FE /* GoogleLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleLoginButton.swift; path = StudyBarn/Login/GoogleLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		F199DB682B9D1408007BA9DF /* FeatureListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureListingView.swift; sourceTree = "<group>"; };
-		F1C49A482B919CB3008CC172 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		F1C49A492B919CB3008CC172 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F1C49A482B919CB3008CC172 /* FilterBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterBar.swift; sourceTree = "<group>"; };
+		F1C49A492B919CB3008CC172 /* FilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		F1C49A4D2B91AB38008CC172 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,8 +145,8 @@
 		07D3C3E82B8ED24700EEEE57 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				F1C49A482B919CB3008CC172 /* SearchBar.swift */,
-				F1C49A492B919CB3008CC172 /* SearchView.swift */,
+				F1C49A482B919CB3008CC172 /* FilterBar.swift */,
+				F1C49A492B919CB3008CC172 /* FilterView.swift */,
 				07D3C3EB2B914EF300EEEE57 /* FilterViewModel.swift */,
 			);
 			path = Search;
@@ -180,7 +180,6 @@
 				F1351EDC2B8EC9A8005864D1 /* ProfileView.swift */,
 				F13687C02B883CB600A9A974 /* RootView.swift */,
 				F169F4592B8FF97100DCA7D5 /* Admin */,
-				F13687732B8808B100A9A974 /* Authentication */,
 				846231A72B919122003F25C2 /* Components */,
 				F1C49A4C2B91AB22008CC172 /* Explore */,
 				F187586A2B886478004CC7FE /* Location */,
@@ -270,6 +269,7 @@
 		F13687902B8839BC00A9A974 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F13687732B8808B100A9A974 /* Authentication */,
 				F13687742B8808D200A9A974 /* LoginView.swift */,
 				F18758682B886083004CC7FE /* GoogleLoginButton.swift */,
 				F136878E2B88398200A9A974 /* LoginViewModel.swift */,
@@ -418,7 +418,7 @@
 				F10E9FDB2B9FE07F00DBCD79 /* MapViewModel.swift in Sources */,
 				07A093B92B883F0D00FC5511 /* DetailsView.swift in Sources */,
 				F199DB692B9D1408007BA9DF /* FeatureListingView.swift in Sources */,
-				F1C49A4B2B919CB3008CC172 /* SearchView.swift in Sources */,
+				F1C49A4B2B919CB3008CC172 /* FilterView.swift in Sources */,
 				F169F4522B8FB36000DCA7D5 /* AreaManager.swift in Sources */,
 				F10E9FDD2BA015AB00DBCD79 /* UserAreaTrackedModel.swift in Sources */,
 				079C3E752B97A30200DBEEAF /* AddImageViewModel.swift in Sources */,
@@ -430,7 +430,7 @@
 				079C3E702B979EA800DBEEAF /* ImageManager.swift in Sources */,
 				07F7B4F92B7EE89B00D077A1 /* SelectView.swift in Sources */,
 				F13687752B8808D200A9A974 /* LoginView.swift in Sources */,
-				F1C49A4A2B919CB3008CC172 /* SearchBar.swift in Sources */,
+				F1C49A4A2B919CB3008CC172 /* FilterBar.swift in Sources */,
 				07D3C3EC2B914EF300EEEE57 /* FilterViewModel.swift in Sources */,
 				F169F45F2B8FFCE200DCA7D5 /* AddAreaViewModel.swift in Sources */,
 				F169F44E2B8FAB2200DCA7D5 /* SubAreaModel.swift in Sources */,
@@ -581,7 +581,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyBarn/Preview Content\"";
-				DEVELOPMENT_TEAM = 8G83856X33;
+				DEVELOPMENT_TEAM = H9PP879423;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StudyBarn/Info.plist;
@@ -598,7 +598,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jin.ucdavis.cs.ecs189e.StudyBarn;
+				PRODUCT_BUNDLE_IDENTIFIER = ucdavis.cs.ecs189e.StudyBarn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -615,7 +615,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyBarn/Preview Content\"";
-				DEVELOPMENT_TEAM = 8G83856X33;
+				DEVELOPMENT_TEAM = H9PP879423;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StudyBarn/Info.plist;
@@ -632,7 +632,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jin.ucdavis.cs.ecs189e.StudyBarn;
+				PRODUCT_BUNDLE_IDENTIFIER = ucdavis.cs.ecs189e.StudyBarn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

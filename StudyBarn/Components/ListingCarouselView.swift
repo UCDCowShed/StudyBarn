@@ -36,9 +36,9 @@ struct ListingCarouselView: View {
             }
         }
         .tabViewStyle(.page)
+        .ignoresSafeArea()
         .task (id: area?.areaId) {
             if let area = area, let isArea = isArea {
-                print("area = \(area.name)")
                 if let images = area.images {
                     if !images.isEmpty {
                         let urls = try? await ImageManager.shared.getAllImages(areaID: area.areaId, images: images, isArea: isArea)

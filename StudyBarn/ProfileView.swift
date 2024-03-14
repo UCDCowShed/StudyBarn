@@ -121,6 +121,10 @@ struct ProfileView: View {
                 Spacer()
             }
             .padding()
+            .background {
+                Color("Details")
+                    .ignoresSafeArea()
+            }
             .onAppear() {
                 Task {
                     do {

@@ -102,7 +102,10 @@ struct DetailsView: View {
                     print(error)
                 }
             }
-            
+        }
+        .background {
+            Color("Details")
+                .ignoresSafeArea()
         }
     }
 }
