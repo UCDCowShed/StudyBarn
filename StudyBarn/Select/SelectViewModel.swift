@@ -28,15 +28,31 @@ final class SelectViewModel: ObservableObject {
         areaCoordinates = [:]
         areasHashmap = [:]
         areasIds = []
+        // areaIds
+        var closedAreas: [String] = []
+        let todayDate: String = Utilities.shared.getCurrentDate()
         
         for newArea in newAreas {
             // update area coordinates
             areaCoordinates[newArea.areaId] = CLLocationCoordinate2D(latitude: newArea.latitude ?? -1, longitude: newArea.longitude ?? -1)
             // update areas' Ids
-            areasIds.append(newArea.areaId)
+            
+            // Display Opened Areas first than the closed areas
+            if !AreaManager.shared.determineOpenOrClose(openHour: newArea.openHour[todayDate], closeHour: newArea.closeHour[todayDate]) {
+                // Closed
+                closedAreas.append(newArea.areaId)
+            }
+            else {
+                // Opened
+                areasIds.append(newArea.areaId)
+            }
+            
             // update areas
             areasHashmap[newArea.areaId] = newArea
         }
+        
+        // Sorted By Opened Areas
+        areasIds.append(contentsOf: closedAreas)
     }
     
     func loadAllArea() async throws {
