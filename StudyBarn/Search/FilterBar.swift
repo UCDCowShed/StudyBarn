@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchBar: View {
+struct FilterBar: View {
     var body: some View {
         ZStack {
             HStack {
@@ -34,5 +34,5 @@ struct SearchBar: View {
 }
 
 #Preview {
-    SearchBar()
+    FilterBar()
 }

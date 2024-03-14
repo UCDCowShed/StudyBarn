@@ -23,7 +23,7 @@ struct ExploreView: View {
         NavigationStack {
             // Display Search/Filter View
             if showSearchView {
-                SearchView(show: $showSearchView)
+                FilterView(show: $showSearchView)
                     .environmentObject(viewModel)
             }
             // Display Areas
@@ -80,7 +80,7 @@ struct ExploreView: View {
                     }
                     // Search Bar
                     VStack {
-                        SearchBar()
+                        FilterBar()
                             .onTapGesture {
                                 withAnimation(.snappy) {
                                     showSearchView.toggle()
@@ -110,6 +110,10 @@ struct ExploreView: View {
                             print(error)
                         }
                     }
+                }
+                .background {
+                    Color("Details")
+                        .ignoresSafeArea()
                 }
                 .refreshable {
                     do {

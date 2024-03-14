@@ -22,7 +22,7 @@ struct MapView: View {
     var body: some View {
         NavigationStack{
             if showSearchView {
-                SearchView(show: $showSearchView)
+                FilterView(show: $showSearchView)
                     .environmentObject(viewModel)
             } else {
                 ZStack {
@@ -35,7 +35,6 @@ struct MapView: View {
                                 Annotation(name, coordinate: coor) {
                                     Button {
                                         showPopUp = (true, areaId)
-                                        print("clicked, showPopUp = \(showPopUp.0) areaId = \(showPopUp.1)")
                                     } label: {
                                         ZStack {
                                             Image(systemName: "circle.fill")
@@ -78,7 +77,7 @@ struct MapView: View {
                     }
                     .safeAreaInset(edge: .top) {
                         HStack {
-                            SearchBar()
+                            FilterBar()
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         showSearchView.toggle()
@@ -93,6 +92,20 @@ struct MapView: View {
                             MapAreaPopupView(area: viewModel.areasHashmap[showPopUp.1], gotoDetailsView: $gotoDetailsView, refresh: $refresh)
                                 .environmentObject(viewModel)
                                 .padding()
+                        } else if viewModel.areaCoordinates.isEmpty {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .frame(height: 170)
+                                    .foregroundStyle(Color("PlainBG"))
+                                HStack {
+                                    Text("Nothing found, please refresh the page.")
+                                        .font(.custom("Futura", size: 16))
+                                }
+                            }.onTapGesture() {
+                                refresh = true
+                                showPopUp.0 = false
+                                showPopUp.1 = ""
+                            }
                         }
                     }
                 }
@@ -109,6 +122,10 @@ struct MapView: View {
                         .environmentObject(userViewModel)
                 }
             }
+        }
+        .background {
+            Color("Details")
+                .ignoresSafeArea()
         }
     }
 }

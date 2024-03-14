@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct SearchView: View {
+struct FilterView: View {
     @Binding var show : Bool
     @StateObject var filterViewModel = FilterViewModel()
     @EnvironmentObject private var viewModel: SelectViewModel
@@ -69,6 +69,10 @@ struct SearchView: View {
             }
             .font(.custom("Futura", size: 18))
             .padding()
+        }
+        .background {
+            Color("Details")
+                .ignoresSafeArea()
         }
     }
 }
@@ -220,6 +224,6 @@ struct FilterBox: ViewModifier {
 
 
 #Preview {
-    SearchView(show : .constant(false))
+    FilterView(show : .constant(false))
         .environmentObject(FilterViewModel())
 }

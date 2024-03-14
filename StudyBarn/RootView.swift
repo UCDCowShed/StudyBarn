@@ -20,6 +20,10 @@ struct RootView: View {
                 NavigationStack {
                     SelectView(showSignInView: $showSignInView, appFirstLaunched: $appFirstLaunched, monitor: $monitor)
                 }
+                .background {
+                    Color("Details")
+                        .ignoresSafeArea()
+                }
             }
         }
         .onAppear {
