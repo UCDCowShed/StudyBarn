@@ -56,6 +56,7 @@
 		F169F45D2B8FFCA800DCA7D5 /* AddSubAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169F45C2B8FFCA800DCA7D5 /* AddSubAreaView.swift */; };
 		F169F45F2B8FFCE200DCA7D5 /* AddAreaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169F45E2B8FFCE200DCA7D5 /* AddAreaViewModel.swift */; };
 		F169F4612B8FFCED00DCA7D5 /* AddSubAreaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169F4602B8FFCED00DCA7D5 /* AddSubAreaViewModel.swift */; };
+		F177DF3D2BA40C0500B5E015 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DF3C2BA40C0500B5E015 /* ProfileViewModel.swift */; };
 		F18758662B88428A004CC7FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F18758652B88428A004CC7FE /* GoogleService-Info.plist */; };
 		F18758692B886083004CC7FE /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18758682B886083004CC7FE /* GoogleLoginButton.swift */; };
 		F199DB692B9D1408007BA9DF /* FeatureListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F199DB682B9D1408007BA9DF /* FeatureListingView.swift */; };
@@ -107,6 +108,7 @@
 		F169F45C2B8FFCA800DCA7D5 /* AddSubAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubAreaView.swift; sourceTree = "<group>"; };
 		F169F45E2B8FFCE200DCA7D5 /* AddAreaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAreaViewModel.swift; sourceTree = "<group>"; };
 		F169F4602B8FFCED00DCA7D5 /* AddSubAreaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubAreaViewModel.swift; sourceTree = "<group>"; };
+		F177DF3C2BA40C0500B5E015 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		F18758652B88428A004CC7FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F18758672B8842D5004CC7FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F18758682B886083004CC7FE /* GoogleLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleLoginButton.swift; path = StudyBarn/Login/GoogleLoginButton.swift; sourceTree = SOURCE_ROOT; };
@@ -177,7 +179,6 @@
 				F18758652B88428A004CC7FE /* GoogleService-Info.plist */,
 				07F7B4E02B7EE69800D077A1 /* StudyBarnApp.swift */,
 				07F7B4E22B7EE69800D077A1 /* ContentView.swift */,
-				F1351EDC2B8EC9A8005864D1 /* ProfileView.swift */,
 				F13687C02B883CB600A9A974 /* RootView.swift */,
 				F169F4592B8FF97100DCA7D5 /* Admin */,
 				846231A72B919122003F25C2 /* Components */,
@@ -185,6 +186,7 @@
 				F187586A2B886478004CC7FE /* Location */,
 				F13687902B8839BC00A9A974 /* Login */,
 				F10ABC4B2B9A905B00193DD7 /* Map */,
+				F177DF3E2BA420AA00B5E015 /* Profile */,
 				07D3C3E82B8ED24700EEEE57 /* Search */,
 				F10ABC4E2B9A90FE00193DD7 /* Select */,
 				F1351ED12B8EA2E9005864D1 /* Managers */,
@@ -297,6 +299,15 @@
 				F169F4602B8FFCED00DCA7D5 /* AddSubAreaViewModel.swift */,
 			);
 			path = Admin;
+			sourceTree = "<group>";
+		};
+		F177DF3E2BA420AA00B5E015 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F1351EDC2B8EC9A8005864D1 /* ProfileView.swift */,
+				F177DF3C2BA40C0500B5E015 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		F187586A2B886478004CC7FE /* Location */ = {
@@ -422,6 +433,7 @@
 				F169F4522B8FB36000DCA7D5 /* AreaManager.swift in Sources */,
 				F10E9FDD2BA015AB00DBCD79 /* UserAreaTrackedModel.swift in Sources */,
 				079C3E752B97A30200DBEEAF /* AddImageViewModel.swift in Sources */,
+				F177DF3D2BA40C0500B5E015 /* ProfileViewModel.swift in Sources */,
 				07F7B4EF2B7EE6B400D077A1 /* ExploreView.swift in Sources */,
 				F13687B72B883B3D00A9A974 /* SignInGoogleHelper.swift in Sources */,
 				F169F45D2B8FFCA800DCA7D5 /* AddSubAreaView.swift in Sources */,
@@ -582,6 +594,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyBarn/Preview Content\"";
 				DEVELOPMENT_TEAM = H9PP879423;
+				DEVELOPMENT_TEAM = 8G83856X33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StudyBarn/Info.plist;
@@ -599,6 +612,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ucdavis.cs.ecs189e.StudyBarn;
+				PRODUCT_BUNDLE_IDENTIFIER = jin.ucdavis.cs.ecs189e.StudyBarn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -616,6 +630,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyBarn/Preview Content\"";
 				DEVELOPMENT_TEAM = H9PP879423;
+				DEVELOPMENT_TEAM = 8G83856X33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StudyBarn/Info.plist;
@@ -633,6 +648,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ucdavis.cs.ecs189e.StudyBarn;
+				PRODUCT_BUNDLE_IDENTIFIER = jin.ucdavis.cs.ecs189e.StudyBarn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

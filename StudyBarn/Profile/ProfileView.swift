@@ -12,11 +12,14 @@ struct ProfileView: View {
     
     @Binding var showSignInView: Bool
     @Binding var monitor: CLMonitor?
+    @StateObject var profileViewModel = ProfileViewModel()
     @EnvironmentObject var viewModel: SelectViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var favoriteSubAreas: [SubAreaModel] = []
+    @State private var recommendedSubAreas: [SubAreaModel] = []
     @State private var recCollapsed: Bool = true
     @State private var favCollapsed: Bool = true
+    @State private var loadedRecommendedArea: Bool = false
     
     var body: some View {
         NavigationView {
@@ -95,8 +98,8 @@ struct ProfileView: View {
                     .padding(.top)
                 
                 // Recommendation
-                VStack(alignment: .leading, spacing: 7) {
-                    VStack (alignment: .leading){
+                VStack(alignment: !recommendedSubAreas.isEmpty ? .leading : .center, spacing: 7) {
+                    VStack (alignment: !recommendedSubAreas.isEmpty ? .leading : .center){
                         HStack {
                             Text("Your Recommended Study Spots")
                                 .font(.custom("Futura", size: 18))
@@ -112,14 +115,46 @@ struct ProfileView: View {
                             }
                         }
                         if !recCollapsed {
-                            // show list of recommendation here
-                            ScrollView {
-                                LazyVStack(spacing: 15) {
-                                    ForEach(favoriteSubAreas, id: \.self) { subArea in
-                                        SubAreaView(subArea: subArea, profile: true)
-                                            .padding(.top, 4)
+                            if loadedRecommendedArea {
+                                // No Recommended Areas
+                                if recommendedSubAreas.isEmpty {
+                                    // Refresh Button
+                                    VStack {
+                                        Button {
+                                            Task {
+                                                loadedRecommendedArea = false
+                                                recommendedSubAreas = try await profileViewModel.loadRecommendedAreas(userId: userViewModel.user?.userId)
+                                                loadedRecommendedArea = true
+                                            }
+                                        } label: {
+                                            VStack {
+                                                Image(systemName: "arrow.clockwise.circle.fill")
+                                                    .font(.system(size: 40))
+                                                    .foregroundStyle(.gray)
+                                            }
+                                        }
+                                        Text("Nothing Found.")
+                                            .font(.custom("Futura", size: 20))
+                                        Text("Please Refresh it.")
+                                            .font(.custom("Futura", size: 14))
+                                            .foregroundStyle(.gray)
+                                    }
+                                    .padding(.vertical, 40)
+                                }
+                                // show list of recommendation here
+                                else {
+                                    ScrollView {
+                                        LazyVStack(spacing: 15) {
+                                            ForEach(recommendedSubAreas, id: \.self) { subArea in
+                                                SubAreaView(subArea: subArea, profile: true)
+                                                    .padding(.top, 4)
+                                            }
+                                        }
                                     }
                                 }
+                            }
+                            else {
+                                ProgressView()
                             }
                         }
                     }
@@ -163,7 +198,6 @@ struct ProfileView: View {
                                         .padding(.top, 4)
                                 }
                             }
-                            
                         }
                     }
                 }
@@ -179,6 +213,8 @@ struct ProfileView: View {
                 Task {
                     do {
                         favoriteSubAreas = try await userViewModel.getAllFavoriteSubAreas()
+                        recommendedSubAreas = try await profileViewModel.loadRecommendedAreas(userId: userViewModel.user?.userId)
+                        loadedRecommendedArea = true
                     }
                     catch {
                         print("Failed getting favorite subareas...")
