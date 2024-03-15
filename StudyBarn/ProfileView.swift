@@ -15,12 +15,13 @@ struct ProfileView: View {
     @EnvironmentObject var viewModel: SelectViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var favoriteSubAreas: [SubAreaModel] = []
+    @State private var recCollapsed: Bool = false
+    @State private var favCollapsed: Bool = true
     
     var body: some View {
         NavigationView {
             // Entire View
             VStack {
-                Spacer()
                 // Profile Details / Logout
                 VStack(alignment: .center, spacing: 10) {
                     HStack {
@@ -89,30 +90,74 @@ struct ProfileView: View {
                     }
                 }
                 .padding()
-                Spacer()
                 
                 Divider()
                     .padding(.vertical)
                 
-                // Favorites
+                // Recommendation
                 VStack(alignment: .leading, spacing: 7) {
                     VStack (alignment: .leading){
-                        Text("Your Favorite Study Spots")
-                            .font(.custom("Futura", size: 20))
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color("TextColor"))
-                        Text("Add Your Favorite Study Spots!")
-                            .font(.custom("Futura", size: 16))
-                            .foregroundStyle(.gray)
-                        
+                        HStack {
+                            Text("Your Recommended Study Spots")
+                                .font(.custom("Futura", size: 20))
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                            Button {
+                                recCollapsed.toggle()
+                            } label: {
+                                Image(systemName: "chevron.down")
+                                    .padding()
+                            }
+                        }
+                        if !recCollapsed {
+                            // show list of recommendation here
+                            ScrollView {
+                                LazyVStack(spacing: 15) {
+                                    ForEach(favoriteSubAreas, id: \.self) { subArea in
+                                        SubAreaView(subArea: subArea, profile: true)
+                                            .padding(.top, 4)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .padding(.bottom, 6)
+                }
+                .padding(.horizontal, 4)
+                
+                Divider()
+                
+                // Favorites
+                VStack(alignment: .leading, spacing: 7) {
+                    HStack {
+
+                    VStack (alignment: .leading){
+                            Text("Your Favorite Study Spots")
+                                .font(.custom("Futura", size: 20))
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color("TextColor"))
+                            Text("Add Your Favorite Study Spots!")
+                                .font(.custom("Futura", size: 16))
+                                .foregroundStyle(.gray)
+                        }
+                        Spacer()
+                        Button {
+                            favCollapsed.toggle()
+                        } label: {
+                            Image(systemName: "chevron.down")
+                                .padding()
+                        }
                     }
                     .padding(.bottom, 6)
                     
-                    ScrollView {
-                        LazyVStack(spacing: 15) {
-                            ForEach(favoriteSubAreas, id: \.self) { subArea in
-                                SubAreaView(subArea: subArea, profile: true)
-                                    .padding(.top, 4)
+                    if !favCollapsed {
+                        ScrollView {
+                            LazyVStack(spacing: 15) {
+                                ForEach(favoriteSubAreas, id: \.self) { subArea in
+                                    SubAreaView(subArea: subArea, profile: true)
+                                        .padding(.top, 4)
+                                }
                             }
                         }
                     }

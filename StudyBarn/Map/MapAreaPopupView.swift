@@ -25,7 +25,7 @@ struct MapAreaPopupView: View {
                     TabView {
                         ListingCarouselView(area: area, subArea: nil, isArea: true)
                     }
-                    .frame(height: 170)
+                    .frame(width: 140, height: 170)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .tabViewStyle(.page)
                     // Detailed Features
@@ -36,7 +36,8 @@ struct MapAreaPopupView: View {
                                     .font(.custom("Futura", size: 18))
                                 // Default is "Closed"
                                 Text(AreaManager.shared.formatHours(openHour: area.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
-                                    .font(.custom("Futura", size: 16))
+                                    .font(.custom("Futura", size: 14))
+                                    .opacity(0.7)
                             }
                             Spacer()
                             // Open/Close Indicator
