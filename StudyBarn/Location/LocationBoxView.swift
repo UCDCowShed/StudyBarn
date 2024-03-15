@@ -31,24 +31,35 @@ struct LocationBoxView: View {
                         Text(area?.name ?? "Area")
                             .font(.custom("Futura", size: 24))
                         // Default is "Closed"
-                        Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
-                            .font(.custom("Futura", size: 16))
-                            .fontWeight(.light)
-                            .foregroundStyle(.gray)
+                        HStack {
+                            Text(AreaManager.shared.formatHours(openHour: area?.openHour[todayDate] ?? HourMin(hour: 13, minute: 00), closeHour: area?.closeHour[todayDate] ?? HourMin(hour: 12, minute: 00)))
+                                .font(.custom("Futura", size: 16))
+                                .fontWeight(.light)
+                                .foregroundStyle(.gray)
+                            // Opened
+                            if AreaManager.shared.determineOpenOrClose(openHour: area?.openHour[todayDate], closeHour: area?.closeHour[todayDate]) {
+                                Text("Open")
+                                    .font(.custom("Futura", size: 16))
+                                    .foregroundStyle(.green)
+                            }
+                            // Closed
+                            else {
+                                Text("Closed")
+                                    .font(.custom("Futura", size: 16))
+                                    .foregroundStyle(.red)
+                            }
+                        }
                     }
                     Spacer()
                     
-                    // Open/Close Indicator
+                    // Visited times
                     VStack {
-                        // Opened
-                        if AreaManager.shared.determineOpenOrClose(openHour: area?.openHour[todayDate], closeHour: area?.closeHour[todayDate]) {
-                            Text("Open")
-                                .foregroundStyle(.green)
-                        }
-                        // Closed
-                        else {
-                            Text("Closed")
-                                .foregroundStyle(.red)
+                        // Showing Frequencies
+                        VStack (spacing: 2){
+                            Text("\(area?.visited ?? 0)")
+                                .font(.custom("Futura", size: 20))
+                            Text("Visited")
+                                .font(.custom("Futura", size: 14))
                         }
                     }
                     .font(.custom("Futura", size: 18))
