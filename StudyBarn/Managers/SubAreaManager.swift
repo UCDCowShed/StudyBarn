@@ -78,6 +78,38 @@ final class SubAreaManager {
         
         return favoriteSubAreas
     }
+    
+    // Get Subarea with a feature
+    func getSubAreaByFeature(feature: String) async throws -> [SubAreaModel] {
+        var subAreas: [SubAreaModel] = []
+        
+        let query = subAreaCollection
+            .whereField(feature, isEqualTo: true)
+        
+        let snapshot = try await query.getDocuments()
+        
+        // Convert data into AreaModel type
+        for document in snapshot.documents {
+            let subArea = try document.data(as: SubAreaModel.self)
+            subAreas.append(subArea)
+        }
+        
+        var randomThree: [SubAreaModel] = []
+        
+        for _ in 0..<3 {
+            if subAreas.count == 0 {
+                break
+            }
+            let randomNumber = Int.random(in: 0...subAreas.count-1)
+            let removedItem = subAreas.remove(at: randomNumber)
+
+            if !randomThree.contains(removedItem) {
+                randomThree.append(removedItem)
+            }
+        }
+
+        return randomThree
+    }
 
     // Get Filtered subAreas
     func getFilteredSubArea(atmosphereFilter: [FilterModel], volumeFilter: [FilterModel], featureFilter: [FilterModel]) async throws -> [SubAreaModel]? {
