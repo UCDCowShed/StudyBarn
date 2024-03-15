@@ -62,8 +62,11 @@ final class SelectViewModel: ObservableObject {
     }
     
     // Save User's Entrance to the studySpots
-    func saveUserTrackingInfo(userId: String, areaId: String) async throws {
+    func saveTrackedInfo(userId: String, areaId: String) async throws {
+        // Save Data on User
         try await MapManager.shared.saveUserTrackedData(userId: userId, areaId: areaId)
+        // Save Data on Area
+        try await AreaManager.shared.countAreaVisited(areaId: areaId)
     }
     
     // Initialize Monitor with given Coordinates
@@ -104,7 +107,7 @@ final class SelectViewModel: ObservableObject {
                         print("try saving tracked data")
                         // Save User Movement into database
                         do {
-                            try await saveUserTrackingInfo(userId: userId, areaId: event.identifier)
+                            try await saveTrackedInfo(userId: userId, areaId: event.identifier)
                             print("seems like saved the tracked data")
                         }
                         catch {
