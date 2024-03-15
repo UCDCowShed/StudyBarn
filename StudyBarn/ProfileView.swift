@@ -15,7 +15,7 @@ struct ProfileView: View {
     @EnvironmentObject var viewModel: SelectViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var favoriteSubAreas: [SubAreaModel] = []
-    @State private var recCollapsed: Bool = false
+    @State private var recCollapsed: Bool = true
     @State private var favCollapsed: Bool = true
     
     var body: some View {
@@ -23,7 +23,7 @@ struct ProfileView: View {
             // Entire View
             VStack {
                 // Profile Details / Logout
-                VStack(alignment: .center, spacing: 10) {
+                VStack(alignment: .center, spacing: 7) {
                     HStack {
                         // PROFILE IMAGE
                         if let userImage = userViewModel.user?.photoUrl {
@@ -92,21 +92,22 @@ struct ProfileView: View {
                 .padding()
                 
                 Divider()
-                    .padding(.vertical)
+                    .padding(.top)
                 
                 // Recommendation
                 VStack(alignment: .leading, spacing: 7) {
                     VStack (alignment: .leading){
                         HStack {
                             Text("Your Recommended Study Spots")
-                                .font(.custom("Futura", size: 20))
+                                .font(.custom("Futura", size: 18))
                                 .fontWeight(.semibold)
                                 .foregroundStyle(Color("TextColor"))
                             Spacer()
                             Button {
                                 recCollapsed.toggle()
                             } label: {
-                                Image(systemName: "chevron.down")
+                                Image(systemName: recCollapsed ? "chevron.down" : "chevron.up")
+                                    .foregroundStyle(.gray)
                                     .padding()
                             }
                         }
@@ -131,21 +132,24 @@ struct ProfileView: View {
                 // Favorites
                 VStack(alignment: .leading, spacing: 7) {
                     HStack {
-
-                    VStack (alignment: .leading){
+                        
+                        VStack (alignment: .leading){
                             Text("Your Favorite Study Spots")
-                                .font(.custom("Futura", size: 20))
+                                .font(.custom("Futura", size: 18))
                                 .fontWeight(.semibold)
                                 .foregroundStyle(Color("TextColor"))
-                            Text("Add Your Favorite Study Spots!")
-                                .font(.custom("Futura", size: 16))
-                                .foregroundStyle(.gray)
+                            if favoriteSubAreas.isEmpty {
+                                Text("Add Your Favorite Study Spots!")
+                                    .font(.custom("Futura", size: 16))
+                                    .foregroundStyle(.gray)
+                            }
                         }
                         Spacer()
                         Button {
                             favCollapsed.toggle()
                         } label: {
-                            Image(systemName: "chevron.down")
+                            Image(systemName: favCollapsed ? "chevron.down" : "chevron.up")
+                                .foregroundStyle(.gray)
                                 .padding()
                         }
                     }
@@ -159,6 +163,7 @@ struct ProfileView: View {
                                         .padding(.top, 4)
                                 }
                             }
+                            
                         }
                     }
                 }
