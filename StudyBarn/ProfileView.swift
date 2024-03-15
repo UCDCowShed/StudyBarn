@@ -111,7 +111,7 @@ struct ProfileView: View {
                     ScrollView {
                         LazyVStack(spacing: 15) {
                             ForEach(favoriteSubAreas, id: \.self) { subArea in
-                                SubAreaView(subArea: subArea)
+                                SubAreaView(subArea: subArea, profile: true)
                                     .padding(.top, 4)
                             }
                         }

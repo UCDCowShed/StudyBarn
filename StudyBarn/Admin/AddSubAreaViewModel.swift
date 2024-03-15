@@ -12,14 +12,14 @@ import FirebaseFirestoreSwift
 @MainActor
 final class AddSubAreaViewModel: ObservableObject {
     
-    func addNewSubArea(subAreaName: String, areaId: String, floor: Int, outdoors: Bool, groupStudy: Bool, microwave: Bool, printer: Bool, dining: Bool, outlets: Bool, computers: Bool, areaModel: AreaModel?) async throws {
+    func addNewSubArea(subAreaName: String, areaId: String, floor: Int, outdoors: Bool, groupStudy: Bool, microwave: Bool, printer: Bool, dining: Bool, outlets: Bool, computers: Bool, bougie: Bool, lecture: Bool, independent: Bool, bustling: Bool, grassy: Bool, areaModel: AreaModel?) async throws {
         
         // Initialize area values
         let subAreaId = SubAreaManager.shared.getDocumentId()
         let rating = 0.0
         let images: [String]? = []
         
-        let subArea = SubAreaModel(subAreaId: subAreaId, name: subAreaName, areaId: areaId, floor: floor, images: images, outdoors: outdoors, groupStudy: groupStudy, microwave: microwave, printer: printer, dining: dining, outlets: outlets, computers: computers, rating: rating)
+        let subArea = SubAreaModel(subAreaId: subAreaId, name: subAreaName, areaId: areaId, floor: floor, images: images, outdoors: outdoors, groupStudy: groupStudy, microwave: microwave, printer: printer, dining: dining, outlets: outlets, computers: computers, bougie: bougie, lecture: lecture, independent: independent, bustling: bustling, grassy: grassy, rating: rating)
         
         // Modify existing Area with the new features
         if var area = areaModel {

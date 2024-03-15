@@ -81,7 +81,8 @@ struct DetailsView: View {
                 else {
                     VStack(spacing: 50) {
                         ForEach(allSubAreasFromArea, id: \.self) { subArea in
-                            SubAreaView(subArea: subArea)
+                            SubAreaView(subArea: subArea, profile: false)
+                                .environmentObject(viewModel)
                                 .padding()
                         }
                     }
