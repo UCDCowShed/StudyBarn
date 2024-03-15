@@ -83,6 +83,55 @@ final class MapManager: NSObject, CLLocationManagerDelegate {
         return [:]
     }
     
+    // Get Most Visited Area
+    func getMostVisitedArea(userId: String) async throws -> AreaModel? {
+        let document = try? await userAreaTrackedDocument(userId: userId).getDocument()
+        
+        if document?.exists ?? false {
+            guard let document = document else {
+                print("nothing found...")
+                return nil
+            }
+            let userTrackedData = try document.data(as: UserAreaTrackedModel.self)
+            
+            // Nothing Found
+            if userTrackedData.areaTracked.keys.count == 0 {
+                return nil
+            }
+            
+            // Find Max Visited
+            var maxVisited: AreaTrackModel?
+            var maxVisitedAreaId: String?
+            for areaId in userTrackedData.areaTracked.keys {
+                let newArea = userTrackedData.areaTracked[areaId]
+                
+                // First Time
+                if maxVisited == nil {
+                    maxVisited = newArea
+                    maxVisitedAreaId = areaId
+                    continue
+                }
+                
+                if maxVisited?.count ?? 0 < newArea?.count ?? 0 {
+                    maxVisited = newArea
+                    maxVisitedAreaId = areaId
+                }
+            }
+            
+            guard let maxVisitedAreaId = maxVisitedAreaId else {
+                print("Nothing Found")
+                return nil
+            }
+            
+            // Get Area Info with Max Visited
+            let areaInfo = try await AreaManager.shared.getArea(areaId: maxVisitedAreaId)
+            
+            return areaInfo
+        }
+        
+        return nil
+    }
+    
     // Save Tracked user's data into the database
     func saveUserTrackedData(userId: String, areaId: String) async throws {
         print("start reading data")

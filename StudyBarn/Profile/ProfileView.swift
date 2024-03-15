@@ -12,9 +12,11 @@ struct ProfileView: View {
     
     @Binding var showSignInView: Bool
     @Binding var monitor: CLMonitor?
+    @StateObject var profileViewModel = ProfileViewModel()
     @EnvironmentObject var viewModel: SelectViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var favoriteSubAreas: [SubAreaModel] = []
+    @State private var recommendedSubAreas: [SubAreaModel] = []
     @State private var recCollapsed: Bool = true
     @State private var favCollapsed: Bool = true
     
@@ -115,7 +117,7 @@ struct ProfileView: View {
                             // show list of recommendation here
                             ScrollView {
                                 LazyVStack(spacing: 15) {
-                                    ForEach(favoriteSubAreas, id: \.self) { subArea in
+                                    ForEach(recommendedSubAreas, id: \.self) { subArea in
                                         SubAreaView(subArea: subArea, profile: true)
                                             .padding(.top, 4)
                                     }
@@ -163,7 +165,6 @@ struct ProfileView: View {
                                         .padding(.top, 4)
                                 }
                             }
-                            
                         }
                     }
                 }
@@ -179,6 +180,7 @@ struct ProfileView: View {
                 Task {
                     do {
                         favoriteSubAreas = try await userViewModel.getAllFavoriteSubAreas()
+                        recommendedSubAreas = try await profileViewModel.loadRecommendedAreas(userId: userViewModel.user?.userId)
                     }
                     catch {
                         print("Failed getting favorite subareas...")
