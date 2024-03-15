@@ -13,7 +13,6 @@ struct DetailsView: View {
     @EnvironmentObject private var userViewModel: UserViewModel
     
     let area: AreaModel?
-    let frequency: Int?
     let todayDate: String = Utilities.shared.getCurrentDate()
     
     @State private var loadingSubAreas = false
@@ -49,7 +48,7 @@ struct DetailsView: View {
                     }
                     // Showing Frequencies
                     VStack (spacing: 2){
-                        Text("\(frequency ?? 0)")
+                        Text("\(area?.visited ?? 0)")
                             .font(.custom("Futura", size: 20))
                         Text("Visited")
                             .font(.custom("Futura", size: 14))
@@ -79,7 +78,7 @@ struct DetailsView: View {
                     ProgressView()
                 }
                 else {
-                    VStack(spacing: 50) {
+                    VStack(spacing: 15) {
                         ForEach(allSubAreasFromArea, id: \.self) { subArea in
                             SubAreaView(subArea: subArea, profile: false)
                                 .environmentObject(viewModel)
@@ -112,7 +111,7 @@ struct DetailsView: View {
 }
 
 #Preview {
-    DetailsView(area: nil, frequency: nil)
+    DetailsView(area: nil)
         .environmentObject(SelectViewModel())
         .environmentObject(UserViewModel())
 }

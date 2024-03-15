@@ -58,7 +58,7 @@ struct ExploreView: View {
                                 ForEach(viewModel.areasIds, id: \.self) { areaId in
                                     let area = viewModel.areasHashmap[areaId]
                                     NavigationLink {
-                                        DetailsView(area: area, frequency: viewModel.areaVisitFrequencies[areaId]?.count)
+                                        DetailsView(area: area)
                                             .environmentObject(viewModel)
                                             .environmentObject(userViewModel)
                                             .navigationBarBackButtonHidden(false)
