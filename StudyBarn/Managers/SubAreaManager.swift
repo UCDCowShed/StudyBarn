@@ -51,6 +51,7 @@ final class SubAreaManager {
         try await subAreaDocument(subAreaId: subareaId).updateData(data)
     }
     
+    // get all subareas from area id
     func getAllSubAreaFromAreaId(areaId: String) async throws -> [SubAreaModel] {
         let snapshot = try await subAreaCollection.whereField(SubAreaModel.CodingKeys.areaId.rawValue, isEqualTo: areaId).getDocuments()
         

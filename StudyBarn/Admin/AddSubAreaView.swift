@@ -23,6 +23,11 @@ struct AddSubAreaView: View {
     @State private var dining: Bool = false
     @State private var outlets: Bool = false
     @State private var computers: Bool = false
+    @State private var bougie: Bool = false
+    @State private var lecture: Bool = false
+    @State private var independent: Bool = false
+    @State private var bustling: Bool = false
+    @State private var grassy: Bool = false
 
     
     private func addNewSubArea() {
@@ -31,7 +36,7 @@ struct AddSubAreaView: View {
                 let floorInt = Int(self.floor) ?? 0
                 let area = viewModel.areasHashmap[areaId]
                 
-                try await addSubAreaViewModel.addNewSubArea(subAreaName: self.subAreaName, areaId: areaId, floor: floorInt, outdoors: self.outdoors, groupStudy: self.groupStudy, microwave: self.microwave, printer: self.printer, dining: self.dining, outlets: self.outlets, computers: self.computers, areaModel: area)
+                try await addSubAreaViewModel.addNewSubArea(subAreaName: self.subAreaName, areaId: areaId, floor: floorInt, outdoors: self.outdoors, groupStudy: self.groupStudy, microwave: self.microwave, printer: self.printer, dining: self.dining, outlets: self.outlets, computers: self.computers, bougie: self.bougie, lecture: self.lecture, independent: self.independent, bustling: self.bustling, grassy: self.grassy, areaModel: area)
             }
         }
     }
@@ -50,16 +55,18 @@ struct AddSubAreaView: View {
                     text: $floor
                 )
                 .keyboardType(.numberPad)
-                // Get outdoors
+                
+                // Get foodVendor
                 HStack{
-                    Text("\(outdoors ? "True" : "False")")
+                    Text("\(dining ? "True" : "False")")
                     Spacer()
                     Button{
-                        outdoors = !outdoors
+                        dining = !dining
                     } label: {
-                        Text("Toggle Outdoors")
+                        Text("Toggle Dining")
                     }
                 }
+                
                 // Get groupStudy
                 HStack{
                     Text("\(groupStudy ? "True" : "False")")
@@ -70,6 +77,18 @@ struct AddSubAreaView: View {
                         Text("Toggle GroupStudy")
                     }
                 }
+                
+                // Get outdoors
+                HStack{
+                    Text("\(outdoors ? "True" : "False")")
+                    Spacer()
+                    Button{
+                        outdoors = !outdoors
+                    } label: {
+                        Text("Toggle Outdoors")
+                    }
+                }
+                
                 // Get microwave
                 HStack{
                     Text("\(microwave ? "True" : "False")")
@@ -110,17 +129,61 @@ struct AddSubAreaView: View {
                         Text("Toggle Computers")
                     }
                 }
-                // Get foodVendor
+                
+                // get bougie
                 HStack{
-                    Text("\(dining ? "True" : "False")")
+                    Text("\(bougie ? "True" : "False")")
                     Spacer()
                     Button{
-                        dining = !dining
+                        bougie = !bougie
                     } label: {
-                        Text("Toggle Dining")
+                        Text("Toggle bougie")
                     }
                 }
                
+                // get lecture
+                HStack{
+                    Text("\(lecture ? "True" : "False")")
+                    Spacer()
+                    Button{
+                        lecture = !lecture
+                    } label: {
+                        Text("Toggle lecture")
+                    }
+                }
+                
+                // get indepedent
+                HStack{
+                    Text("\(independent ? "True" : "False")")
+                    Spacer()
+                    Button{
+                        independent = !independent
+                    } label: {
+                        Text("Toggle independent")
+                    }
+                }
+                
+                // get bustling
+                HStack{
+                    Text("\(bustling ? "True" : "False")")
+                    Spacer()
+                    Button{
+                        bustling = !bustling
+                    } label: {
+                        Text("Toggle bustling")
+                    }
+                }
+                
+                // get grassy
+                HStack{
+                    Text("\(grassy ? "True" : "False")")
+                    Spacer()
+                    Button{
+                        grassy = !grassy
+                    } label: {
+                        Text("Toggle grassy")
+                    }
+                }
                 
                 // Submit form button
                 Button {
