@@ -117,7 +117,7 @@ struct MapView: View {
                     position = .userLocation(fallback: .automatic)
                 }
                 .navigationDestination(isPresented: $gotoDetailsView) {
-                    DetailsView(area: viewModel.areasHashmap[showPopUp.1], frequency: viewModel.areaVisitFrequencies[showPopUp.1]?.count)
+                    DetailsView(area: viewModel.areasHashmap[showPopUp.1])
                         .environmentObject(viewModel)
                         .environmentObject(userViewModel)
                 }

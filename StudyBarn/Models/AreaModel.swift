@@ -31,6 +31,7 @@ struct AreaModel: Codable, Hashable {
     var dining: Bool?
     var outlets: Bool?
     var computers: Bool?
+    var visited: Int
     
     init(areaId: String, name: String, rating: Double?, images: [String]?, openHour: [String: HourMin], closeHour: [String: HourMin], latitude: Double?, longitude: Double?) {
         self.areaId = areaId
@@ -50,6 +51,7 @@ struct AreaModel: Codable, Hashable {
         self.dining = nil
         self.outlets = nil
         self.computers = nil
+        self.visited = 0
     }
     
     enum CodingKeys: String, CodingKey {
@@ -70,6 +72,7 @@ struct AreaModel: Codable, Hashable {
         case dining
         case outlets
         case computers
+        case visited
     }
     
     init(from decoder: Decoder) throws {
@@ -91,6 +94,7 @@ struct AreaModel: Codable, Hashable {
         self.dining = try container.decodeIfPresent(Bool.self, forKey: .dining)
         self.outlets = try container.decodeIfPresent(Bool.self, forKey: .outlets)
         self.computers = try container.decodeIfPresent(Bool.self, forKey: .computers)
+        self.visited = try container.decode(Int.self, forKey: .visited)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -112,6 +116,7 @@ struct AreaModel: Codable, Hashable {
         try container.encodeIfPresent(self.dining, forKey: .dining)
         try container.encodeIfPresent(self.outlets, forKey: .outlets)
         try container.encodeIfPresent(self.computers, forKey: .computers)
+        try container.encode(self.visited, forKey: .visited)
     }
     
 }

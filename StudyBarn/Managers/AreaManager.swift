@@ -177,4 +177,10 @@ final class AreaManager {
         
         return filteredAreas
     }
+    
+    // Add count for visited
+    func countAreaVisited(areaId: String) async throws {
+        try await areaDocument(areaId: areaId).updateData(["visited": FieldValue.increment(Int64(1))])
+    }
+    
 }
