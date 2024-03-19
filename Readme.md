@@ -1,6 +1,4 @@
-# ECS 189E Final Project
-
-## StudyBarn App
+# ECS 189E Final Project - StudyBarn
 
 ##### Name: Yeongjin Lee
 ##### Student ID: 916567611
