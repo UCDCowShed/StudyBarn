@@ -9,7 +9,7 @@
 
 ## Summary of Project
 Our app “StudyBarn” helps students easily locate and explore study environments on campus, providing information on 
-cafes, libraries, and collaborative spaces based on user preferences and ratings. Students can enjoy features like 
+cafes, libraries, and collaborative spaces based on user's most visited places. Students can enjoy features like 
 noise level and crowdedness of the study environment, ensuring an optimal study experience.
 
 ## Overview of the Code
