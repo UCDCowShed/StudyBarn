@@ -26,7 +26,9 @@ struct MapView: View {
                     .environmentObject(viewModel)
             } else {
                 ZStack {
+                    // Entire MAP
                     Map(position: $position) {
+                        // Render PinPoints (areas)
                         ForEach(Array(viewModel.areaCoordinates.keys), id: \.self) { areaId in
                             // Get area name and coordinates
                             let name = viewModel.areasHashmap[areaId]?.name

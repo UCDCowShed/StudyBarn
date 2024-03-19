@@ -8,6 +8,8 @@
 import SwiftUI
 import PhotosUI
 
+// ONLY FOR ADMINS
+
 struct AddImageView: View {
     @StateObject private var addImageViewModel = AddImageViewModel()
     @State private var selectedItem: PhotosPickerItem? = nil

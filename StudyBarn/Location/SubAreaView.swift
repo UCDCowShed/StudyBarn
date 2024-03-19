@@ -35,11 +35,6 @@ struct SubAreaView: View {
                         }
                         Text("\(subArea?.name ?? "Test Sub")")
                             .font(.custom("Futura", size: 16))
-                        // Rating
-//                        HStack(spacing: 2) {
-//                            Image(systemName: "star.fill")
-//                            Text("\(subArea?.rating ?? 0.0, specifier: "%.1f")")
-//                        }
                         // Floor
                         Text("Floor - \(subArea?.floor ?? 1)")
                             .font(.custom("Futura", size: 12))

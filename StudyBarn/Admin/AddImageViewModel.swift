@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 import PhotosUI
 
+// ONLY FOR ADMINS
+
 @MainActor
 final class AddImageViewModel: ObservableObject {
     func addImage(item: PhotosPickerItem, areaID: String, isArea: Bool) {

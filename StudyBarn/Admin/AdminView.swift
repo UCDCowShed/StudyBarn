@@ -8,6 +8,8 @@
 import SwiftUI
 import PhotosUI
 
+// ONLY FOR ADMINS
+
 struct AdminView: View {
     
     @EnvironmentObject private var viewModel: SelectViewModel

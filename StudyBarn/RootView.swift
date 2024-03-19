@@ -16,6 +16,7 @@ struct RootView: View {
     
     var body: some View {
         ZStack {
+            // Logged In, Show SelectView
             if !showSignInView {
                 NavigationStack {
                     SelectView(showSignInView: $showSignInView, appFirstLaunched: $appFirstLaunched, monitor: $monitor)
@@ -30,6 +31,7 @@ struct RootView: View {
             let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
             self.showSignInView = authUser == nil
         }
+        // Not Logged In, Google Auth Login
         .fullScreenCover(isPresented: $showSignInView, content: {
             NavigationStack {
                 LoginView(showSignInView: $showSignInView)

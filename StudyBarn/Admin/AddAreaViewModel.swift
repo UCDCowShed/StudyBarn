@@ -9,6 +9,8 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+// ONLY FOR ADMINS
+
 @MainActor
 final class AddAreaViewModel: ObservableObject {
     
