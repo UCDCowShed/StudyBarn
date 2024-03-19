@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// ONLY FOR ADMINS
+
 struct AddAreaView: View {
     
     @StateObject var addAreaViewModel = AddAreaViewModel()

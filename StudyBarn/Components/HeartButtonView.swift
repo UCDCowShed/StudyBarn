@@ -19,12 +19,12 @@ struct HeartButtonView: View {
             print("Error with toggle favorite..")
             return "heart"
         }
-        // Remove Favorites
+        // Remove Favorites from the user
         if userViewModel.checkFavorite(locationId: subAreaId) ?? false {
             userViewModel.removeUserFavorite(favorite: subAreaId)
             return "heart"
         }
-        // Add Favorites
+        // Add Favorites to the user
         else {
             userViewModel.addUserFavorite(favorite: subAreaId)
             return "heart.fill"

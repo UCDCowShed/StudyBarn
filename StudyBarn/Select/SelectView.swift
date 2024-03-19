@@ -61,7 +61,6 @@ struct SelectView: View {
             Task {
                 // Initialize and start monitoring user movements
                 if appFirstLaunched {
-                    print("here")
                     monitor = await viewModel.initializeMonitor()
                     appFirstLaunched = false
                 }

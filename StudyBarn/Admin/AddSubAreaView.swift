@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// ONLY FOR ADMINS
+
 struct AddSubAreaView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject private var viewModel: SelectViewModel

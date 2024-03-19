@@ -12,6 +12,7 @@ struct FeatureListingView: View {
     let subArea: SubAreaModel?
     
     var body: some View {
+        // Conditionally Render Feature Icons
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 16) {
                 // Outdoors

@@ -72,12 +72,10 @@ final class SelectViewModel: ObservableObject {
     // Initialize Monitor with given Coordinates
     // should happen only once with all the area when app starts
     func initializeMonitor() async -> CLMonitor {
-        print("Initialize monitor")
         return await CLMonitor("StudySpotMonitor")
     }
     
     func setConditionOnMonitor(monitor: CLMonitor?) async {
-        print("setting conditions on monitor")
         // Convert Coordinates into conditions for monitor and add to the monitor
         for areaCoor in areaCoordinates {
             // User within 3 meters of this area will be considered to be "entered"
@@ -90,7 +88,6 @@ final class SelectViewModel: ObservableObject {
     
     // Happends when the user logs in
     func startMonitorAreas(monitor: CLMonitor?) async {
-        print("start monitor")
         guard let monitor = monitor else {
             print("Error with starting monitor.. monitor does not exist..")
             return
@@ -102,13 +99,10 @@ final class SelectViewModel: ObservableObject {
                 switch event.state {
                     // User entered some studyspots
                 case .satisfied:
-                    print("Entered: " + event.identifier)
                     if let userId = self.userId {
-                        print("try saving tracked data")
                         // Save User Movement into database
                         do {
                             try await saveTrackedInfo(userId: userId, areaId: event.identifier)
-                            print("seems like saved the tracked data")
                         }
                         catch {
                             print("Failed saving data: ")
@@ -118,12 +112,10 @@ final class SelectViewModel: ObservableObject {
                     else {
                         print("Error saving tracked data...userId does not exists..")
                     }
-                    print("ran everything")
                     
                     // User exited out of the studySpots
                 case .unknown, .unsatisfied:
-                    print("Exited: " + event.identifier)
-                    
+                    print("Unknown Event..")
                 default:
                     print("No Location Registered")
                 }
@@ -133,8 +125,6 @@ final class SelectViewModel: ObservableObject {
     
     // Happens when the user logs out
     func removeMonitorAreas(monitor: CLMonitor?) async {
-        print("Stop Monitor")
-        
         if let identifiers = await monitor?.identifiers {
             for anIdentifier in identifiers {
                 await monitor?.remove(anIdentifier)

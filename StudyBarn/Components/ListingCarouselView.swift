@@ -15,6 +15,7 @@ struct ListingCarouselView: View {
     @State private var urls: [URL]? = nil
     
     var body: some View {
+        // List Images
         TabView {
             if let urls {
                 ForEach(urls, id: \.self) { url in
@@ -37,6 +38,7 @@ struct ListingCarouselView: View {
         }
         .tabViewStyle(.page)
         .ignoresSafeArea()
+        // Get Image URLs
         .task (id: area?.areaId) {
             if let area = area, let isArea = isArea {
                 if let images = area.images {
