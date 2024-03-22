@@ -46,7 +46,7 @@ The SubAreaModel consists of these variables: subAreaId, name, areaId, floor, im
 - These features - bougie, lecture, independent, bustling, and grassy - are determined by us to use for the personalized study spot recommendation system in the future.
 - The rating value will be used after we implement the rating system.
 
-## How to Fix Common Errors
+## How to Fix Common Issues
 1) If "No Account for Team "XXXXXXXXX". Add a new account in Accounts settings or verify that your accounts have valid credentials." and "No profiles for 'ucdavis.cs.ecs189e.StudyBarn' were found: Xcode couldn't find any iOS App Development provisioning profiles matching 'ucdavis.cs.ecs189e.StudyBarn'." errors show up, please set it to your own ***Team*** and ***Bundle Identifier***.
 2) If you find "Package.resolved file is corrupted or malformed" or "XXXX library/package not found/unresolved" errors, do the following steps:
 - 1) Run this in your terminal
