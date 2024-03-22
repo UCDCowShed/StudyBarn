@@ -48,11 +48,10 @@ The SubAreaModel consists of these variables: subAreaId, name, areaId, floor, im
 
 ## How to Test User Location Tracking
 1) Run the app
-2) Make sure to log out and login if you are already logged in.
-3) Navigate to the map view and allow tracking.
-4) Set your Simulator location to the longitude and latitude of the study spots we have.
-5) Go to explore view and refresh (drag the screen downwards as the common apps do to refresh).
-6) Check if the ***visited*** value increased for that area.
-7) If you refresh again at this point, you will notice that the visited value does not increase since there were no changes in your location.
-8) Change your location to some other longitude and latitude and change back to the study spot's longitude and latitude.
-9) Refresh in the explore view, and you will see the visited value increased for that area.
+2) Navigate to the map view and allow tracking.
+3) Set your Simulator location to the longitude and latitude of the study spots we have.
+4) Go to explore view and refresh (drag the screen downwards as the common apps do to refresh).
+5) Check if the ***visited*** value increased for that area.
+6) If you refresh again at this point, you will notice that the visited value does not increase since there were no changes in your location.
+7) Change your location to some other longitude and latitude and change back to the study spot's longitude and latitude.
+8) Refresh in the explore view, and you will see the visited value increased for that area.
