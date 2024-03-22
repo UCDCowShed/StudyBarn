@@ -22,6 +22,7 @@ struct SelectView: View {
             ExploreView(startMonitoring: $startMonitoring, monitor: $monitor)
                 .tabItem {
                     Label("Explore", systemImage: "magnifyingglass")
+                        .foregroundStyle(Color("FontColor"))
                 }
                 .environmentObject(viewModel)
                 .environmentObject(userViewModel)

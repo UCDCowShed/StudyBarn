@@ -73,6 +73,7 @@ struct ExploreView: View {
                             .padding()
                         }
                         .padding(.top, 70.0)
+                        .padding(.bottom, 1.0)
                     }
                     // Loading View when loading Areas
                     else {
