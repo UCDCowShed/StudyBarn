@@ -11,9 +11,16 @@ import MapKit
 @MainActor
 final class SelectViewModel: ObservableObject {
     @Published var areasIds: [String] = []
+    
+    // Maps areaID to the areaModel that contains all the information
     @Published var areasHashmap: [String: AreaModel] = [:]
+    
+    // Maps the areaID to its coordinates so that we can access it from the map
     @Published var areaCoordinates: [String: CLLocationCoordinate2D] = [:]
+    
     @Published var userId: String? = nil
+    
+    // Maps the areaID to the frequency data.
     @Published var areaVisitFrequencies: [String: AreaTrackModel] = [:]
     
     // Set User Id
@@ -132,6 +139,7 @@ final class SelectViewModel: ObservableObject {
         }
     }
     
+    // Get the frequency data from firebase
     func loadAreaVisitFrequencies(userId: String?) async throws {
         guard let userId = userId else { return }
         
