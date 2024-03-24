@@ -8,53 +8,92 @@
 ##### Student ID: 917507227
 
 ## Summary of Project
-Our app “StudyBarn” helps students easily locate and explore study environments on campus, providing information on 
-campus resources in each area. Features include filtering/searching for resources, recommendations, and saving favorite
+Our app “StudyBarn” helps students easily locate and explore study environments
+on campus, providing information on campus resources in each area. Features 
+include filtering/searching for resources, recommendations, and saving favorite
 area, allowing newcomers to the campus an optimal study experience.
 
 ## Overview of the Code
 ### Structure of the App
-There are 3 main views that the user can navigate to, ExploreView, MapView, and ProfileView, through the SelectView bar on the bottom of the screen.
+There are 3 main views that the user can navigate to, ExploreView, MapView, and 
+ProfileView, through the SelectView bar on the bottom of the screen.
 
 ### ExploreView
-The ExploreView includes a FilterBar on top and a ScrollView of a list of places. When tapped on the FilterBar, it navigates to a FilterView, whose information is shared with the MapView's FilterBar. Each area listed on the ScrollView navigates to a DetailsView for the area. 
+The ExploreView includes a FilterBar on top, and a ScrollView of list of place.
+When tapped on the FilterBar, it navigates to a FilterView, whose information is 
+shared with the MapView's FilterBar. Each area listed on the ScrollView 
+navigates to a DetailsView for the area. 
 
-Inside the DetailsView, more information about the area is listed as well as the subareas associated with it. Users can interact with the subareas by favoriting them. Then an API request will be sent to the server to add that area to the list of favorite areas to be displayed on ProfileView.
+Inside the DetailsView, more information about the area is listed as well as the 
+subAreas associated with it. User can interact with the subAreas by favoriting 
+it. Then an API request will be sent to the server to add that area into the 
+list of favorite areas to be displayed on ProfileView.
 
 ### MapView
-
+We used Apple's MapKit to display the map, and used annotations to mark relevant
+locations. The filter also filters out the irrelevant locations. On tap, it
+shows information of the area, and navigates to the DetailsView when clicked on.
 
 ### ProfileView
-
+The ProfileView includes the user's information from their Google Login as well
+as an option to log out. The recommendations are implemented based on the user's
+most visited area. We randomly choose the features that is relevant to the area
+and recommend places with the same features. It also displays the favorite
+places once the user favorites it.
 
 ## Models
 ### User 
-The UserModel contains these variables: userId, email, name, photoUrl, dateCreated, and favorites. The photoUrl comes from the Google profile image after the user logs in with the Google account. The favorites contain the subarea ids that the user liked.
+The UserModel contains these variables: userId, email, name, photoUrl, 
+dateCreated, and favorites. The photoUrl comes from the Google profile image 
+after the user logs in with the Google account. The favorites contain the 
+subarea ids that the user liked.
 
 ### Area
-The AreaModel consists of these variables: areaId, name, rating, images, openHour, closeHour, latitude, longitude, outdoors, indoors, groupStudy, quietStudy, microwave, printer, dining, outlets, computers, and visited.
+The AreaModel consists of these variables: areaId, name, rating, images, 
+openHour, closeHour, latitude, longitude, outdoors, indoors, groupStudy, 
+quietStudy, microwave, printer, dining, outlets, computers, and visited.
 
-- The rating will be set to 0 by default. The app does not have a rating system yet but once the rating system feature gets added, rating value will be used.
+- The rating will be set to 0 by default. The app does not have a rating system
+  yet but once the rating system feature gets added, rating value will be used.
 - The image value is the paths to the images stored in the firebase Firestore.
-- Outdoors, indoors, groupStudy, quietStudy, microwave, printer, dining, outlets, and computers are the boolean values that default to be false.
-- The visited value gets updated when the user enters the area. It is the ***total*** visited people. Once the app gets more users, these values will be used to provide approximate busyness/crowdedness of the area.
+- Outdoors, indoors, groupStudy, quietStudy, microwave, printer, dining, outlets,
+  and computers are the boolean values that default to be false.
+- The visited value gets updated when the user enters the area. It is the
+  ***total*** visited people. Once the app gets more users, these values will
+  be used to provide approximate busyness/crowdedness of the area.
 
 ### SubArea
-The SubAreaModel consists of these variables: subAreaId, name, areaId, floor, images, outdoors, groupStudy, microwave, printer, dining, outlets, computers, bougie, lecture, independent, bustling, grassy, and rating.
+The SubAreaModel consists of these variables: subAreaId, name, areaId, floor, 
+images, outdoors, groupStudy, microwave, printer, dining, outlets, computers, 
+bougie, lecture, independent, bustling, grassy, and rating.
 
 - The AreaId is the area that the subarea is associated with.
-- These features - bougie, lecture, independent, bustling, and grassy - are determined by us to use for the personalized study spot recommendation system in the future.
+- These features - bougie, lecture, independent, bustling, and grassy - are
+  determined by us to use for the personalized study spot recommendation system
+  in the future.
 - The rating value will be used after we implement the rating system.
 
 ## How to Fix Common Issues
-1) If "No Account for Team "XXXXXXXXX". Add a new account in Accounts settings or verify that your accounts have valid credentials." and "No profiles for 'ucdavis.cs.ecs189e.StudyBarn' were found: Xcode couldn't find any iOS App Development provisioning profiles matching 'ucdavis.cs.ecs189e.StudyBarn'." errors show up, please set it to your own ***Team*** and ***Bundle Identifier***.
-2) If you find "Package.resolved file is corrupted or malformed" or "XXXX library/package not found/unresolved" errors, do the following steps:
+1) If "No Account for Team "XXXXXXXXX". Add a new account in Accounts settings
+   or verify that your accounts have valid credentials." and "No profiles for
+   'ucdavis.cs.ecs189e.StudyBarn' were found: Xcode couldn't find any iOS App
+   Development provisioning profiles matching 'ucdavis.cs.ecs189e.StudyBarn'."
+   errors show up, please set it to your own ***Team*** and ***Bundle Identifier***.
+2) If you find "Package.resolved file is corrupted or malformed" or "XXXX
+   library/package not found/unresolved" errors, do the following steps:
 - 1) Run this in your terminal
 ```
 cd StudyBarn.xcodeproj/project.xcworkspace/xcshareddata/swiftpm
 rm Package.resolved
 ```
 - 2) Rebuild the app.
+ 
+## Source of Data
+As the current students of UC Davis, we believe that we know best of where the
+interested areas are, so we compiled a list of areas that are now included in 
+the app. We took pictures of some of the areas ourselves and found some of them
+online. We stored it in Firebase and accessed it when the user opened the app, 
+so the users don't need to have it downloaded on their device.
 
 ## How to Test User Location Tracking
 1) Run the app
